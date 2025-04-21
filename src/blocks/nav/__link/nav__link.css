@@ -1,0 +1,21 @@
+.nav__link {
+  text-decoration: none;
+  outline: none;
+  transition: .5s linear;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px 0;
+
+  z-index: 1;
+  font-weight: 400;
+
+  @apply text-white text-base uppercase mr-7;
+}
+
+.nav__link_black {
+  @apply text-primary-black;
+}
+
+.nav__link_flex {
+  @apply flex p-0;
+}

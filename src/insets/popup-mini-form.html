@@ -1,0 +1,17 @@
+<!--Форма обратного звонка  -->
+<div class="popup popup_opened popup-callback bg-blacktheme">
+  <div class="max-w-[768px] w-full relative">
+    <button class="popup__button-close popup__button-close_type_form link-beauty" type="button"></button>
+    <form class="popup__form raschet-bem" method="post" action="#" id="formCallBack" name="formCallBack" novalidate>
+        <h2 class="raschet-bem__title subtitle">Заявка в свободной форме</h2>
+        <div class="free-form">
+            <label class="">
+              <span class="">Можете оставить свой номер</span>
+              <input data-alias="Телефон" type="text" name="tel" id="tel-free-input" class="raschet-bem__input raschet-bem__input_type_flex" required minlength="1">
+              <span class="raschet-bem__input-error tel-free-input-error"></span>
+            </label>
+        </div>
+        <button class="ui-button button-bem_submit" type="submit">Отправить</button>
+    </form>
+  </div>
+</div>

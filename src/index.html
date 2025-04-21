@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <%= require(`html-loader!./inner-google${isDevServer ? '-dev-server' : ''}.html`).default %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link href="<%= canonicalURL %>"  rel="canonical" />
+</head>
+<body class="page bg-gradient-to-r from-primary-darker to-primary-blue">
+  <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
+  <% if (isDevServer) { %>
+    <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
+  <% } %>
+  <header class="header">
+    <div class="header__up py-8">
+        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    </div>
+    <div class="hero relative overflow-hidden content">
+      <h1 class="text-[185px] font-fr font-medium mt-20 mb-0 text-white max-w-[1150px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостей</h1>
+      <p class="mt-5 text-white mb-5 max-w-xs">Российское производство стальных резервуаров</p>
+      <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red" href="#products">Подробнее</a>
+    </div>
+  </header>
+  <main class="content">
+    <section class="my-[130px] items-start">
+      <ul class="container-4 w-full">
+        <% ['20', '14', '25', '15'].map((i) => { %>
+          <li>
+            <span class="text-9xl font-fr font-semibold lighting text-[#145EB4]"><%= i %></span>
+            <span class="text-2xl font-medium font-fr text-white">мм гнем металл</span>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+    <section id="catalog">
+      <h2 class="up-title up-title_svg">Каталог резервуаров</h2>
+      <ul class="container-2">
+        <% categories.map((c)=> { %>
+          <%= _.template(require('html-loader!./templates/card-category.html').default)({obj: c, isDevServer}) %>
+        <% }) %>
+      </ul>
+    </section>
+    <section class="container-2 my-[130px] relative">
+      <h2 class="up-title up-title_svg">Каталог</h2>
+      <div>
+        <h2 class="text-5xl font-fr uppercase font-semibold text-white"><span class="block text-primary-lightblue">Ведущие</span> категории сегодня</h2>
+        <ul class="w-full mt-12">
+          <% popular.map((c)=> { %>
+            <li class="block">
+              <a href="<%= c.linkPath %>" class="text-4xl font-fr flex py-4 pr-4 justify-between border-t border-primary-gray text-primary-gray hover:text-primary-white hover:border-primary-white">
+                <span><%= c.itemRuName %></span>
+                <svg class="size-6 stroke-primary-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+</body>
+</html>

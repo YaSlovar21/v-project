@@ -1,0 +1,79 @@
+:root {
+
+}
+
+
+@media screen and (max-width: 1441px) {
+  :root {
+
+  }
+}
+
+@media screen and (max-width: 1281px) {
+  :root {
+
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+
+  }
+}
+
+.page {
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+html, body, main {
+    /*position: relative;
+    height: 100%;
+    font-family: 'Inter', Arial, sans-serif;*/
+
+}
+h1,h2,h3,h4 {
+  /*font-family: 'OS';*/
+}
+
+.lighting {
+  text-shadow: 0 0 16px rgba(51,51,255,.25),0 0 8px rgba(51,51,255,.25),0 4px 32px rgba(51,51,255,.5);
+}
+
+.contacts-sect::before {
+  content: '';
+  height: 20px;
+  width: 50%;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background-image: url(../../images/_dr/svg/bg-geom-uslugi.svg);
+  display: block;
+  margin-bottom: 30px;
+}
+
+.contacts-sect_subhead {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 120%;
+  letter-spacing: -3%;
+
+  @apply text-primary-gray;
+}
+
+/*
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}*/
+
