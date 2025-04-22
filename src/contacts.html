@@ -8,7 +8,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/contacts/"  rel="canonical" />
   </head>
-  <body class="page bg-primary-lightgray">
+  <body class="page page bg-gradient-to-r from-primary-darker to-primary-blue">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up py-8">
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
@@ -18,16 +18,16 @@
       <ul class="container-2 gap-y-10 gap-x-0 grid-rows-2 grid-flow-col mb-80">
         <li class="row-span-2">
           <h3 class="contacts-sect_subhead">Адрес производства</h3>
-          <h4 class="text-4xl uppercase text-primary-black font-bold mt-5 mb-10">ООО «Дромотрон»</h4>
-          <p class="text-3xl max-w-sm">Россия, г. Барнаул, ул. Ткацкая, 75А, оф. 2</p>
+          <h4 class="text-4xl uppercase text-primary-black font-bold mt-5 mb-10">ООО «Викинг»</h4>
+          <p class="text-3xl max-w-sm">Россия, г. Барнаул, ул. Кулагина 28</p>
         </li>
         <li>
           <h3 class="contacts-sect_subhead mb-4">Директор</h3>
-          <a class="text-4xl " href="tel:79039123177">+7(903)912-31-77</a>
+          <a class="text-4xl " href="tel:79999992292">+7(999)999-22-92</a>
         </li>
         <li>
           <h3 class="contacts-sect_subhead mb-4">Email</h3>
-          <a class="text-4xl"  href="mailto:info@dromotron.ru">info@dromotron.ru</a>
+          <a class="text-4xl"  href="mailto:info@rezervuar22.ru">info@rezervuar22.ru</a>
         </li>
       </ul>
     </div>

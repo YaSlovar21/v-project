@@ -21,8 +21,10 @@ const standartClasses = {
   ctaButtonClass: 'cta-button',
 }
 
+
 module.exports = {
   ROUTES_SITEMAP: ROUTES,
   ROUTES: {...ROUTES, ...ROUTES_SPEC},
   standartClasses,
 }
+

@@ -128,9 +128,14 @@
   }
 
   .up-title_h1 {
-    @apply text-[90px] mvpc:text-[60px]  ;
+    @apply text-[90px] mvpc:text-[60px]  items-start;
   }
+  .up-title_svg::before {
+    height: auto;
+    margin-top: 1px;
+    margin-bottom: 0px;
 
+  }
   .title-page {
     @apply text-[57px] uppercase font-bold mt-8 mb-16 text-zinc-300 mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
   }

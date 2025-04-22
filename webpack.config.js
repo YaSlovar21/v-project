@@ -9,7 +9,7 @@ const fetch1 = require('node-fetch');
 const canonicalURL = 'https://www.rezervuar22.ru'
 
 const { paths } = require('./sitemap');
-const { ROUTES } = require('./constants');
+const { ROUTES, webpackRules } = require('./constants');
 
 
 
@@ -17,11 +17,66 @@ const dateNow = (new Date()).toString();
 let generatedPaths = [];
 
 
+function generateCategoryPagesHtmlPlugins(category, products, isDevServer) {
+  const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
+  const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
+
+  return new HtmlWebpackPlugin({
+    templateParameters: { 
+      canonicalURL,
+      ROUTES,
+      isDevServer,
+      /* */
+      categoryProducts,
+      categoryDescAi,
+      categoryName,
+      posterSm,
+      textId
+    },
+    title: categoryName,
+    meta: {
+     // keywords: seoKeywords,
+     // description: categoryDescAi,
+    },
+    filename: `catalog/${linkPath}/index.html`,
+    template: "./src/_category.html", // путь к файлу index.html
+    chunks: ["index"],
+  });
+}
+
+// --- ПРОДУКТ --- //
+function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, isDevServer) {
+  const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;
+  return new HtmlWebpackPlugin({
+    templateParameters: { 
+      canonicalURL,
+      ROUTES,
+      isDevServer,
+      /* */
+      charsJson,
+      intro,
+      h1,
+      id
+    },
+    title: title,
+    meta: {
+      keywords: seoKeywords,
+      description: seoDescription,
+    },
+    filename: `catalog/${categoriesRealPathsByTextId[categoryTextId]}/${textId}.html`,
+    template: "./src/_product.html", // путь к файлу index.html
+    chunks: ["index"],
+  });
+} 
+
 //function generateConfig(infoBlogData, isDevServer) {
 function generateConfig(isDevServer, categories, products, gallery, popular) {
   //const htmlRaschetPlugins = generateRaschetHtmlPlugins(isDevServer);
   //const htmlArticlesPlugins = generateBlogPagesHtmlPlugins(infoBlogData, isDevServer);
-  //const htmlSpecPagesPluginst = generateSpecPagesHtmlPlugins(isDevServer);
+  const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
+  console.log(categoriesRealPathsByTextId);
+  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products, isDevServer));
+  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId, isDevServer));
 
   return {
     entry: {
@@ -43,6 +98,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
       open: true, // сайт будет открываться сам при запуске npm run dev
     },
     module: {
+      /* */
       rules: [
         // rules — это массив правил
         // добавим в него объект правил для бабеля
@@ -78,7 +134,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
             },
           ],
         },
-
+      
         {
           // регулярное выражение, которое ищет все файлы с такими расширениями
           test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf|webm)$/,
@@ -125,7 +181,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
             name: "[name].[ext]",
           },
         },
-
+      
         {
           test: /\.css$/,
           use: [
@@ -139,7 +195,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
             "postcss-loader",
           ],
         },
-      ],
+      ]
+       /* */
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -159,21 +216,6 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
         },
         template: "./src/index.html", // путь к файлу index.html
         chunks: ["index"],
-      }),
-      new HtmlWebpackPlugin({
-        templateParameters: { 
-          canonicalURL,
-          ROUTES,
-          isDevServer,
-        },
-        title: "Услуги по лазерной резке, гибке металла в Барнауле",
-        meta: {
-          keywords: "услуги завода",
-          description: `Парк оборудования ООО «Дромотрон» позволяет оказывать услуги по резке и гибке металла, фрезерной и токарной обработке. По оптимальной цене с привлечением квалифицированных специалистов.`,
-        },
-        filename: `${ROUTES.uslugi.split('/')[1]}/index.html`,
-        template: "./src/_uslugi.html", // путь к файлу index.html
-        chunks: ["index", "cta", "form"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -212,18 +254,18 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
         filename: "[name].css",
       }),
       //new SitemapPlugin({ base: canonicalURL, paths: paths.concat(generatedPaths).sort((a,b)=> b.priority - a.priority) }),
-    ]//.concat(htmlRaschetPlugins)//, htmlTisPlugins, htmlArticlesPlugins,htmlSpecPagesPluginst),
+    ].concat(htmlCategoriesPagePlugins, htmlProductPagesPlugins )//, htmlTisPlugins, htmlArticlesPlugins,htmlSpecPagesPluginst),
   }
 };
 
 
 
 function categoriesMapper(cats) {
-  return cats.map(c => c);
+  return cats.filter(i => i.isPublished === true).map(c => c);
 }
  
 function productsMapper(prods) {
-  return prods.map(c => ({...c, images: JSON.parse(c.charsJson)}));
+  return prods.filter(i => i.isPublished === true).map(c => ({...c, charsJson: JSON.parse(c.charsJson)}));
 }
 
 

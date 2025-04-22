@@ -52,12 +52,13 @@ h1,h2,h3,h4 {
 
 .contacts-sect::before {
   content: '';
-  height: 20px;
+  height: 60px;
   width: 50%;
   position: absolute;
   top: 8px;
   right: 0;
   background-image: url(../../images/_dr/svg/bg-geom-uslugi.svg);
+  background-repeat: repeat-x;
   display: block;
   margin-bottom: 30px;
 }

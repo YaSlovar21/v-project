@@ -1,0 +1,13 @@
+<!--const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;-->
+
+<li class="card p-5 mb-5 relative flex justify-between bg-primary-darkbg transition-all duration-300 group">
+  <div class="basis-2/3">
+    <h3 class="card-title font-medium font-fr uppercase max-w-[680px] text-4xl text-primary-white mobile:text-base"><%= obj.h1 %></h3>
+    <p class="card-desc text-xl basis-14 mt-4 mb-[30px] max-w-[680px] leading-snug text-primary-white mobile:max-w-full  mobile:text-sm"><%= obj.intro %></p>
+    <a href="/catalog/<%= obj.catLinkPath %>/<%= obj.textId %>.html">
+      <span class="inset0">
+      </span>
+    </a>
+    </div>
+    <img class="basis-1/4 w-full min-w-0 object-contain object-right-top" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>" >
+</li>

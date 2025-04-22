@@ -8,17 +8,19 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page bg-primary-lightgray">
+  <body class="page bg-gradient-to-r from-primary-darker to-primary-blue">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up py-8">
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
     <main class="content contacts-sect relative mt-10 mb-20">
-      <h1 class="up-title up-title_svg up-title_h1 mb-10">Услуги</h1>
+      <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= h1 %></h1>
+      <p><%= intro %></p>
       <ul class="">
-
+        <% charsJson.map((i)=> { %>
+          <li><b><%= i.nameChar %></b>: <%= i.valueChar %></li>
+        <% }) %>
       </ul>
-      <%= _.template(require('html-loader!./insets/form-section-test.html').default)({title: "Рассчитаем стоимость и срок оказания услуги по металлообработке и"}) %>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
   </body>
