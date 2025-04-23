@@ -1,0 +1,11 @@
+.leftnav {
+
+}
+
+.leftnav__mainlink {
+  @apply block py-5 px-3 text-primary-white text-2xl font-fr uppercase border-t border-primary-white;
+}
+
+.leftnav__mainlink_active {
+  @apply bg-primary-lightblue text-primary-gray;
+}

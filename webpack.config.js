@@ -27,11 +27,8 @@ function generateCategoryPagesHtmlPlugins(category, products, isDevServer) {
       ROUTES,
       isDevServer,
       /* */
-      categoryProducts,
-      categoryDescAi,
-      categoryName,
-      posterSm,
-      textId
+      categoryData: category,
+      categoryProducts
     },
     title: categoryName,
     meta: {
@@ -53,10 +50,7 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, isD
       ROUTES,
       isDevServer,
       /* */
-      charsJson,
-      intro,
-      h1,
-      id
+      productData: product,
     },
     title: title,
     meta: {
@@ -75,6 +69,9 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
   //const htmlArticlesPlugins = generateBlogPagesHtmlPlugins(infoBlogData, isDevServer);
   const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
   console.log(categoriesRealPathsByTextId);
+  const dModels = gallery.filter(i=>i.consumersIds.includes("3d")).reduce((result, dobj) => ({...result, [dobj.id]: dobj}), {});
+  console.log(gallery);
+  const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr.sort((a,b)=> a-b)}), {});
   const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products, isDevServer));
   const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId, isDevServer));
 
@@ -207,7 +204,9 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
           categories,
           products,
           gallery, 
-          popular
+          popular,
+          dModels,
+          sizesArrForCats
         },
         title: "Производство стальных резервуаров и ёмкостей",
         meta: {
@@ -258,10 +257,13 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
   }
 };
 
+function galleryMapper(images) {
+  return images.map(c => ({...c, consumersIds: JSON.parse(c.consumersIds)}));
+}
 
 
 function categoriesMapper(cats) {
-  return cats.filter(i => i.isPublished === true).map(c => c);
+  return cats.filter(i => i.isPublished === true).map(c => ({...c, sizesArr: JSON.parse(c.sizesArr)}));
 }
  
 function productsMapper(prods) {
@@ -311,7 +313,7 @@ module.exports = () => {
           
         ])
         .then((data) => {
-          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), data[2], data[3] ));
+          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3] ));
         })
      
   });

@@ -14,10 +14,10 @@
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
     <main class="content contacts-sect relative mt-10 mb-20">
-      <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= h1 %></h1>
-      <p><%= intro %></p>
+      <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= productData.h1 %></h1>
+      <p><%=  productData.intro %></p>
       <ul class="">
-        <% charsJson.map((i)=> { %>
+        <%  productData.charsJson.map((i)=> { %>
           <li><b><%= i.nameChar %></b>: <%= i.valueChar %></li>
         <% }) %>
       </ul>

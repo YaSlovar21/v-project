@@ -60,6 +60,53 @@
         </ul>
       </div>
     </section>
+    <section>
+      <h2 class="up-title up-title_svg">Подбор резервуара</h2>
+      <form name="quiz" class="my-8">
+        <div class="container-4">
+          <label class="formquiz__labelcheckbox relative">
+            <input type="radio" value="gorizontalnye-rezervuary-rgs" class="formquiz__inputcheckbox absolute" name="rezervuartype" checked>
+            <figure class="formquiz__figchoice">
+              <img class="h-[70%] w-[70%] object-center object-contain" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[36].fileName%>">
+              <span class="text-xl mt-auto block">Резервуар горизонтальный</span>
+            </figure>
+          </label>
+          <label class="formquiz__labelcheckbox relative">
+            <input type="radio" value="gorizontalnye-rezervuary-rgsp" class="formquiz__inputcheckbox absolute" name="rezervuartype">
+            <figure class="formquiz__figchoice">
+              <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>">
+              <span class="text-xl mt-auto block">Резервуар горизонтальный подземный</span>
+            </figure>
+          </label>
+          <label class="formquiz__labelcheckbox relative">
+            <input type="radio" value="vertikalnye-rezervuary" class="formquiz__inputcheckbox absolute" name="rezervuartype">
+            <figure class="formquiz__figchoice">
+              <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[52].fileName%>">
+              <span class="text-xl mt-auto block">Резервуар вертикальный</span>
+            </figure>
+          </label>
+          <label class="formquiz__labelcheckbox relative">
+            <input type="radio" value="silosy" class="formquiz__inputcheckbox absolute" name="rezervuartype">
+            <figure class="formquiz__figchoice">
+              <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[44].fileName%>">
+              <span class="text-xl mt-auto block">Силос</span>
+            </figure>
+          </label>
+        </div>
+        <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
+          <fieldset class="w-1/2 my-4" id="<%= f %>">
+            <h2 class="text-xl font-fr text-primary-white">Объемы резервуара</h2>
+            <% sizesArrForCats[f].map((size)=> { %>
+              <label class="formquiz__labelcheckbox relative">
+                <input type="checkbox" value="<%= size %>" class="formquiz__inputsizecheck absolute invisible" name="rezervuarsize">
+                <span class="formquiz__sizechoice font-fr uppercase"><%=size %> м³</span>
+              </label>
+            <% }) %>
+          </fieldset>
+        <% }) %>
+        <fieldset></fieldset>
+      </form>
+    </section>
   </main>
   <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
 </body>

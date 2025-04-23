@@ -1,0 +1,19 @@
+.formquiz__inputcheckbox {
+
+}
+.formquiz__figchoice {
+  @apply h-full border border-primary-darkbg flex flex-col justify-center items-center p-4 rounded-lg cursor-pointer text-primary-lightblue;
+}
+
+.formquiz__sizechoice {
+  @apply border border-primary-darkbg p-4 rounded-md inline-flex text-primary-gray;
+}
+
+.formquiz__inputcheckbox:checked + .formquiz__figchoice{
+  @apply bg-primary-darkbg text-primary-red border-primary-red;
+}
+
+
+.formquiz__inputsizecheck:checked + .formquiz__sizechoice {
+ @apply border-primary-red bg-primary-red;
+}

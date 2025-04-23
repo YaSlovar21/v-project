@@ -14,13 +14,17 @@
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
     <main class="content contacts-sect relative mt-10 mb-20">
-      <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= categoryName %></h1>
-      <p><%= categoryDescAi %></p>
-      <ul class="container-2">
-        <% categoryProducts.map((c)=> { %>
-          <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: c, isDevServer}) %>
-        <% }) %>
-      </ul>
+      <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= categoryData.categoryName %></h1>
+      <p class="text-xl text-primary-white max-w-7xl"><%= categoryData.categoryDescAi %></p>
+      <div class="container-4 my-16">
+        <%= _.template(require('html-loader!./templates/router.html').default)({categoryData: categoryData, isDevServer}) %>
+
+        <ul class="col-span-3 grid grid-cols-3 gap-5">
+          <% categoryProducts.map((c)=> { %>
+            <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: c, isDevServer}) %>
+          <% }) %>
+        </ul>
+      </div>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
   </body>

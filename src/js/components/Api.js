@@ -12,8 +12,8 @@ export default class Api {
         }
     }
 
-     getInitialCards() {
-        return fetch(`https://api.termoblok.ru/blogcards`, {
+     getProducts() {
+        return fetch(`https://api-cms.kupcov.com/data/products`, {
             headers: this._headers,
         })
         .then((response) => {
