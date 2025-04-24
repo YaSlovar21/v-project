@@ -17,7 +17,7 @@ const dateNow = (new Date()).toString();
 let generatedPaths = [];
 
 
-function generateCategoryPagesHtmlPlugins(category, products, isDevServer) {
+function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPathsByTextId, isDevServer) {
   const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
   const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
 
@@ -28,7 +28,8 @@ function generateCategoryPagesHtmlPlugins(category, products, isDevServer) {
       isDevServer,
       /* */
       categoryData: category,
-      categoryProducts
+      categoryProducts,
+      categoriesRealPathsByTextId
     },
     title: categoryName,
     meta: {
@@ -72,13 +73,14 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
   const dModels = gallery.filter(i=>i.consumersIds.includes("3d")).reduce((result, dobj) => ({...result, [dobj.id]: dobj}), {});
   console.log(gallery);
   const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr.sort((a,b)=> a-b)}), {});
-  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products, isDevServer));
+  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesRealPathsByTextId, isDevServer));
   const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId, isDevServer));
 
   return {
     entry: {
       index: "./src/pages/index.js",
-      cta: "./src/pages/cta-reaction.js"
+      cta: "./src/pages/cta-reaction.js",
+      razrez: "./src/pages/gsap-razrez.js"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -214,7 +216,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
           description: ``,
         },
         template: "./src/index.html", // путь к файлу index.html
-        chunks: ["index"],
+        chunks: ["index", "razrez"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 

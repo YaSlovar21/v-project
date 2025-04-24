@@ -8,16 +8,19 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page page bg-gradient-to-r from-primary-darker to-primary-blue">
+  <body class="page page bg-slate-800">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up py-8">
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
     <main class="content contacts-sect relative mt-10 mb-20">
       <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= categoryData.categoryName %></h1>
+      <div class="w-full bg-primary-darker shadow-sm rounded-xl">
+        <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterSm %>" alt="<%= categoryData.categoryName %>">
+      </div>
       <p class="text-xl text-primary-white max-w-7xl"><%= categoryData.categoryDescAi %></p>
       <div class="container-4 my-16">
-        <%= _.template(require('html-loader!./templates/router.html').default)({categoryData: categoryData, isDevServer}) %>
+        <%= _.template(require('html-loader!./templates/router.html').default)({categoryData: categoryData, categoriesRealPathsByTextId:categoriesRealPathsByTextId, isDevServer}) %>
 
         <ul class="col-span-3 grid grid-cols-3 gap-5">
           <% categoryProducts.map((c)=> { %>

@@ -9,3 +9,11 @@
 .leftnav__mainlink_active {
   @apply bg-primary-lightblue text-primary-gray;
 }
+
+.leftnav__sublink {
+  @apply  py-1 px-1 text-primary-white text-xl font-fr uppercase;
+}
+
+.leftnav__sublink_active {
+  @apply text-primary-lightblue;
+}

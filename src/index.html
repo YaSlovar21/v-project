@@ -107,6 +107,16 @@
         <fieldset></fieldset>
       </form>
     </section>
+    <section class="comparisonSection w-1/2 block mx-auto">
+      <div class="comparisonImage beforeImage">
+        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
+      </div>
+      <div class="comparisonImage afterImage">
+        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
+      </div>
+    </section>
+
+
   </main>
   <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
 </body>

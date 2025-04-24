@@ -1,10 +1,20 @@
 <nav class="leftnav">
   <ul>
     <li class="">
-      <a class="leftnav__mainlink <%= ['gorizontalnye-rezervuary-rgs', 'gorizontalnye-rezervuary-rgsp'].includes(categoryData.textId) ? 'leftnav__mainlink_active' : '' %>" href="#">Горизонтальные резервуары</a>
+      <a class="leftnav__mainlink <%= ['gorizontalnye-rezervuary-rgs', 'gorizontalnye-rezervuary-rgsp', 'gorizontalnye-rezervuary-rgsd'].includes(categoryData.textId) ? 'leftnav__mainlink_active' : '' %>" href="/catalog/<%= categoriesRealPathsByTextId['gorizontalnye-rezervuary-rgs'] %>">Горизонтальные резервуары</a>
+      <% if (['gorizontalnye-rezervuary-rgs', 'gorizontalnye-rezervuary-rgsp', 'gorizontalnye-rezervuary-rgsd'].includes(categoryData.textId)) { %>
+        <ul class="flex mt-4 mb-12">
+          <li><a class="leftnav__sublink <%= categoryData.textId === 'gorizontalnye-rezervuary-rgs' ? 'leftnav__sublink_active' : '' %>" href="/catalog/<%= categoriesRealPathsByTextId['gorizontalnye-rezervuary-rgs'] %>/">РГС (РГСН)</a></li>
+          <li><a class="leftnav__sublink <%= categoryData.textId === 'gorizontalnye-rezervuary-rgsp' ? 'leftnav__sublink_active' : '' %>" href="/catalog/<%= categoriesRealPathsByTextId['gorizontalnye-rezervuary-rgsp'] %>/">РГСП</a></li>
+          <li><a class="leftnav__sublink <%= categoryData.textId === 'gorizontalnye-rezervuary-rgsd' ? 'leftnav__sublink_active' : '' %>" href="/catalog/<%= categoriesRealPathsByTextId['gorizontalnye-rezervuary-rgsd'] %>/">РГCД</a></li>
+        </ul>
+      <% } %>
     </li>
     <li class="">
-      <a class="leftnav__mainlink <%= ['vertikalnye-rezervuary'].includes(categoryData.textId) ? 'leftnav__mainlink_active' : '' %>" href="#">Вертикальные резервуары</a>
+      <a class="leftnav__mainlink <%= ['vertikalnye-rezervuary'].includes(categoryData.textId) ? 'leftnav__mainlink_active' : '' %>" href="/catalog/<%= categoriesRealPathsByTextId['vertikalnye-rezervuary'] %>/">Вертикальные резервуары</a>
+    </li>
+    <li class="">
+      <a class="leftnav__mainlink <%= ['silosy'].includes(categoryData.textId) ? 'leftnav__mainlink_active' : '' %>" href="/catalog/<%= categoriesRealPathsByTextId['silosy'] %>/">Силосы</a>
     </li>
   </ul>
 </nav>

@@ -13,3 +13,35 @@
 @import url(../blocks/form/form.css);
 
 @import url(../blocks/popupmenu/popupmenu.css);
+
+
+.comparisonSection {
+  position: relative;
+  padding-bottom: 56.25%; /* to maintain aspect ratio (responsive!) */
+}
+.comparisonImage {
+  width: 100%;
+  height: 100%;
+}
+.afterImage {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  transform: translate(100%, 0px);
+}
+.afterImage img {
+  transform: translate(-100%, 0px);
+}
+.comparisonImage img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  
+}
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
