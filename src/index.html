@@ -18,7 +18,7 @@
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     </div>
     <div class="hero relative overflow-hidden content">
-      <h1 class="text-[185px] font-fr font-medium mt-20 mb-0 text-white max-w-[1150px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостей</h1>
+      <h1 class="text-[185px] olpc:text-[120px] font-fr font-medium mt-20 mb-0 text-white max-w-[1150px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостей</h1>
       <p class="mt-5 text-white mb-5 max-w-xs">Российское производство стальных резервуаров</p>
       <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red" href="#products">Подробнее</a>
     </div>
@@ -33,6 +33,16 @@
           </li>
         <% }) %>
       </ul>
+    </section>
+    <section class="comparisonSection w-1/2 block mx-auto relative">
+      <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">ВИКИНГ</h2>
+      <p class="text-[100px] olpc:text-[50px] font-fr absolute bottom-[160px] olpc:bottom-16 left-0 text-primary-lightgray">качественно и в срок</p>
+      <div class="comparisonImage beforeImage">
+        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
+      </div>
+      <div class="comparisonImage afterImage">
+        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
+      </div>
     </section>
     <section id="catalog">
       <h2 class="up-title up-title_svg">Каталог резервуаров</h2>
@@ -106,14 +116,6 @@
         <% }) %>
         <fieldset></fieldset>
       </form>
-    </section>
-    <section class="comparisonSection w-1/2 block mx-auto">
-      <div class="comparisonImage beforeImage">
-        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
-      </div>
-      <div class="comparisonImage afterImage">
-        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
-      </div>
     </section>
 
 

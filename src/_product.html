@@ -11,14 +11,17 @@
   <body class="page bg-gradient-to-r from-primary-darker to-primary-blue">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up py-8">
-        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     </header>
     <main class="content contacts-sect relative mt-10 mb-20">
-      <h1 class="up-title up-title_svg up-title_h1 mb-10"><%= productData.h1 %></h1>
-      <p><%=  productData.intro %></p>
-      <ul class="">
+      <h1 class="up-title up-title_svg up-title_h1 text-6xl max-w-[50%] mb-10"><%= productData.h1 %></h1>
+      <p class="text-xl text-primary-white"><%=  productData.intro %></p>
+      <ul class="my-6">
         <%  productData.charsJson.map((i)=> { %>
-          <li><b><%= i.nameChar %></b>: <%= i.valueChar %></li>
+          <li class="container-2 text-2xl text-primary-white">
+            <b><%= i.nameChar %></b>
+             <p><%= i.valueChar %></p>
+          </li>
         <% }) %>
       </ul>
     </main>

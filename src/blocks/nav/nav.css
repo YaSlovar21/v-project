@@ -44,6 +44,7 @@
 
 .nav__menu-links {
     display: flex;
+    flex-direction: column;
     list-style: none;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -68,6 +69,7 @@
     padding: 10px 0px 5px;
     margin: 0;
     text-align: center;
+    text-align: left;
     position: relative;
 }
 
@@ -117,8 +119,11 @@
     position: absolute;
     align-items: stretch;
     top: calc(100% + 17px);
+    top: 0;
     left: -16px;
+    left: calc(100% + 17px);
     width: 210%;
+    width: 110%;
     z-index: 10;
     transition: opacity 0.5s ease-in-out, color .2s ease-in;
     transition: all .4s ease-in;
