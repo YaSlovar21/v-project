@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%= require(`html-loader!./inner-google${isDevServer ? '-dev-server' : ''}.html`).default %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
+  </head>
+  <body class="page page bg-gradient-to-r from-primary-darker to-primary-blue">
+    <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
+    <header class="header__up py-8">
+        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    </header>
+    <main class="content contacts-sect relative mt-10 mb-20">
+      <h1 class="up-title up-title_svg up-title_h1 mb-10 max-w-[50%]"><%= categoryData.categoryName %></h1>
+      <p class="text-base text-primary-white max-w-7xl"><%= categoryData.categoryDesc %></p>
+      <button class="ui-button">Узнать цену</button>
+
+      <div class="w-full bg-primary-darker shadow-sm rounded-xl">
+        <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterSm %>" alt="<%= categoryData.categoryName %>">
+      </div>
+
+      <div class="container-4 my-16">
+        <%= _.template(require('html-loader!./templates/router.html').default)({categoryData: categoryData, categoriesRealPathsByTextId:categoriesRealPathsByTextId, isDevServer}) %>
+
+        <ul class="col-span-3 grid grid-cols-3 gap-5">
+          <% categoryProducts.map((c)=> { %>
+            <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: c, isDevServer}) %>
+          <% }) %>
+        </ul>
+      </div>
+    </main>
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+  </body>
+</html>

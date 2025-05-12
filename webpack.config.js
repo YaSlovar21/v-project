@@ -45,6 +45,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
 // --- ПРОДУКТ --- //
 function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, isDevServer) {
   const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;
+  //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
     templateParameters: { 
       canonicalURL,

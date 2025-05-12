@@ -8,17 +8,18 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="<%= canonicalURL %>"  rel="canonical" />
 </head>
-<body class="page bg-gradient-to-r from-primary-darker to-primary-blue">
+<!--<body class="page bg-gradient-to-r from-primary-darker to-primary-blue">-->
+<body class="page bg-[#1B2E58]">
   <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
   <% if (isDevServer) { %>
     <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
   <% } %>
   <header class="header">
     <div class="header__up py-8">
-        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </div>
     <div class="hero relative overflow-hidden content">
-      <h1 class="text-[185px] olpc:text-[120px] font-fr font-medium mt-20 mb-0 text-white max-w-[1150px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостей</h1>
+      <h1 class="text-8xl olpc:text-7xl font-fr font-medium mt-20 mb-0 text-white max-w-[1180px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостного оборудования</h1>
       <p class="mt-5 text-white mb-5 max-w-xs">Российское производство стальных резервуаров</p>
       <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red" href="#products">Подробнее</a>
     </div>
@@ -35,7 +36,9 @@
       </ul>
     </section>
     <section class="comparisonSection w-1/2 block mx-auto relative">
-      <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">ВИКИНГ</h2>
+      <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
+        <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
+      </h2>
       <p class="text-[100px] olpc:text-[50px] font-fr absolute bottom-[160px] olpc:bottom-16 left-0 text-primary-lightgray">качественно и в срок</p>
       <div class="comparisonImage beforeImage">
         <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
@@ -54,11 +57,12 @@
     </section>
     <section class="container-2 my-[130px] relative">
       <h2 class="up-title up-title_svg">Каталог</h2>
-      <div>
+      <div class="relative">
         <h2 class="text-5xl font-fr uppercase font-semibold text-white"><span class="block text-primary-lightblue">Ведущие</span> категории сегодня</h2>
-        <ul class="w-full mt-12">
+        <ul class="w-full mt-12 ">
           <% popular.map((c)=> { %>
-            <li class="block">
+            <li class="block group">
+              <img class="absolute w-80 object-contain object-center transition-all duration-75 h-96 top-0 -left-96 invisible group-hover:visible" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= c.imgUrl %>" alt="">
               <a href="<%= c.linkPath %>" class="text-4xl font-fr flex py-4 pr-4 justify-between border-t border-primary-gray text-primary-gray hover:text-primary-white hover:border-primary-white">
                 <span><%= c.itemRuName %></span>
                 <svg class="size-6 stroke-primary-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >

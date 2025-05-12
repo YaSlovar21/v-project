@@ -8,22 +8,42 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page bg-gradient-to-r from-primary-darker to-primary-blue">
+  <body class="page bg-blue-200">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up py-8">
-        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
-    <main class="content contacts-sect relative mt-10 mb-20">
-      <h1 class="up-title up-title_svg up-title_h1 text-6xl max-w-[50%] mb-10"><%= productData.h1 %></h1>
+    <main class="">
+      <div class="content grid grid-cols-2 items-stretch gap-5 relative mt-10 mb-20">
+        <div class="bg-blue-800 p-4 h-full flex flex-col rounded-lg">
+          <h1 class="mb-4 text-6xl text-white font-medium font-fr"><%= productData.h1 %></h1>
+        </div>
+        <div class="bg-red-700 rounded-lg">
+          <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= productData.poster %>" alt="<%= productData.h1 %>">
+        </div>
+        <div class="">
+          <ul class="flex flex-col gap-4">
+            <li class="p-4 rounded-lg border-2 border-red-700">
+              <h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>
+            </li>
+            <li class="p-4 rounded-lg border-2 border-red-700">
+              <h2 class="text-2xl uppercase font-fr font-medium">Характеристики</h2>
+              <ul class="my-6">
+                <%  productData.charsJson.map((i)=> { %>
+                  <li class="flex justify-between text-base">
+                    <b><%= i.nameChar %></b>
+                    <p class="basis-24"><%= i.valueChar %></p>
+                  </li>
+                <% }) %>
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+      <h2 class="text-4xl"><%= productData.h1 %></h2>
       <p class="text-xl text-primary-white"><%=  productData.intro %></p>
-      <ul class="my-6">
-        <%  productData.charsJson.map((i)=> { %>
-          <li class="container-2 text-2xl text-primary-white">
-            <b><%= i.nameChar %></b>
-             <p><%= i.valueChar %></p>
-          </li>
-        <% }) %>
-      </ul>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
   </body>
