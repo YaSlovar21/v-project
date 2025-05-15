@@ -8,37 +8,39 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page bg-blue-200">
+  <body class="page bg-blue-100">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up">
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
     <main>
-    <div class="content grid grid-cols-2 items-stretch gap-5 relative mt-10 mb-20">
-      <div class="bg-blue-800 p-4 h-full flex flex-col rounded-lg">
-        <h1 class="mb-4 text-6xl indent-[176px] text-white font-medium font-fr relative">
-          <figure class="bg-red-700 absolute top-2 left-16 rounded-full w-10 h-10"></figure>
+    <div class="content grid grid-cols-2 items-stretch gap-y-5 relative mb-20">
+      <div class="p-4 h-full flex flex-col pr-10">
+        <h1 class="text-primary-prblue mb-4 text-6xl indent-[176px] font-medium font-fr relative">
+          <svg class="fill-primary-prredlight absolute top-0 left-12" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
           <%= categoryData.categoryName %>
         </h1>
-        <p class="text-base text-primary-white max-w-7xl"><%= categoryData.categoryDesc %></p>
+        <p class="text-base text-primary-darkbg max-w-7xl mb-8"><%= categoryData.categoryDesc %></p>
         <button class="ui-button mt-auto">Узнать цену</button>
       </div>
-      <div class="bg-red-700 rounded-lg">
+      <div class="bg-primary-prredlight mt-10">
         <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterSm %>" alt="<%= categoryData.categoryName %>">
       </div>
-      <div>
-        <ul class="flex flex-col gap-5">
-          <li class="p-4 rounded-lg border-2 border-red-700 text-3xl font-fr">объем от <%= Math.min(...categoryData.sizesArr) %> м³ до <%= Math.max(...categoryData.sizesArr) %> м³</li>
-          <li class="p-4 rounded-lg border-2 border-red-700 text-3xl font-fr">для наземного использования</li>
-          <li class="p-4 rounded-lg border-2 border-red-700 text-3xl font-fr">внутренняя покраска</li>
+      <div class="grid grid-cols-2 pr-10">
+        <div></div>
+        <ul class="flex flex-col text-primary-darkbg *:border-primary-prredlight *:text-3xl">
+          <li class="p-4 border-t font-fr">объем от <%= Math.min(...categoryData.sizesArr) %> м³ до <%= Math.max(...categoryData.sizesArr) %> м³</li>
+          <li class="p-4 border-t font-fr">для наземного использования</li>
+          <li class="p-4 border-t font-fr">внутренняя покраска</li>
         </ul>
       </div>
-      <div class="bg-red-700 rounded-lg">
+      <div class="bg-primary-prredlight">
         <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterRazrez %>" alt="<%= categoryData.categoryName %>">
       </div>
     </div>
     <div class="content container-4 my-16">
       <ul class="col-span-4 grid grid-cols-4 gap-5">
+        <h2 class="up-title up-title_svg">Каталог</h2>
         <% categoryProducts.map((c)=> { %>
           <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: c, isDevServer}) %>
         <% }) %>

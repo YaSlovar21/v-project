@@ -43,7 +43,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
 }
 
 // --- ПРОДУКТ --- //
-function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, isDevServer) {
+function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, drawings, isDevServer) {
   const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;
   //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
@@ -53,6 +53,7 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, isD
       isDevServer,
       /* */
       productData: product,
+      drawings: drawings
     },
     title: title,
     meta: {
@@ -66,7 +67,8 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, isD
 } 
 
 //function generateConfig(infoBlogData, isDevServer) {
-function generateConfig(isDevServer, categories, products, gallery, popular) {
+function generateConfig(isDevServer, categories, products, gallery, popular , drawings) {
+  console.log(drawings);
   //const htmlRaschetPlugins = generateRaschetHtmlPlugins(isDevServer);
   //const htmlArticlesPlugins = generateBlogPagesHtmlPlugins(infoBlogData, isDevServer);
   const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
@@ -75,7 +77,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular) {
   console.log(gallery);
   const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr.sort((a,b)=> a-b)}), {});
   const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesRealPathsByTextId, isDevServer));
-  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId, isDevServer));
+  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId,drawings, isDevServer));
 
   return {
     entry: {
@@ -268,9 +270,18 @@ function galleryMapper(images) {
 function categoriesMapper(cats) {
   return cats.filter(i => i.isPublished === true).map(c => ({...c, sizesArr: JSON.parse(c.sizesArr)}));
 }
+
+function drawingsMapperAndReducer(draws) {
+  return draws.map(d=>d).reduce((res, i)=> ({...res, [i.id]: i}), {})
+}
  
 function productsMapper(prods) {
-  return prods.filter(i => i.isPublished === true).map(c => ({...c, charsJson: JSON.parse(c.charsJson)}));
+  return prods.filter(i => i.isPublished === true).map(c => ({
+    ...c, 
+    charsJson: JSON.parse(c.charsJson), 
+    drawingsGalleryIds: JSON.parse(c.drawingsGalleryIds),
+    imagesGalleryIds: JSON.parse(c.imagesGalleryIds)
+  }));
 }
 
 
@@ -314,9 +325,17 @@ module.exports = () => {
             },
           }).then(res => res.json()), 
           
+          //data[4] - drawings
+          fetch1('https://api-cms.kupcov.com/drawings', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8',
+            },
+          }).then(res => res.json()), 
+
         ])
         .then((data) => {
-          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3] ));
+          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]) ));
         })
      
   });

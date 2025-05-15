@@ -15,17 +15,19 @@
     <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
   <% } %>
   <header class="header">
-    <div class="header__up py-8">
+    <div class="header__up">
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </div>
-    <div class="hero relative overflow-hidden content">
-      <h1 class="text-8xl olpc:text-7xl font-fr font-medium mt-20 mb-0 text-white max-w-[1180px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостного оборудования</h1>
-      <p class="mt-5 text-white mb-5 max-w-xs">Российское производство стальных резервуаров</p>
-      <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red" href="#products">Подробнее</a>
+    <div class="hero py-8 relative overflow-hidden ">
+      <div class="content">
+        <h1 class="text-8xl olpc:text-7xl font-fr font-medium mt-20 mb-0 mx-auto text-center text-white max-w-[1180px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостного оборудования</h1>
+        <p class="mt-5 text-white mb-5 max-w-xs mx-auto text-center">Российское производство стальных резервуаров</p>
+        <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red mx-auto" href="#products">Подробнее</a>
+      </div>
     </div>
   </header>
   <main class="content">
-    <section class="my-[130px] items-start">
+    <section class="mt-[60px] mb-32 items-start">
       <ul class="container-4 w-full">
         <% ['20', '14', '25', '15'].map((i) => { %>
           <li>
@@ -35,7 +37,7 @@
         <% }) %>
       </ul>
     </section>
-    <section class="comparisonSection w-1/2 block mx-auto relative">
+    <section class="comparisonSection w-1/2 block mx-auto relative overflow-hidden">
       <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
         <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
       </h2>
@@ -47,12 +49,15 @@
         <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
       </div>
     </section>
-    <section id="catalog">
-      <h2 class="up-title up-title_svg">Каталог резервуаров</h2>
-      <ul class="container-2">
+    <section class="relative" id="catalog">
+      <h2 class="up-title up-title_svg absolute top-0 left-0">Каталог резервуаров</h2>
+      <p class="text-white indent-[25%] text-4xl font-fr mb-10">Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.</p>
+
+      <ul class="container-2 gap-5">
         <% categories.map((c)=> { %>
           <%= _.template(require('html-loader!./templates/card-category.html').default)({obj: c, isDevServer}) %>
         <% }) %>
+        <li class="border h-full font-fr uppercase flex justify-center items-center border-primary-floral text-primary-floral">Весь каталог</li>
       </ul>
     </section>
     <section class="container-2 my-[130px] relative">

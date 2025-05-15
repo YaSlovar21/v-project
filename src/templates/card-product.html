@@ -1,9 +1,10 @@
 <!--const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;-->
 
-<li class="card rounded-lg p-5 mb-5 relative flex justify-between bg-blue-800 transition-all duration-300 group">
+<li class="card rounded-sm p-5 mb-5 relative flex justify-between bg-primary-prblue transition-all duration-300 group">
   <div class="basis-2/3">
     <h3 class="card-title font-medium font-fr uppercase max-w-[680px] text-2xl text-primary-white mobile:text-base"><%= obj.h1 %></h3>
-    <p class="card-desc text-xl basis-14 mt-4 mb-[30px] max-w-[680px] leading-snug text-primary-white mobile:max-w-full  mobile:text-sm"><%= obj.sizeUtf %></p>
+    <p class="card-desc text-xl basis-14 mt-4 mb-[30px] max-w-[680px] leading-snug text-primary-white mobile:max-w-full  mobile:text-sm">объем <%= obj.sizeUtf %> м³</p>
+    <p class="text-white text-[9px] mt-2"><%= !obj.drawingsGalleryIds ? 'Нет чертежа' : '' %></p>
     <a href="/catalog/<%= obj.catLinkPath %>/<%= obj.textId %>.html">
       <span class="inset0">
       </span>

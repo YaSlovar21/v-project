@@ -30,7 +30,7 @@
     /*background: #f2f2f2;*/
 
     font-size: 18px;
-    display: flex;
+    /*display: flex;*/
     font-weight: 800;
     letter-spacing: 0.015em;
 }
@@ -48,7 +48,7 @@
     list-style: none;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-content: center;
+
     margin: 0;
     padding: 0;
     /*width: 100%;*/
@@ -67,7 +67,7 @@
 }
 
 .nav__ul-item {
-    padding: 0px 0px 5px;
+    padding: 0px 0px 0px;
     margin: 0;
     text-align: center;
     text-align: left;

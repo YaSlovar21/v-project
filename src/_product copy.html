@@ -8,25 +8,24 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page bg-blue-100">
+  <body class="page bg-blue-200">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-    <header class="header__up">
+    <header class="header__up py-8">
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </header>
     <main class="">
-      <div class="content grid grid-cols-2 items-start gap-5 relative mt-0 mb-20">
-        <h1 class="text-primary-prblue mb-4 text-6xl indent-[176px] font-medium font-fr relative">
-          <svg class="fill-primary-prredlight absolute top-0 left-12" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
-          <%= productData.h1 %>
-        </h1>
-        <div class="bg-primary-prredlight mt-10">
-          <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
+      <div class="content grid grid-cols-2 items-stretch gap-5 relative mt-0 mb-20">
+        <div class="bg-primary-prblue h-full flex flex-col rounded-lg">
+          <h1 class="mb-4 text-6xl text-white font-medium font-fr"><%= productData.h1 %></h1>
+        </div>
+        <div class="bg-primary-prredlight rounded-lg">
+          <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= productData.poster %>" alt="<%= productData.h1 %>">
         </div>
         <div class="">
           <ul class="flex flex-col gap-4">
             <li class="p-4 rounded-lg border border-primary-prredlight">
               <h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>
-              <ul class="grid grid-cols-3 gap-5">
+              <ul class="flex gap-5">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
                   <li>
                     <h3><%= drawings[dId].ruName %></h3>
@@ -41,11 +40,11 @@
                 <% }) %>
               </ul>
             </li>
-            <li class="grid grid-cols-3">
+            <li class="p-4 rounded-lg border border-primary-prredlight">
               <h2 class="text-2xl uppercase font-fr font-medium">Характеристики</h2>
-              <ul class="col-span-2">
+              <ul class="my-6">
                 <%  productData.charsJson.map((i)=> { %>
-                  <li class="flex border-t border-primary-prblue py-2 justify-between text-base">
+                  <li class="flex justify-between text-base">
                     <b><%= i.nameChar %></b>
                     <p class="basis-24"><%= i.valueChar %></p>
                   </li>
@@ -56,14 +55,9 @@
           </ul>
 
         </div>
-        <div class="bg-primary-prredlight">
-          <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
-        </div>
       </div>
-      <section class="content">
-        <h2 class="text-3xl font-fr"><%= productData.h1 %></h2>
-        <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.intro %></p>
-      </section>
+      <h2 class="text-4xl"><%= productData.h1 %></h2>
+      <p class="text-xl text-primary-white"><%=  productData.intro %></p>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
   </body>

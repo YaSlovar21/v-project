@@ -1,0 +1,88 @@
+<div class="grid grid-cols-4 bg-blue-100 rounded-lg mt-4 content p-4 border-b border-primary-red">
+  <% if ( page!=='main') { %>
+    <a href="/" class="header__logo max-w-44"><img src="../../images/header-logo-theme-white.svg" class="header__logo-img" alt="Лого Дромотрон"/></a>
+  <% } else { %>
+    <a href="/" class="header__logo max-w-44""><img src="../../images/header-logo-theme-dark.svg" class="header__logo-img" alt="Лого Дромотрон"/></a>
+  <% } %>
+  <nav class="nav">
+    <ul class="nav__menu-links">
+      <!--<li class="nav__ul-item"><a class="nav__link" href="/">Главная</a></li>-->
+      <li class="nav__ul-item group">
+        <div class="flex justify-between  <%= page!=='main' ? 'nav__link_black' : '' %>">
+          <span class="block uppercase basis-full font-fr text-xl bg-blue-200 rounded-lg px-3 py-2">
+            Продукция
+          </span>
+          <div class="w-12 flex items-center justify-center bg-blue-200 rounded-lg">
+            <div class="flex justify-end items-center w-6 overflow-hidden  ">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 basis-full shrink-0 transition-all group-hover:translate-x-full">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 basis-full shrink-0 transition-all group-hover:translate-x-full">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <ul class="nav__submenu nav__submenu_prod">
+          <!--<li class="flex items-center relative pl-4 pt-4 pb-2 pr-2 group">
+            <div class="min-w-max h-16 overflow-hidden rounded-md">
+              <img class="w-16 h-16 object-contain transition-all group-hover:scale-105" src="../../images/menu/menu-pto.png" alt="пластинчатые теплообменники">
+            </div>
+            <a class="nav__sub-link transition-all group-hover:text-orange" href="/plastinchatye-teploobmenniki/">
+              <span class="absolute inset-0"></span>
+              Комплектующие к теплообменникам
+              <span class="block text-xs uppercase mt-1 text-gray-600">Разборные</span>
+            </a>
+          </li>
+          <li class="flex items-center relative pl-4 py-2 pr-2 group">
+            <div class="min-w-max h-16 overflow-hidden rounded-md">
+              <img class="w-16 h-16 object-contain transition-all group-hover:scale-105" src="../../images/menu/menu-food.png" alt="пищевой теплообменник">
+            </div>
+            <a class="nav__sub-link transition-all group-hover:text-orange" href="/pishchevye-teploobmenniki.html">
+              <span class="absolute inset-0"></span>
+              Пищевые теплообменники
+            </a>
+          </li>
+          <li class="nav__sub-ul-item border-b border-primary-red">
+            <a class="nav__sub-link group/subb flex justify-between" href="<%= ROUTES.kompls %>">
+              <span>Комплектующие к теплообменникам<span class="block text-xs uppercase mt-1 text-gray-600">пластины уплотнения рамы</span></span>
+              <svg class="shrink-0  group-hover/subb:fill-primary-red" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="35.5" y="0.5" width="35" height="35" rx="2.5" transform="rotate(90 35.5 0.5)" stroke="#CD2C2C"/>
+                <path class="fill-primary-red origin-center group-hover/subb:-rotate-45 group-hover/subb:fill-primary-white" d="M20.206 12.7957C20.0955 12.6927 20.0068 12.5685 19.9453 12.4305C19.8838 12.2925 19.8508 12.1436 19.8481 11.9925C19.8454 11.8414 19.8732 11.6914 19.9298 11.5513C19.9864 11.4112 20.0706 11.284 20.1774 11.1772C20.2843 11.0703 20.4115 10.9861 20.5516 10.9295C20.6917 10.873 20.8417 10.8452 20.9928 10.8478C21.1438 10.8505 21.2928 10.8836 21.4308 10.945C21.5688 11.0065 21.693 11.0952 21.796 11.2057L27.796 17.2057C28.0067 17.4167 28.125 17.7026 28.125 18.0007C28.125 18.2988 28.0067 18.5848 27.796 18.7957L21.796 24.7957C21.693 24.9062 21.5688 24.9949 21.4308 25.0564C21.2928 25.1179 21.1438 25.1509 20.9928 25.1536C20.8417 25.1563 20.6917 25.1285 20.5516 25.0719C20.4115 25.0153 20.2843 24.9311 20.1774 24.8243C20.0706 24.7174 19.9864 24.5902 19.9298 24.4501C19.8732 24.31 19.8454 24.16 19.8481 24.0089C19.8508 23.8579 19.8838 23.7089 19.9453 23.5709C20.0068 23.4329 20.0955 23.3087 20.206 23.2057L24.286 19.1257L9.75099 19.1257C9.45262 19.1257 9.16647 19.0072 8.95549 18.7962C8.74452 18.5852 8.62599 18.2991 8.62599 18.0007C8.62599 17.7023 8.74452 17.4162 8.95549 17.2052C9.16647 16.9942 9.45262 16.8757 9.75099 16.8757L24.286 16.8757L20.206 12.7957Z"/>
+              </svg>
+            </a>
+          </li>
+          <li class="nav__sub-ul-item">
+            <a class="nav__sub-link group/subb flex justify-between" href="<%= ROUTES.ptoFood %>" >
+              Пищевые теплообменники
+              <svg class="shrink-0  group-hover/subb:fill-primary-red" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="35.5" y="0.5" width="35" height="35" rx="2.5" transform="rotate(90 35.5 0.5)" stroke="#CD2C2C"/>
+                <path class="fill-primary-red origin-center group-hover/subb:-rotate-45 group-hover/subb:fill-primary-white" d="M20.206 12.7957C20.0955 12.6927 20.0068 12.5685 19.9453 12.4305C19.8838 12.2925 19.8508 12.1436 19.8481 11.9925C19.8454 11.8414 19.8732 11.6914 19.9298 11.5513C19.9864 11.4112 20.0706 11.284 20.1774 11.1772C20.2843 11.0703 20.4115 10.9861 20.5516 10.9295C20.6917 10.873 20.8417 10.8452 20.9928 10.8478C21.1438 10.8505 21.2928 10.8836 21.4308 10.945C21.5688 11.0065 21.693 11.0952 21.796 11.2057L27.796 17.2057C28.0067 17.4167 28.125 17.7026 28.125 18.0007C28.125 18.2988 28.0067 18.5848 27.796 18.7957L21.796 24.7957C21.693 24.9062 21.5688 24.9949 21.4308 25.0564C21.2928 25.1179 21.1438 25.1509 20.9928 25.1536C20.8417 25.1563 20.6917 25.1285 20.5516 25.0719C20.4115 25.0153 20.2843 24.9311 20.1774 24.8243C20.0706 24.7174 19.9864 24.5902 19.9298 24.4501C19.8732 24.31 19.8454 24.16 19.8481 24.0089C19.8508 23.8579 19.8838 23.7089 19.9453 23.5709C20.0068 23.4329 20.0955 23.3087 20.206 23.2057L24.286 19.1257L9.75099 19.1257C9.45262 19.1257 9.16647 19.0072 8.95549 18.7962C8.74452 18.5852 8.62599 18.2991 8.62599 18.0007C8.62599 17.7023 8.74452 17.4162 8.95549 17.2052C9.16647 16.9942 9.45262 16.8757 9.75099 16.8757L24.286 16.8757L20.206 12.7957Z"/>
+              </svg>
+            </a>
+          </li>-->
+        </ul>
+      </li>
+      <li class="nav__ul-item"><a class="nav__link  <%= page!=='main' ? 'nav__link_black' : '' %>" href="<%= ROUTES.uslugi %>">Услуги</a></li>
+      <li class="nav__ul-item"><a class="nav__link  <%= page!=='main' ? 'nav__link_black' : '' %>" href="<%= ROUTES.about %>">О производстве</a></li>
+      <li class="nav__ul-item"><a class="nav__link  <%= page!=='main' ? 'nav__link_black' : '' %>" href="<%= ROUTES.contacts %>">Контакты</a></li>
+    </ul>
+    <!--<button class="nav__mobile-icon"><img src="../../images/menu-link-mobile.svg" alt="Кнопка меню" ></button>-->
+  </nav>
+  <div class="flex flex-col items-start text-primary-black olpc:flex-col mobile:hidden <%= page==='main' ? 'text-primary-white' : '' %>">
+    <a class="text-lg mb-2 flex" href="tel:79999992272">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+      </svg>
+      +7(999)999-22-72
+    </a>
+    <a class="text-lg flex" href="mailto:info@rezervuar22.ru">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+      </svg>
+      info@rezervuar22.ru
+    </a>
+  </div>
+  <button class="popup-callback-button self-start justify-self-end font-fr text-xl rounded-lg px-3 py-2 bg-blue-200 mobile:hidden <%= page==='main' ? 'border-primary-white text-primary-white' : '' %> ">Отправить заявку</button>
+  <button class="nav__mobile-icon"><img src="../../images/menu-link-mobile.svg" alt="Кнопка меню" ></button>
+</div>

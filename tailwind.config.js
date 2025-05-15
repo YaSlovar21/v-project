@@ -54,7 +54,11 @@ module.exports = {
           darkbg: '#172249',
           blue: '#20488A',
           lightblue: '#0479E8',
-          white: '#fff'
+          white: '#fff',
+          prblue: '#003049',
+          prred: '#C1121F',
+          prredlight: '#CD131F',
+          floral: '#FEF8EC'
         },
 
       }

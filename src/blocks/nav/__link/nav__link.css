@@ -4,11 +4,10 @@
   transition: .5s linear;
   position: relative;
   margin: 0 auto;
-  padding: 10px 0;
-
+  padding: 12px;
   z-index: 1;
   font-weight: 400;
-
+  display: block;
   @apply text-white text-base uppercase mr-7;
 }
 
