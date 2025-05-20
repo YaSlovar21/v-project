@@ -8,17 +8,45 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page bg-blue-100">
+  <body class="page bg-blue-50">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <header class="header__up">
-        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+      <div class="grid grid-cols-12 grid-rows-3 grid-flow-col border-b border-primary-prblue">
+        <a href="/" class="header__logo max-w-48 col-span-2 row-span-3 w-full pl-1 py-7"><img src="<%= require('./images/header-logo-theme-white.svg')%>" class="header__logo-img" alt="Лого Дромотрон"/></a>
+        <div class="col-span-4 row-span-3 border-r border-primary-prblue px-4 py-10">
+          <img class=" max-w-[97%]" src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
+        </div>
+        <div class="col-span-6 row-span-3 flex flex-col justify-between h-full py-7 px-4">
+          <div class="flex justify-between">
+            <div class="flex flex-col col-span-2 col-start-7 font-fr items-start text-primary-black justify-self-end olpc:flex-col mobile:hidden">
+              <a class="text-lg mb-2 flex" href="tel:79999992272">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                +7(999)999-22-72
+              </a>
+              <a class="text-lg flex" href="mailto:info@rezervuar22.ru">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+                info@rezervuar22.ru
+              </a>
+            </div>
+            <button class="popup-callback-button mt-4 self-start justify-self-end font-fr text-xl rounded px-3 py-2 bg-primary-red text-white  mobile:hidden">Отправить заявку</button>
+        </div>
+        <h1 class="text-5xl font-fr uppercase max-w-[677px]">Производство резервуаров и ёмкостного оборудования</h1>
+        </div>
+      </div>
     </header>
     <main class="">
       <div class="content grid grid-cols-2 items-start gap-5 relative mt-0 mb-20">
-        <h1 class="text-primary-prblue mb-4 text-6xl indent-[176px] font-medium font-fr relative">
-          <svg class="fill-primary-prredlight absolute top-0 left-12" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
-          <%= productData.h1 %>
-        </h1>
+        <div>
+          <h1 class="text-primary-prblue mb-4 text-6xl indent-[33%] uppercase font-medium font-fr relative">
+            <svg class="fill-primary-prredlight absolute top-0 left-12" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
+            <%= productData.h1 %>
+          </h1>
+          <p class="">Резервуар горизонтальный стальной — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Конструкция резервуара продумана для удобства монтажа и эксплуатации. Подходит для использования в различных отраслях, включая промышленность и сельское хозяйство. Объём и размеры резервуара могут варьироваться в зависимости от потребностей заказчика.</p>
+        </div>
         <div class="bg-primary-prredlight mt-10">
           <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
         </div>
@@ -29,10 +57,11 @@
               <ul class="grid grid-cols-3 gap-5">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
                   <li>
-                    <h3><%= drawings[dId].ruName %></h3>
-                    <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-56" alt="">
-                    <a class="flex gap-2" target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
-                      Чертеж <%= drawings[dId].ruName %> PDF
+                   <!-- <h3><%= drawings[dId].ruName %></h3>-->
+                    <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>
+                    <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-56 mb-8" alt="">
+                    <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                      Скачать чертеж РГС-20
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                       </svg>
@@ -43,7 +72,7 @@
             </li>
             <li class="grid grid-cols-3">
               <h2 class="text-2xl uppercase font-fr font-medium">Характеристики</h2>
-              <ul class="col-span-2">
+              <ul class="col-span-2 font-fr">
                 <%  productData.charsJson.map((i)=> { %>
                   <li class="flex border-t border-primary-prblue py-2 justify-between text-base">
                     <b><%= i.nameChar %></b>
@@ -60,7 +89,7 @@
           <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
         </div>
       </div>
-      <section class="content">
+      <section class="content mb-10">
         <h2 class="text-3xl font-fr"><%= productData.h1 %></h2>
         <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.intro %></p>
       </section>

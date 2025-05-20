@@ -47,3 +47,12 @@
   justify-content: center;
   min-height: 50vh;
 }
+
+
+.animate-me {
+  perspective: 500px;
+}
+
+.container-spt {
+  opacity: .2;
+}

@@ -112,7 +112,7 @@
 
 
   .up-title {
-    @apply mb-8 text-2xl text-primary-gray font-fr uppercase leading-none;
+    @apply mb-8 text-2xl text-primary-darkbg font-fr uppercase leading-none;
   }
 
   .up-title_svg {
