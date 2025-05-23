@@ -8,29 +8,38 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/contacts/"  rel="canonical" />
   </head>
-  <body class="page page bg-gradient-to-r from-primary-darker to-primary-blue">
-    <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-    <header class="header__up py-8">
+  <body class="page bg-blue-50">
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
-    </header>
-    <div class="content contacts-sect relative mt-10">
-      <h1 class="up-title up-title_svg up-title_h1 mb-10">Контакты</h1>
-      <ul class="container-2 gap-y-10 gap-x-0 grid-rows-2 grid-flow-col mb-80">
-        <li class="row-span-2">
-          <h3 class="contacts-sect_subhead">Адрес производства</h3>
-          <h4 class="text-4xl uppercase text-primary-black font-bold mt-5 mb-10">ООО «Викинг»</h4>
-          <p class="text-3xl max-w-sm">Россия, г. Барнаул, ул. Кулагина 28</p>
-        </li>
-        <li>
-          <h3 class="contacts-sect_subhead mb-4">Директор</h3>
-          <a class="text-4xl " href="tel:79999992292">+7(999)999-22-92</a>
-        </li>
-        <li>
-          <h3 class="contacts-sect_subhead mb-4">Email</h3>
-          <a class="text-4xl"  href="mailto:info@rezervuar22.ru">info@rezervuar22.ru</a>
-        </li>
-      </ul>
+        <div class="content relative mt-10">
+          <h1 class="title-page">Контакты</h1>
+          <ul class="container-2 gap-y-10 gap-x-0 mb-40">
+            <li class="row-span-2 pr-10">
+              <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A075d81cc45750954606352bc7aa55eceecd60ec1902890b933fcfcbf036097ad&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </li>
+            <li >
+              <ul class="container-2">
+                <li>
+                  <h3 class="contacts-sect_subhead">Адрес производства</h3>
+                  <h4 class="text-4xl uppercase text-primary-black font-bold mt-5 mb-10">ООО «Викинг»</h4>
+                  <p class="text-3xl max-w-sm">Россия, г. Барнаул, ул. Кулагина 28</p>
+                </li>
+                <li>
+                  <h3 class="contacts-sect_subhead mb-4">Директор</h3>
+                  <a class="text-4xl " href="tel:79999992292">+7(999)999-22-92</a>
+                </li>
+                <li>
+                  <h3 class="contacts-sect_subhead mb-4">Email</h3>
+                  <a class="text-4xl"  href="mailto:info@rezervuar22.ru">info@rezervuar22.ru</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     </div>
+  </div>
   </body>
-  <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
 </html>

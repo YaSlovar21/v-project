@@ -1,10 +1,7 @@
 <!--const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;-->
 
-
-<li class="card rounded p-5 mb-5 relative  justify-between transition-all duration-300 group">
-  <div class="flex justify-center items-center bg-[#eeeeee] pb-[100%]">
-    <img class="w-2/4 h-2/4 absolute top-0 left-0 right-0 bottom-0 min-w-0 object-contain object-right-top" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>" >
-  </div>
+<li class="card rounded p-5 mb-5 relative flex justify-between border border-primary-prblue bg-[#f5f5f5] transition-all duration-300 group">
+  <div class="basis-2/3">
     <h3 class="card-title font-medium font-fr uppercase max-w-[680px] text-2xl text-primary-prblue mobile:text-base"><%= obj.h1 %></h3>
     <p class="card-desc text-xl basis-14 mt-4 mb-[30px] max-w-[680px] leading-snug text-primary-prblue mobile:max-w-full  mobile:text-sm">объем <%= obj.sizeUtf %> м³</p>
     <p class="text-white text-[9px] mt-2"><%= !obj.drawingsGalleryIds ? 'Нет чертежа' : '' %></p>
@@ -12,6 +9,6 @@
       <span class="inset0">
       </span>
     </a>
-
-
+    </div>
+    <img class="basis-1/4 w-full min-w-0 object-contain object-right-top" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>" >
 </li>

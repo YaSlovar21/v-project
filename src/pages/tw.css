@@ -137,7 +137,7 @@
 
   }
   .title-page {
-    @apply text-[57px] uppercase font-bold mt-8 mb-16 text-zinc-300 mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
+    @apply text-[57px] uppercase font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
   }
 
   .subtitle {

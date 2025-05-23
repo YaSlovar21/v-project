@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%= require(`html-loader!./inner-google${isDevServer ? '-dev-server' : ''}.html`).default %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
+  </head>
+  <body class="page bg-blue-50">
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+    <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
+    <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    <main class="">
+      <div class="content grid grid-cols-2 items-start gap-5 relative mt-0 mb-20">
+        <div>
+          <h1 class="text-primary-prblue mb-4 text-6xl indent-[33%] uppercase font-medium font-fr relative">
+            <svg class="fill-primary-prredlight absolute top-0 left-12" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
+            <%= productData.h1 %>
+          </h1>
+          <p class="">Резервуар горизонтальный стальной — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Конструкция резервуара продумана для удобства монтажа и эксплуатации. Подходит для использования в различных отраслях, включая промышленность и сельское хозяйство. Объём и размеры резервуара могут варьироваться в зависимости от потребностей заказчика.</p>
+        </div>
+        <div class="bg-primary-prredlight mt-10">
+          <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
+        </div>
+        <div class="">
+          <ul class="flex flex-col gap-4">
+            <li class="p-4 rounded-lg border border-primary-prredlight">
+              <h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>
+              <ul class="grid grid-cols-3 gap-5">
+                <% productData.drawingsGalleryIds?.map((dId) => { %>
+                  <li>
+                   <!-- <h3><%= drawings[dId].ruName %></h3>-->
+                    <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>
+                    <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-56 mb-8" alt="">
+                    <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                      Скачать чертеж РГС-20
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                      </svg>
+                    </a>
+                  </li>
+                <% }) %>
+              </ul>
+            </li>
+            <li class="grid grid-cols-3">
+              <h2 class="text-2xl uppercase font-fr font-medium">Характеристики</h2>
+              <ul class="col-span-2 font-fr">
+                <%  productData.charsJson.map((i)=> { %>
+                  <li class="flex border-t border-primary-prblue py-2 justify-between text-base">
+                    <b><%= i.nameChar %></b>
+                    <p class="basis-24"><%= i.valueChar %></p>
+                  </li>
+                <% }) %>
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
+        <div class="bg-primary-prredlight">
+          <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
+        </div>
+      </div>
+      <section class="content mb-10">
+        <h2 class="text-3xl font-fr"><%= productData.h1 %></h2>
+        <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.intro %></p>
+      </section>
+    </main>
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+      </div>
+    </div>
+  </body>
+</html>

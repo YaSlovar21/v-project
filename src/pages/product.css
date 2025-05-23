@@ -1,0 +1,41 @@
+@import url(../vendor/normalize.css);
+@import url(../blocks/_root/root.css);
+@import url(../vendor/fonts/fonts.css);
+
+@import url(../blocks/leftnav/leftnav.css);
+@import url(../blocks/formquiz/formquiz.css);
+
+
+@import url(../blocks/nav/nav.css);
+@import url(../blocks/hero/hero.css);
+
+@import url(../blocks/highliter/highliter.css);
+@import url(../blocks/list-adv/list-adv.css);
+@import url(../blocks/list-uslugi/list-uslugi.css);
+@import url(../blocks/form/form.css);
+
+@import url(../blocks/popupmenu/popupmenu.css);
+
+.drawfig {
+  cursor: none;
+}
+.cursor {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 100;
+}
+.cursor--large {
+  --size: 40px;
+  border: 1px solid #1d33fc;
+}
+
+.cursor--small {
+  --size: 10px;
+  background: #1d33fc;
+}

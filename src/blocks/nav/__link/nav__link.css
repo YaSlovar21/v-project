@@ -8,11 +8,11 @@
   z-index: 1;
   font-weight: 400;
   display: block;
-  @apply text-primary-prblue text-xl uppercase mr-7;
+  @apply text-primary-prblue text-2xl font-fr uppercase;
 }
 
 .nav__link:hover {
-  @apply bg-primary-prred;
+  @apply bg-primary-prred text-white;
 }
 .nav__link_black {
   @apply text-primary-black;

@@ -12,180 +12,180 @@
 <body class="page bg-blue-50">
   <div id="smooth-wrapper">
     <div id="smooth-content">
-  <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-  <% if (isDevServer) { %>
-    <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
-  <% } %>
-  <header class="header">
-    <div class="header__up">
-      <!----------- ВНУТРИ ХИДЕРА ----------------------->
-      <div class="grid grid-cols-12 grid-rows-3 grid-flow-col border-b border-primary-prblue">
-        <a href="/" class="header__logo max-w-48 col-span-2 row-span-3 w-full pl-1 py-7"><img src="<%= require('./images/header-logo-theme-white.svg')%>" class="header__logo-img" alt="Лого Дромотрон"/></a>
-        <div class="col-span-4 row-span-3 border-r border-primary-prblue px-4 py-10">
-          <img class=" max-w-[97%]" src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
-        </div>
-        <div class="col-span-6 row-span-3 flex flex-col justify-between h-full py-7 px-4">
-          <div class="flex justify-between">
-            <div class="flex flex-col col-span-2 col-start-7 font-fr items-start text-primary-black justify-self-end olpc:flex-col mobile:hidden">
-              <a class="text-lg mb-2 flex" href="tel:79999992272">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                </svg>
-                +7(999)999-22-72
-              </a>
-              <a class="text-lg flex" href="mailto:info@rezervuar22.ru">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                </svg>
-                info@rezervuar22.ru
-              </a>
+      <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
+      <% if (isDevServer) { %>
+        <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
+      <% } %>
+      <header class="header">
+        <div class="header__up">
+          <!----------- ВНУТРИ ХИДЕРА ----------------------->
+          <div class="grid grid-cols-12 grid-rows-3 grid-flow-col border-b border-primary-prblue">
+            <a href="/" class="header__logo max-w-48 col-span-2 row-span-3 w-full pl-1 py-7"><img src="<%= require('./images/header-logo-theme-white.svg')%>" class="header__logo-img" alt="Лого Дромотрон"/></a>
+            <div class="col-span-4 row-span-3 border-r border-primary-prblue px-4 py-10">
+              <img class=" max-w-[97%]" src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
             </div>
-            <button class="popup-callback-button mt-4 self-start justify-self-end font-fr text-xl rounded px-3 py-2 bg-primary-red text-white  mobile:hidden">Отправить заявку</button>
-        </div>
-        <h1 class="text-5xl font-fr uppercase max-w-[677px]">Производство резервуаров и ёмкостного оборудования</h1>
-        </div>
-      </div>
-      <!---------------------------------->
-    </div>
-     <div class="grid grid-cols-12 bg-blue-100">
-          <div class="col-span-2"></div>
-          <nav class="w-full col-span-10">
-            <ul class="flex ">
-              <!--<li class="nav__ul-item"><a class="nav__link" href="/">Главная</a></li>-->
-              <li class="group">
-                <div class="nav__link">
-                    Продукция
+            <div class="col-span-6 row-span-3 flex flex-col justify-between h-full py-7 px-4">
+              <div class="flex justify-between">
+                <div class="flex flex-col col-span-2 col-start-7 font-fr items-start text-primary-black justify-self-end olpc:flex-col mobile:hidden">
+                  <a class="text-lg mb-2 flex" href="tel:79999992272">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                    </svg>
+                    +7(999)999-22-72
+                  </a>
+                  <a class="text-lg flex" href="mailto:info@rezervuar22.ru">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                    info@rezervuar22.ru
+                  </a>
                 </div>
-                <!--<ul class="nav__submenu nav__submenu_prod">
-                </ul>-->
-              </li>
-              <li class="  ">
-                <a class="nav__link" href="<%= ROUTES.uslugi %>">Услуги</a>
-              </li>
-              <li class=""><a class="nav__link" href="<%= ROUTES.about %>">О производстве</a></li>
-              <li class=""><a class="nav__link" href="<%= ROUTES.contacts %>">Контакты</a></li>
-            </ul>
-            </nav>
-        </div>
-    <h1 class="text-3xl font-fr uppercase max-w-4xl"></h1>
-    <!--<div class="hero py-8 relative overflow-hidden">
-      <div class="content">
-        <h1 class="text-8xl olpc:text-7xl font-fr font-medium mt-20 mb-0 mx-auto text-center text-white max-w-[1180px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостного оборудования</h1>
-        <p class="mt-5 text-white mb-5 max-w-xs mx-auto text-center">Российское производство стальных резервуаров</p>
-        <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red mx-auto" href="#products">Подробнее</a>
-      </div>
-    </div>-->
-  </header>
-  <main class="content">
-    <section class="mt-[60px] mb-32 items-start">
-     <!-- <ul class="container-4 w-full">
-        <% ['20', '14', '25', '15'].map((i) => { %>
-          <li>
-            <span class="text-9xl font-fr font-semibold lighting text-[#145EB4]"><%= i %></span>
-            <span class="text-2xl font-medium font-fr text-white">мм гнем металл</span>
-          </li>
-        <% }) %>
-      </ul>-->
-    </section>
-    <section class="comparisonSection w-1/2 block mx-auto relative overflow-hidden">
-      <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
-        <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
-      </h2>
-      <p class="text-[100px] olpc:text-[50px] font-fr absolute bottom-[160px] olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
-      <div class="comparisonImage beforeImage">
-        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
-      </div>
-      <div class="comparisonImage afterImage">
-        <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
-      </div>
-    </section>
-    <section class="relative "  id="catalog">
-      <h2 class="up-title up-title_svg absolute top-0 left-0">Каталог резервуаров</h2>
-      <div class="container-spt">
-        <p class="text-primary-prblue text-4xl font-fr mb-10 animate-me" aria-hidden="true">Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.</p>
-      </div>
-      <ul class="container-2 gap-5">
-        <% categories.map((c)=> { %>
-          <%= _.template(require('html-loader!./templates/card-category.html').default)({obj: c, isDevServer}) %>
-        <% }) %>
-        <li class="border h-full font-fr uppercase flex justify-center items-center border-primary-floral text-primary-floral">Весь каталог</li>
-      </ul>
-    </section>
-    <section class="container-2 my-[130px] relative">
-      <h2 class="up-title up-title_svg">Каталог</h2>
-      <div class="relative">
-        <h2 class="text-5xl font-fr uppercase font-semibold text-primary-prblue"><span class="block text-primary-lightblue">Ведущие</span> категории сегодня</h2>
-        <ul class="w-full mt-12 ">
-          <% popular.map((c, index)=> { %>
-            <li class="block group">
-              <div class="absolute w-80 bg-blue-50 object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
-                <img class="w-full" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= c.imgUrl %>" alt="">
-              </div>
-              <a href="<%= c.linkPath %>" class="text-4xl font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red">
-                <span><%= c.itemRuName %></span>
-                <svg class="size-6 stroke-primary-gray group-hover:stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
-            </li>
-          <% }) %>
-        </ul>
-      </div>
-    </section>
-    <section>
-      <h2 class="up-title up-title_svg">Подбор резервуара</h2>
-      <form name="quiz" class="my-8">
-        <div class="grid grid-cols-4 border border-primary-prblue rounded">
-          <label class="formquiz__labelcheckbox relative">
-            <input type="radio" value="gorizontalnye-rezervuary-rgs" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype" checked>
-            <figure class="formquiz__figchoice">
-              <img class="h-[70%] w-[70%] object-center object-contain" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[36].fileName%>">
-              <span class="text-xl mt-auto block font-fr uppercase">Резервуар горизонтальный</span>
-            </figure>
-          </label>
-          <label class="formquiz__labelcheckbox relative">
-            <input type="radio" value="gorizontalnye-rezervuary-rgsp" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
-            <figure class="formquiz__figchoice">
-              <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>">
-              <span class="text-xl mt-auto block font-fr uppercase">Резервуар горизонтальный подземный</span>
-            </figure>
-          </label>
-          <label class="formquiz__labelcheckbox relative">
-            <input type="radio" value="vertikalnye-rezervuary" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
-            <figure class="formquiz__figchoice">
-              <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[52].fileName%>">
-              <span class="text-xl mt-auto block font-fr uppercase">Резервуар вертикальный</span>
-            </figure>
-          </label>
-          <label class="formquiz__labelcheckbox relative">
-            <input type="radio" value="silosy" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
-            <figure class="formquiz__figchoice">
-              <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[44].fileName%>">
-              <span class="text-xl mt-auto block font-fr uppercase">Силос</span>
-            </figure>
-          </label>
-        </div>
-        <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
-          <fieldset class="w-1/2 my-4" id="<%= f %>">
-            <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой объем Вам необходим?</h2>
-            <div class="flex">
-              <% sizesArrForCats[f].map((size)=> { %>
-                <label class="formquiz__labelcheckbox relative mb-2 mr-2 flex flex-wrap hover:bg-blue-200">
-                  <input type="checkbox" value="<%= size %>" class="formquiz__inputsizecheck absolute invisible" name="rezervuarsize">
-                  <span class="formquiz__sizechoice font-fr uppercase"><%=size %> м³</span>
-                </label>
-              <% }) %>
+                <button class="popup-callback-button mt-4 self-start justify-self-end font-fr text-xl rounded px-3 py-2 bg-primary-red text-white  mobile:hidden">Отправить заявку</button>
             </div>
-          </fieldset>
-        <% }) %>
-        <fieldset></fieldset>
-      </form>
-    </section>
+            <h1 class="text-5xl font-fr uppercase max-w-[677px]">Производство резервуаров и ёмкостного оборудования</h1>
+            </div>
+          </div>
+          <!---------------------------------->
+        </div>
+        <div class="grid grid-cols-12 bg-blue-100">
+              <div class="col-span-2"></div>
+              <nav class="w-full col-span-10">
+                <ul class="flex font-fr">
+                  <!--<li class="nav__ul-item"><a class="nav__link" href="/">Главная</a></li>-->
+                  <li class="group">
+                    <div class="nav__link">
+                        Продукция
+                    </div>
+                    <!--<ul class="nav__submenu nav__submenu_prod">
+                    </ul>-->
+                  </li>
+                  <li class="  ">
+                    <a class="nav__link" href="<%= ROUTES.uslugi %>">Услуги</a>
+                  </li>
+                  <li class=""><a class="nav__link" href="<%= ROUTES.about %>">О производстве</a></li>
+                  <li class=""><a class="nav__link" href="<%= ROUTES.contacts %>">Контакты</a></li>
+                </ul>
+                </nav>
+            </div>
+        <h1 class="text-3xl font-fr uppercase max-w-4xl"></h1>
+        <!--<div class="hero py-8 relative overflow-hidden">
+          <div class="content">
+            <h1 class="text-8xl olpc:text-7xl font-fr font-medium mt-20 mb-0 mx-auto text-center text-white max-w-[1180px] uppercase leading-[100%] mobile:text-6xl"><span class="text-[#145EB4] font-semibold">Производство</span> резервуаров и ёмкостного оборудования</h1>
+            <p class="mt-5 text-white mb-5 max-w-xs mx-auto text-center">Российское производство стальных резервуаров</p>
+            <a class="ui-button block mb-5 max-w-[400px] w-full text-center bg-primary-red mx-auto" href="#products">Подробнее</a>
+          </div>
+        </div>-->
+      </header>
+      <main class="content">
+        <section class="mt-[60px] mb-32 items-start">
+        <!-- <ul class="container-4 w-full">
+            <% ['20', '14', '25', '15'].map((i) => { %>
+              <li>
+                <span class="text-9xl font-fr font-semibold lighting text-[#145EB4]"><%= i %></span>
+                <span class="text-2xl font-medium font-fr text-white">мм гнем металл</span>
+              </li>
+            <% }) %>
+          </ul>-->
+        </section>
+        <section class="comparisonSection w-1/2 block mx-auto relative overflow-hidden" data-speed="1.3">
+          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
+            <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
+          </h2>
+          <p class="text-[100px] olpc:text-[50px] font-fr absolute bottom-[160px] olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
+          <div class="comparisonImage beforeImage" >
+            <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
+          </div>
+          <div class="comparisonImage afterImage">
+            <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
+          </div>
+        </section>
+        <section class="relative"  id="catalog">
+          <h2 class="up-title up-title_svg absolute top-0 left-0">Каталог резервуаров</h2>
+          <div class="container-spt">
+            <p class="text-primary-prblue text-4xl font-fr mb-10 animate-me" aria-hidden="true">Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.</p>
+          </div>
+          <ul class="container-2 gap-5">
+            <% categories.map((c)=> { %>
+              <%= _.template(require('html-loader!./templates/card-category.html').default)({obj: c, isDevServer}) %>
+            <% }) %>
+            <li class="border h-full font-fr uppercase flex justify-center items-center border-primary-floral text-primary-floral">Весь каталог</li>
+          </ul>
+        </section>
+        <section class="container-2 my-[130px] relative">
+          <h2 class="up-title up-title_svg">Каталог</h2>
+          <div class="relative">
+            <h2 class="text-5xl font-fr uppercase font-semibold text-primary-prblue"><span class="block text-primary-lightblue">Ведущие</span> категории сегодня</h2>
+            <ul class="w-full mt-12 ">
+              <% popular.map((c, index)=> { %>
+                <li class="block group">
+                  <div class="absolute w-80 bg-blue-50 object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
+                    <img class="w-full" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= c.imgUrl %>" alt="">
+                  </div>
+                  <a href="<%= c.linkPath %>" class="text-4xl font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red">
+                    <span><%= c.itemRuName %></span>
+                    <svg class="size-6 stroke-primary-gray group-hover:stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h2 class="up-title up-title_svg">Подбор резервуара</h2>
+          <form name="quiz" class="my-8">
+            <div class="grid grid-cols-4 border border-primary-prblue rounded">
+              <label class="formquiz__labelcheckbox relative">
+                <input type="radio" value="gorizontalnye-rezervuary-rgs" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype" checked>
+                <figure class="formquiz__figchoice">
+                  <img class="h-[70%] w-[70%] object-center object-contain" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[36].fileName%>">
+                  <span class="text-xl mt-auto block font-fr uppercase">Резервуар горизонтальный</span>
+                </figure>
+              </label>
+              <label class="formquiz__labelcheckbox relative">
+                <input type="radio" value="gorizontalnye-rezervuary-rgsp" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
+                <figure class="formquiz__figchoice">
+                  <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>">
+                  <span class="text-xl mt-auto block font-fr uppercase">Резервуар горизонтальный подземный</span>
+                </figure>
+              </label>
+              <label class="formquiz__labelcheckbox relative">
+                <input type="radio" value="vertikalnye-rezervuary" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
+                <figure class="formquiz__figchoice">
+                  <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[52].fileName%>">
+                  <span class="text-xl mt-auto block font-fr uppercase">Резервуар вертикальный</span>
+                </figure>
+              </label>
+              <label class="formquiz__labelcheckbox relative">
+                <input type="radio" value="silosy" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
+                <figure class="formquiz__figchoice">
+                  <img class="h-[70%] w-[70%] object-center object-contain"  src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[44].fileName%>">
+                  <span class="text-xl mt-auto block font-fr uppercase">Силос</span>
+                </figure>
+              </label>
+            </div>
+            <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
+              <fieldset class="w-1/2 my-4" id="<%= f %>">
+                <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой объем Вам необходим?</h2>
+                <div class="flex">
+                  <% sizesArrForCats[f].map((size)=> { %>
+                    <label class="formquiz__labelcheckbox relative mb-2 mr-2 flex flex-wrap hover:bg-blue-200">
+                      <input type="checkbox" value="<%= size %>" class="formquiz__inputsizecheck absolute invisible" name="rezervuarsize">
+                      <span class="formquiz__sizechoice font-fr uppercase"><%=size %> м³</span>
+                    </label>
+                  <% }) %>
+                </div>
+              </fieldset>
+            <% }) %>
+            <fieldset></fieldset>
+          </form>
+        </section>
 
 
-  </main>
-  <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
-    </div></div>
-    
+      </main>
+      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    </div>
+  </div>
 </body>
 </html>

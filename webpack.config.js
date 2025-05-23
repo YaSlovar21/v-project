@@ -62,7 +62,7 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, dra
     },
     filename: `catalog/${categoriesRealPathsByTextId[categoryTextId]}/${textId}.html`,
     template: "./src/_product.html", // путь к файлу index.html
-    chunks: ["index"],
+    chunks: ["product"],
   });
 } 
 
@@ -83,7 +83,9 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
     entry: {
       index: "./src/pages/index.js",
       cta: "./src/pages/cta-reaction.js",
-      razrez: "./src/pages/gsap-razrez.js"
+      razrez: "./src/pages/gsap-razrez.js",
+      smoother: "./src/pages/smoother.js",
+      product: "./src/pages/product.js"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -249,7 +251,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `${ROUTES.contacts.split('/')[1]}/index.html`,
         template: "./src/contacts.html", // путь к файлу index.html
-        chunks: ["index"],
+        chunks: ["index", "smoother"],
       }),
   
 
