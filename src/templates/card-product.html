@@ -1,9 +1,9 @@
 <!--const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;-->
 
 
-<li class="card rounded p-5 mb-5 relative  justify-between transition-all duration-300 group">
-  <div class="flex justify-center items-center bg-[#eeeeee] pb-[100%]">
-    <img class="w-2/4 h-2/4 absolute top-0 left-0 right-0 bottom-0 min-w-0 object-contain object-right-top" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>" >
+<li class="card rounded mb-5 w-full relative  justify-between transition-all duration-300 group">
+  <div class="flex justify-center items-center bg-blue-50 pb-[100%]">
+    <img class="absolute top-10 left-10 right-0 bottom-0 w-[calc(100%-80px)] object-contain object-right-top" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>" >
   </div>
     <h3 class="card-title font-medium font-fr uppercase max-w-[680px] text-2xl text-primary-prblue mobile:text-base"><%= obj.h1 %></h3>
     <p class="card-desc text-xl basis-14 mt-4 mb-[30px] max-w-[680px] leading-snug text-primary-prblue mobile:max-w-full  mobile:text-sm">объем <%= obj.sizeUtf %> м³</p>

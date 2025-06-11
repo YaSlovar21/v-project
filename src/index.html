@@ -9,7 +9,7 @@
   <link href="<%= canonicalURL %>"  rel="canonical" />
 </head>
 <!--<body class="page bg-gradient-to-r from-primary-darker to-primary-blue">-->
-<body class="page bg-blue-50">
+<body class="page bg-white">
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
@@ -20,8 +20,8 @@
         <div class="header__up">
           <!----------- ВНУТРИ ХИДЕРА ----------------------->
           <div class="grid grid-cols-12 grid-rows-3 grid-flow-col border-b border-primary-prblue">
-            <a href="/" class="header__logo max-w-48 col-span-2 row-span-3 w-full pl-1 py-7"><img src="<%= require('./images/header-logo-theme-white.svg')%>" class="header__logo-img" alt="Лого Дромотрон"/></a>
-            <div class="col-span-4 row-span-3 border-r border-primary-prblue px-4 py-10">
+            <a href="/" class="header__logo max-w-60 col-span-2 row-span-3 w-full pl-[30px] py-7"><img src="<%= require('./images/header-logo-theme-white.svg')%>" class="header__logo-img" alt="Лого Дромотрон"/></a>
+            <div class="col-span-4 row-span-3 border-r border-primary-prblue py-10">
               <img class=" max-w-[97%]" src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
             </div>
             <div class="col-span-6 row-span-3 flex flex-col justify-between h-full py-7 px-4">
@@ -100,7 +100,7 @@
           </div>
         </section>
         <section class="relative"  id="catalog">
-          <h2 class="up-title up-title_svg absolute top-0 left-0">Каталог резервуаров</h2>
+          <h2 class="up-title up-title_svg top-0 left-0">Каталог резервуаров</h2>
           <div class="container-spt">
             <p class="text-primary-prblue text-4xl font-fr mb-10 animate-me" aria-hidden="true">Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.</p>
           </div>
@@ -118,7 +118,7 @@
             <ul class="w-full mt-12 ">
               <% popular.map((c, index)=> { %>
                 <li class="block group">
-                  <div class="absolute w-80 bg-blue-50 object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
+                  <div class="absolute w-80 bg-white object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
                     <img class="w-full" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= c.imgUrl %>" alt="">
                   </div>
                   <a href="<%= c.linkPath %>" class="text-4xl font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red">

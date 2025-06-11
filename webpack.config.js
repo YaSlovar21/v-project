@@ -38,7 +38,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
     },
     filename: `catalog/${linkPath}/index.html`,
     template: "./src/_category.html", // путь к файлу index.html
-    chunks: ["index"],
+    chunks: ["index", "smoother"],
   });
 }
 

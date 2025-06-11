@@ -8,7 +8,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
   </head>
-  <body class="page bg-blue-50">
+  <body class="page bg-white">
     <div id="smooth-wrapper">
       <div id="smooth-content">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
@@ -48,7 +48,7 @@
         <div class="grid grid-cols-3 h-[50vh] border-t border-primary-prred">
           <h2 class="text-2xl uppercase font-fr font-medium pl-[30px] pt-3">Характеристики</h2>
           <ul class="col-span-2 flex flex-col border-l border-r self-start border-primary-prred font-fr">
-            <%  productData.charsJson.map((i)=> { %>
+            <%  productData.charsJson.filter(i=>i.nameChar!== 'Минимальный срок эксплуатации, лет').map((i)=> { %>
               <li class="flex border-b border-primary-prred p-3 justify-between text-base">
                 <b><%= i.nameChar %></b>
                 <p class="basis-24"><%= i.nameChar==='Марка стали' ? '09Г2С' : i.valueChar %></p>

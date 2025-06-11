@@ -14,7 +14,7 @@
         <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
         <div class="content relative mt-10">
-          <h1 class="title-page">Контакты</h1>
+          <h1 class="title-page font-fr">Контакты</h1>
           <ul class="container-2 gap-y-10 gap-x-0 mb-40">
             <li class="row-span-2 pr-10">
               <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A075d81cc45750954606352bc7aa55eceecd60ec1902890b933fcfcbf036097ad&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
@@ -22,17 +22,17 @@
             <li >
               <ul class="container-2">
                 <li>
-                  <h3 class="contacts-sect_subhead">Адрес производства</h3>
-                  <h4 class="text-4xl uppercase text-primary-black font-bold mt-5 mb-10">ООО «Викинг»</h4>
-                  <p class="text-3xl max-w-sm">Россия, г. Барнаул, ул. Кулагина 28</p>
+                  <h3 class="contacts-sect_subhead font-fr">Адрес производства</h3>
+                  <h4 class="text-4xl uppercase font-fr text-primary-black font-bold mt-5 mb-10">ООО «Викинг»</h4>
+                  <p class="text-3xl max-w-sm font-fr">Россия, г. Барнаул, ул. Кулагина 28</p>
                 </li>
                 <li>
-                  <h3 class="contacts-sect_subhead mb-4">Директор</h3>
-                  <a class="text-4xl " href="tel:79999992292">+7(999)999-22-92</a>
+                  <h3 class="contacts-sect_subhead mb-4 font-fr">Директор</h3>
+                  <a class="text-4xl font-fr" href="tel:79999992292">+7(999)999-22-92</a>
                 </li>
                 <li>
-                  <h3 class="contacts-sect_subhead mb-4">Email</h3>
-                  <a class="text-4xl"  href="mailto:info@rezervuar22.ru">info@rezervuar22.ru</a>
+                  <h3 class="contacts-sect_subhead mb-4 font-fr">Email</h3>
+                  <a class="text-4xl font-fr"  href="mailto:info@rezervuar22.ru">info@rezervuar22.ru</a>
                 </li>
               </ul>
             </li>

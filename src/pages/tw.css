@@ -52,7 +52,7 @@
   }
 
  .content {
-    @apply max-w-[calc(100%-120px)] mx-auto pc:max-w-[calc(100%-40px)] mobile:max-w-[calc(100%-20px)];
+    @apply max-w-[calc(100%-60px)] mx-auto pc:max-w-[calc(100%-40px)] mobile:max-w-[calc(100%-20px)];
   }
 
   .twrapper {
