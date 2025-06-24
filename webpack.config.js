@@ -85,7 +85,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       cta: "./src/pages/cta-reaction.js",
       razrez: "./src/pages/gsap-razrez.js",
       smoother: "./src/pages/smoother.js",
-      product: "./src/pages/product.js"
+      product: "./src/pages/product.js",
+      threed: "./src/pages/3d.js"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -236,7 +237,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `${ROUTES.about.split('/')[1]}/index.html`,
         template: "./src/_about.html", // путь к файлу index.html
-        chunks: ["index"],
+        chunks: ["index", "threed"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
