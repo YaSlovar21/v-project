@@ -132,6 +132,14 @@
             </ul>
           </div>
         </section>
+        <section class="py-10 container-4">
+          <% gallery.filter(i => i.consumersIds.includes('gallery')).map((i)=> { %>
+            <figure>
+              <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+              <figcaption><%= i.title %></figcaption>
+            </figure>
+          <% }) %>
+        </section>
         <section>
           <h2 class="up-title up-title_svg">Подбор резервуара</h2>
           <form name="quiz" class="my-8">
