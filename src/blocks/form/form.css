@@ -15,7 +15,7 @@
 }
 
 .form__input {
-    @apply w-full px-0 py-5 text-lg bg-[#D7E6F2] text-primary-black outline-none mobile:text-base mobile:p-3;
+    @apply w-full p-4 text-lg bg-[#D7E6F2] text-primary-black outline-none mobile:text-base mobile:p-3;
 }
 
 
@@ -33,7 +33,7 @@
 }
 
 .form__input_up {
-    @apply bg-transparent py-4 border-b border-primary-gray;
+    @apply bg-transparent py-4 border border-primary-gray rounded-sm;
 }
 
 .form__submit-button_disabled {

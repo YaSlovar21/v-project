@@ -15,54 +15,67 @@
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     <!--max-w-[calc(100%-120px)] mx-auto pc:max-w-[calc(100%-40px)] mobile:max-w-[calc(100%-20px)]-->
     <main class="">
-      <div class="grid grid-cols-2 grid-rows-3 <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
-        <!--Блок 1-->
-        <div class="h-[50vh] border-r  border-r-primary-prred pl-[30px]">
-          <h1 class="text-primary-prblue mb-4 mt-10 text-5xl indent-[33%] uppercase font-semibold font-fr relative">
-            <svg class="fill-primary-prredlight absolute top-0 left-12" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
-            <%= productData.h1 %>
-          </h1>
-          <p class="">Резервуар горизонтальный стальной — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Конструкция резервуара продумана для удобства монтажа и эксплуатации. Подходит для использования в различных отраслях, включая промышленность и сельское хозяйство. Объём и размеры резервуара могут варьироваться в зависимости от потребностей заказчика.</p>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
+          <!--Блок 1-->
+          <div class="h-[50vh] border-r  border-primary-gray pl-[30px]">
+            <h1 class="text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative">
+              <%= productData.h1 %>
+            </h1>
+            <p class="">Резервуар горизонтальный стальной — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Конструкция резервуара продумана для удобства монтажа и эксплуатации. Подходит для использования в различных отраслях, включая промышленность и сельское хозяйство. Объём и размеры резервуара могут варьироваться в зависимости от потребностей заказчика.</p>
+          </div>
+          <!--Блок 2 ЧЕРТЕЖИ если есть-->
+          <% if (productData.drawingsGalleryIds) { %>
+            <div class="border-r border-t border-primary-gray">
+              <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
+              <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
+                <% productData.drawingsGalleryIds?.map((dId) => { %>
+                  <li class="p-3 ">
+                    <!-- <h3><%= drawings[dId].ruName %></h3>
+                    <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
+                    <figure class="product-draw drawfig my-3">
+                      <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
+                    </figure>
+                    <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                      Скачать чертеж РГС-20
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                      </svg>
+                    </a>
+                  </li>
+                <% }) %>
+              </ul>
+            </div>
+          <% } %>
+          <div class="grid grid-cols-3 w-full border-t border-primary-gray">
+            <h2 class="text-2xl uppercase font-fr font-medium pl-[30px] pt-3">Характеристики</h2>
+            <ul class="col-span-2 flex flex-col border-l border-r self-start border-primary-gray font-fr">
+              <%  productData.charsJson.filter(i=>i.nameChar!== 'Минимальный срок эксплуатации, лет').map((i)=> { %>
+                <li class="flex border-b border-primary-gray p-3 justify-between text-base">
+                  <b><%= i.nameChar %></b>
+                  <p class="basis-24"><%= i.nameChar==='Марка стали' ? '09Г2С' : i.valueChar %></p>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
         </div>
-        <!--Блок 2 ЧЕРТЕЖИ-->
-        <div class="border-r border-primary-prred h-[50vh]">
-          <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
-          <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
-            <% productData.drawingsGalleryIds?.map((dId) => { %>
-              <li class="p-3 ">
-                <!-- <h3><%= drawings[dId].ruName %></h3>-->
-                <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>
-                <figure class="product-draw drawfig my-3">
-                  <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
-                </figure>
-                <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
-                  Скачать чертеж РГС-20
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-                </a>
-              </li>
-            <% }) %>
-          </ul>
-        </div>
-        <div class="grid grid-cols-3 h-[50vh] border-t border-primary-prred">
-          <h2 class="text-2xl uppercase font-fr font-medium pl-[30px] pt-3">Характеристики</h2>
-          <ul class="col-span-2 flex flex-col border-l border-r self-start border-primary-prred font-fr">
-            <%  productData.charsJson.filter(i=>i.nameChar!== 'Минимальный срок эксплуатации, лет').map((i)=> { %>
-              <li class="flex border-b border-primary-prred p-3 justify-between text-base">
-                <b><%= i.nameChar %></b>
-                <p class="basis-24"><%= i.nameChar==='Марка стали' ? '09Г2С' : i.valueChar %></p>
-              </li>
-            <% }) %>
-          </ul>
-        </div>
-        <div class="border-b border-primary-prred h-full">
-          <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
-        </div>
-        <div class="">
-          <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
+        <div>
+          <div class="border-b border-primary-gray h-[50vh]">
+            <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
+          </div>
+          <div class="h-[50vh]">
+            <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
+          </div>
         </div>
       </div>
+      <section class="py-10 container-4 grid-cols-3"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+        <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes('rgsn')).map((i)=> { %>
+          <figure class="w-full">
+            <img class="object-contain object-left w-full" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+            <figcaption><%= i.title %></figcaption>
+          </figure>
+        <% }) %>
+      </section>
       <section class="content mb-10">
         <h2 class="text-3xl font-fr"><%= productData.h1 %></h2>
         <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.intro %></p>

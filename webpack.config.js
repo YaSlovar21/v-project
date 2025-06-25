@@ -43,7 +43,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
 }
 
 // --- ПРОДУКТ --- //
-function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, drawings, isDevServer) {
+function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, drawings, isDevServer, gallery) {
   const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;
   //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
@@ -53,7 +53,8 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, dra
       isDevServer,
       /* */
       productData: product,
-      drawings: drawings
+      drawings: drawings,
+      gallery
     },
     title: title,
     meta: {
@@ -74,10 +75,13 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
   const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
   console.log(categoriesRealPathsByTextId);
   const dModels = gallery.filter(i=>i.consumersIds.includes("3d")).reduce((result, dobj) => ({...result, [dobj.id]: dobj}), {});
-  console.log(gallery);
+  //console.log(gallery);
   const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr.sort((a,b)=> a-b)}), {});
+  console.log("---------234--", sizesArrForCats);
+  const staffArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.staffArr}), {});
+  console.log(staffArrForCats);
   const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesRealPathsByTextId, isDevServer));
-  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId,drawings, isDevServer));
+  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId,drawings, isDevServer, gallery));
 
   return {
     entry: {
@@ -214,7 +218,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           gallery, 
           popular,
           dModels,
-          sizesArrForCats
+          sizesArrForCats,
+          staffArrForCats
         },
         title: "Производство стальных резервуаров и ёмкостей",
         meta: {
@@ -271,7 +276,12 @@ function galleryMapper(images) {
 
 
 function categoriesMapper(cats) {
-  return cats.filter(i => i.isPublished === true).map(c => ({...c, sizesArr: JSON.parse(c.sizesArr)}));
+  return cats.filter(i => i.isPublished === true)
+    .map(c => ({
+      ...c, 
+      sizesArr: JSON.parse(c.sizesArr),
+      staffArr: JSON.parse(c.staffArr)
+    }));
 }
 
 function drawingsMapperAndReducer(draws) {

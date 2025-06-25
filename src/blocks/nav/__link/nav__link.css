@@ -8,7 +8,7 @@
   z-index: 1;
   font-weight: 400;
   display: block;
-  @apply text-primary-prblue text-2xl font-fr uppercase;
+  @apply text-primary-prblue text-xl text-center font-fr uppercase;
 }
 
 .nav__link:hover {

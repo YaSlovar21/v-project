@@ -6,7 +6,7 @@
 }
 
 .formquiz__sizechoice {
-  @apply border border-primary-darkbg p-4 rounded-md inline-flex text-primary-gray;
+  @apply border border-primary-darkbg text-xl p-4 rounded flex flex-nowrap text-primary-black;
 }
 
 .formquiz__inputcheckbox:checked + .formquiz__figchoice{
