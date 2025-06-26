@@ -44,7 +44,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
 
 // --- ПРОДУКТ --- //
 function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, drawings, isDevServer, gallery) {
-  const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;
+  const { id,	textId,	categoryTextId,	title_my,	h1,	intro,	charsJson,	seoKeywordsMy,	seoDescription,	isPublished	}= product;
   //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
     templateParameters: { 
@@ -56,9 +56,9 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, dra
       drawings: drawings,
       gallery
     },
-    title: title,
+    title: title_my,
     meta: {
-      keywords: seoKeywords,
+      keywords: seoKeywordsMy,
       description: seoDescription,
     },
     filename: `catalog/${categoriesRealPathsByTextId[categoryTextId]}/${textId}.html`,

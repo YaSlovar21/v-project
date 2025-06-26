@@ -20,7 +20,7 @@
           <!--Блок 1-->
           <div class="h-[50vh] border-r  border-primary-gray pl-[30px]">
             <h1 class="text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative">
-              <%= productData.h1 %>
+              <%= productData.h1_sm %>
             </h1>
             <p class="">Резервуар горизонтальный стальной — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Конструкция резервуара продумана для удобства монтажа и эксплуатации. Подходит для использования в различных отраслях, включая промышленность и сельское хозяйство. Объём и размеры резервуара могут варьироваться в зависимости от потребностей заказчика.</p>
           </div>
@@ -31,13 +31,13 @@
               <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
                   <li class="p-3 ">
-                    <!-- <h3><%= drawings[dId].ruName %></h3>
-                    <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
+                     <h3><%= drawings[dId].ruName %></h3>
+                     <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
                     <figure class="product-draw drawfig my-3">
                       <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
                     </figure>
                     <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
-                      Скачать чертеж РГС-20
+                      Скачать чертеж
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                       </svg>
