@@ -59,3 +59,10 @@ if ( draws && draws.length ) {
     })
   })
 }
+
+/* ScrollTrigger PIN секции с двумя моделями (общая и разрез)  в категории и в товаре */
+
+const rightStickySide = new ScrollTrigger({
+  pin: true,
+  trigger: '.sticky-trigger'
+})

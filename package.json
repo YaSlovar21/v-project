@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/YaSlovar21/tm-project#readme",
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "animate.css": "^4.1.1",
     "core-js": "^3.20.3",
     "gsap": "^3.13",

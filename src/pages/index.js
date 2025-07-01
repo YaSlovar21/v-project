@@ -50,12 +50,10 @@ function setActiveStaffFieldset(rezType) {
   })
 }
 
-Array.from(rezervuarTypeCheckboxes).map((c)=> {
-  c.addEventListener('change', (evt)=> {
+Array.from(rezervuarTypeCheckboxes).map((c) => {
+  c.addEventListener("change", (evt) => {
     setActiveSizesFieldset(quizForm.elements.rezervuartype.value);
     setActiveStaffFieldset(quizForm.elements.rezervuartype.value);
-  })
+  });
 })
-
-
 

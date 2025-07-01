@@ -1,14 +1,16 @@
 <header class="header">
   <div class="header__up">
     <!----------- ВНУТРИ ХИДЕРА ----------------------->
-    <div class="grid grid-cols-12 grid-rows-3 grid-flow-col border-b border-primary-gray">
-      <a href="/" class="header__logo max-w-60 col-span-2 h-full row-span-3 w-full pl-[30px] py-7">
-        <img src="../../images/header-logo-theme-white.svg" class="header__logo-img" alt="Лого"/>
-      </a>
-      <div class="col-span-4 row-span-3 border-r border-primary-gray px-4 py-10">
-        <img class=" max-w-[97%]" src="../../images/text-logo.svg" alt="Текстовое лого">
+    <div class="grid grid-cols-12 grid-flow-col border-b border-primary-gray mobile:grid-cols-1 mobile:*:col-span-1">
+      <div class="col-span-6 grid grid-cols-6 border-r border-primary-gray">
+        <a href="/" class="header__logo max-w-60 col-span-2 h-full w-full pl-[30px] py-7">
+          <img src="../../images/header-logo-theme-white.svg" class="header__logo-img" alt="Лого"/>
+        </a>
+        <div class="col-span-4  px-4 py-10">
+          <img class=" max-w-[97%]" src="../../images/text-logo.svg" alt="Текстовое лого">
+        </div>
       </div>
-      <div class="col-span-6 row-span-3 flex flex-col justify-between h-full pb-7 pt-16 px-4">
+      <div class="col-span-6 flex flex-col justify-between h-full pb-7 pt-16 px-4">
         <div class="flex justify-between">
           <div class="flex flex-col col-span-2 col-start-7 font-fr items-start text-primary-black justify-self-end olpc:flex-col mobile:hidden">
             <a class="text-xl mb-2 flex" href="tel:79999992272">
@@ -32,7 +34,6 @@
     <!---------------------------------->
   </div>
   <div class="">
-
     <nav class="w-full col-span-10  bg-blue-100">
       <ul class="grid grid-cols-6  font-fr">
         <li class="nav__ul-item pl-[30px]">

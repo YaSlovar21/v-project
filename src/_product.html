@@ -18,11 +18,28 @@
       <div class="grid grid-cols-2">
         <div class="flex flex-col <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
           <!--Блок 1-->
-          <div class="h-[50vh] border-r  border-primary-gray pl-[30px]">
+          <div class="h-[50vh] border-r w-full  border-primary-gray pl-[30px]">
             <h1 class="text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative">
               <%= productData.h1_sm %>
             </h1>
-            <p class="">Резервуар горизонтальный стальной — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Конструкция резервуара продумана для удобства монтажа и эксплуатации. Подходит для использования в различных отраслях, включая промышленность и сельское хозяйство. Объём и размеры резервуара могут варьироваться в зависимости от потребностей заказчика.</p>
+            <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgs') { %>
+              <p class="text-xl max-w-3xl">
+                <%= productData.h1_sm %> — <%= productData.acronym_exp %>, надёжное и прочное решение для хранения различных жидкостей. Изготовлен из
+                высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
+              </p>
+            <% } %>
+            <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgsd') { %>
+              <p class="text-xl max-w-3xl">
+                <%= productData.h1_sm %> — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из
+                высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
+              </p>
+            <% } %>
+            <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgsp') { %>
+              <p class="text-xl max-w-3xl">
+                <%= productData.h1_sm %> — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из
+                высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
+              </p>
+            <% } %>
           </div>
           <!--Блок 2 ЧЕРТЕЖИ если есть-->
           <% if (productData.drawingsGalleryIds) { %>
@@ -48,32 +65,47 @@
             </div>
           <% } %>
           <div class="grid grid-cols-3 w-full border-t border-primary-gray">
-            <h2 class="text-2xl uppercase font-fr font-medium pl-[30px] pt-3">Характеристики</h2>
-            <ul class="col-span-2 flex flex-col border-l border-r self-start border-primary-gray font-fr">
-              <%  productData.charsJson.filter(i=>i.nameChar!== 'Минимальный срок эксплуатации, лет').map((i)=> { %>
-                <li class="flex border-b border-primary-gray p-3 justify-between text-base">
+            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[30px] py-6 border-l border-r border-b self-start border-primary-gray">Характеристики</h2>
+            <ul class="col-span-3 flex flex-col border-l border-r self-start border-primary-gray font-fr">
+              <%  productData.charsJson.filter(i=>i.nameChar!== 'Минимальный срок эксплуатации, лет').map((i, index)=> { %>
+                <li class="border-b grid grid-cols-3 border-primary-gray p-3 justify-between text-base">
+                  <span class="pl-[30px]">[ <%= index+1 %> ]</span>
                   <b><%= i.nameChar %></b>
-                  <p class="basis-24"><%= i.nameChar==='Марка стали' ? '09Г2С' : i.valueChar %></p>
+                  <p class="basis-24 w-full text-center"><%= i.nameChar==='Марка стали' ? '09Г2С' : i.valueChar %></p>
                 </li>
+                <!--
+                    <span>Номинальный объем, м3</span>
+                    <span>Диаметр, мм</span>
+                    <span>Высота, мм</span>
+                    <span>Длина, мм</span>
+                    <span>Толщина стенки, мм</span>
+                    <span>Масса, кг</span>
+                    <span>Марка стали</span>
+                    <span>Скорость проникновения коррозии, мм/год</span>
+                -->
               <% }) %>
             </ul>
           </div>
         </div>
-        <div>
-          <div class="border-b border-primary-gray h-[50vh]">
-            <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
-          </div>
-          <div class="h-[50vh]">
-            <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
+        <div class="">
+          <div class="sticky-trigger">
+            <div class="border-b border-primary-gray h-[50vh]">
+              <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
+            </div>
+            <div class="h-[50vh]">
+              <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
+            </div>
           </div>
         </div>
       </div>
-      <section class="py-10 container-4 grid-cols-3"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+      <section class="py-16 container-4 grid-cols-6 gap-5 gap-y-10 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
         <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes('rgsn')).map((i)=> { %>
-          <figure class="w-full">
-            <img class="object-contain object-left w-full" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
-            <figcaption><%= i.title %></figcaption>
-          </figure>
+          <div>
+            <figure class="aspect-[16/9] overflow-hidden relative">
+              <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+            </figure>
+            <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
+          </div>
         <% }) %>
       </section>
       <section class="content mb-10">

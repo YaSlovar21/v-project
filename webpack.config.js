@@ -17,7 +17,7 @@ const dateNow = (new Date()).toString();
 let generatedPaths = [];
 
 
-function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPathsByTextId, isDevServer) {
+function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer) {
   const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
   const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
 
@@ -29,7 +29,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
       /* */
       categoryData: category,
       categoryProducts,
-      categoriesRealPathsByTextId
+      categoriesByTextId
     },
     title: categoryName,
     meta: {
@@ -43,7 +43,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesRealPaths
 }
 
 // --- ПРОДУКТ --- //
-function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, drawings, isDevServer, gallery) {
+function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, isDevServer, gallery) {
   const { id,	textId,	categoryTextId,	title_my,	h1,	intro,	charsJson,	seoKeywordsMy,	seoDescription,	isPublished	}= product;
   //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
@@ -54,14 +54,15 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, dra
       /* */
       productData: product,
       drawings: drawings,
-      gallery
+      gallery,
+      categoryInfo: categoriesByTextId[categoryTextId]
     },
     title: title_my,
     meta: {
       keywords: seoKeywordsMy,
       description: seoDescription,
     },
-    filename: `catalog/${categoriesRealPathsByTextId[categoryTextId]}/${textId}.html`,
+    filename: `catalog/${categoriesByTextId[categoryTextId].linkPath}/${textId}.html`,
     template: "./src/_product.html", // путь к файлу index.html
     chunks: ["product"],
   });
@@ -70,18 +71,20 @@ function generateProductPageHtmlPlugin(product, categoriesRealPathsByTextId, dra
 //function generateConfig(infoBlogData, isDevServer) {
 function generateConfig(isDevServer, categories, products, gallery, popular , drawings) {
   console.log(drawings);
-  //const htmlRaschetPlugins = generateRaschetHtmlPlugins(isDevServer);
-  //const htmlArticlesPlugins = generateBlogPagesHtmlPlugins(infoBlogData, isDevServer);
-  const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
-  console.log(categoriesRealPathsByTextId);
+
+  //const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
+  //пробросим объект категории весь
+  const categoriesByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat}), {});
+  //console.log(categoriesRealPathsByTextId);
+
   const dModels = gallery.filter(i=>i.consumersIds.includes("3d")).reduce((result, dobj) => ({...result, [dobj.id]: dobj}), {});
   //console.log(gallery);
-  const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr.sort((a,b)=> a-b)}), {});
+  const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr?.sort((a,b)=> a-b) || null}), {});
   console.log("---------234--", sizesArrForCats);
   const staffArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.staffArr}), {});
   console.log(staffArrForCats);
-  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesRealPathsByTextId, isDevServer));
-  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesRealPathsByTextId,drawings, isDevServer, gallery));
+  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer));
+  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesByTextId,drawings, isDevServer, gallery));
 
   return {
     entry: {
@@ -293,7 +296,8 @@ function productsMapper(prods) {
     ...c, 
     charsJson: JSON.parse(c.charsJson), 
     drawingsGalleryIds: JSON.parse(c.drawingsGalleryIds),
-    imagesGalleryIds: JSON.parse(c.imagesGalleryIds)
+    imagesGalleryIds: JSON.parse(c.imagesGalleryIds),
+    product_steel: JSON.parse(c.product_steel)
   }));
 }
 

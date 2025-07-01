@@ -26,7 +26,9 @@
       <div class="grid grid-cols-3">
         <div class="w-full border-t border-primary-graylight pt-4 pl-[30px]"><h2 class="up-title up-title_svg self-start text-primary-prblue">Характеристики</h2></div>
         <ul class="ml-2 flex flex-col col-span-2 text-primary-darkbg *:border-primary-graylight *:text-3xl">
-          <li class="p-4  border-t border-l font-fr">объем от <%= Math.min(...categoryData.sizesArr) %> м³ до <%= Math.max(...categoryData.sizesArr) %> м³</li>
+          <% if (categoryData.sizesArr) { %>
+            <li class="p-4  border-t border-l font-fr">объем от <%=  Math.min(...categoryData.sizesArr) %> м³ до <%= Math.max(...categoryData.sizesArr) %> м³</li>
+          <% } %>
           <li class="p-4 border-t border-l font-fr">для наземного использования</li>
           <li class="p-4 border-t border-l border-b font-fr">внутренняя покраска</li>
         </ul>

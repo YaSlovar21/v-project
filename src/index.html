@@ -17,7 +17,7 @@
         <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
       <% } %>
       <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
-      <main class="content">
+      <main class="">
         <section class="mt-[60px] mb-32 items-start">
         <!-- <ul class="container-4 w-full">
             <% ['20', '14', '25', '15'].map((i) => { %>
@@ -28,7 +28,7 @@
             <% }) %>
           </ul>-->
         </section>
-        <section class="comparisonSection w-1/2 block mx-auto relative overflow-hidden" data-speed="1.3">
+        <section class="content comparisonSection w-1/2 block mx-auto relative overflow-hidden" data-speed="1.3">
           <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
             <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
           </h2>
@@ -40,7 +40,7 @@
             <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
           </div>
         </section>
-        <section class="relative"  id="catalog">
+        <section class=" content relative"  id="catalog">
           <h2 class="up-title up-title_svg top-0 left-0">Каталог резервуаров</h2>
           <div class="container-spt">
             <p class="text-primary-prblue text-4xl font-fr mb-10 animate-me" aria-hidden="true">Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.</p>
@@ -52,7 +52,7 @@
             <li class="border h-full font-fr uppercase flex justify-center items-center border-primary-floral text-primary-floral">Весь каталог</li>
           </ul>
         </section>
-        <section class="container-2 my-[130px] relative">
+        <section class=" content container-2 my-[130px] relative">
           <h2 class="up-title up-title_svg">Каталог</h2>
           <div class="relative">
             <h2 class="text-5xl font-fr uppercase font-semibold text-primary-prblue"><span class="block text-primary-lightblue">Ведущие</span> категории сегодня</h2>
@@ -73,19 +73,27 @@
             </ul>
           </div>
         </section>
-        <section class="py-10 container-4">
-          <% gallery.filter(i => i.consumersIds.includes('gallery')).map((i)=> { %>
-            <figure>
-              <img class="h-64 object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
-              <figcaption><%= i.title %></figcaption>
-            </figure>
-          <% }) %>
+        <section class="my-28 relative">
+          <!--Костыль-->
+          <span class="up-title up-title_svg absolute top-0 left-[30px]">Галерея</span>
+          <h2 class="w-1/2 ml-auto mb-4 text-5xl font-fr uppercase font-semibold text-primary-prblue">Изготовленные<br> резевуары</h2>
+          <div class="py-16 container-4 gap-5 gap-y-10 bg-primary-prblue px-[30px]">
+            <% gallery.filter(i => i.consumersIds.includes('gallery')).map((i)=> { %>
+              <div>
+                <figure class="aspect-[16/9] overflow-hidden relative">
+                  <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+                </figure>
+                <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
+              </div>
+            <% }) %>
+          </div>
         </section>
-        <section>
-          <h2 class="up-title up-title_svg">Подбор резервуара</h2>
-          <form name="quiz" class="my-8 w-1/2">
+        <section class="">
+          <h2 class="up-title up-title_svg">Подбор</h2>
+          <form name="quiz" class="my-8 w-2/3 mx-auto">
+            <h2 class="text-5xl font-fr uppercase font-semibold text-primary-prblue mb-10">Подбор и расчёт резервуара</h2>
             <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой резервуар Вам необходим?</h2>
-            <div class="grid grid-cols-2 border border-primary-prblue rounded">
+            <div class="grid grid-cols-4 border border-primary-prblue rounded">
               <label class="formquiz__labelcheckbox relative">
                 <input type="radio" value="gorizontalnye-rezervuary-rgs" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype" checked>
                 <figure class="formquiz__figchoice">
@@ -130,7 +138,7 @@
             <% }) %>
             <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
               <fieldset class="my-4" id="staff-<%= f %>">
-                <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой объем Вам необходим?</h2>
+                <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Что будет храниться в ёмкости?</h2>
                 <div class="flex">
                   <% staffArrForCats[f].map((staff)=> { %>
                     <label class="formquiz__labelcheckbox relative mb-2 mr-2 flex flex-wrap hover:bg-blue-200">
