@@ -9,7 +9,7 @@ const fetch1 = require('node-fetch');
 const canonicalURL = 'https://www.rezervuar22.ru'
 
 const { paths } = require('./sitemap');
-const { ROUTES, webpackRules } = require('./constants');
+const { ROUTES, webpackRules,   charsSequence,  charsTitleDict,  charsMeasureDict } = require('./constants');
 
 
 
@@ -17,10 +17,12 @@ const dateNow = (new Date()).toString();
 let generatedPaths = [];
 
 
-function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer) {
+function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer, dModels) {
   const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
   const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
+  //может добавить фильтр isPublished??
 
+  
   return new HtmlWebpackPlugin({
     templateParameters: { 
       canonicalURL,
@@ -29,7 +31,8 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
       /* */
       categoryData: category,
       categoryProducts,
-      categoriesByTextId
+      categoriesByTextId,
+      dModels
     },
     title: categoryName,
     meta: {
@@ -43,7 +46,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
 }
 
 // --- ПРОДУКТ --- //
-function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, isDevServer, gallery) {
+function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, isDevServer, gallery, dModels) {
   const { id,	textId,	categoryTextId,	title_my,	h1,	intro,	charsJson,	seoKeywordsMy,	seoDescription,	isPublished	}= product;
   //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
@@ -55,7 +58,9 @@ function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, is
       productData: product,
       drawings: drawings,
       gallery,
-      categoryInfo: categoriesByTextId[categoryTextId]
+      charsSequence,  charsTitleDict,  charsMeasureDict, // потом перенесем в БД
+      categoryInfo: categoriesByTextId[categoryTextId],
+      dModels
     },
     title: title_my,
     meta: {
@@ -83,8 +88,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
   console.log("---------234--", sizesArrForCats);
   const staffArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.staffArr}), {});
   console.log(staffArrForCats);
-  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer));
-  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesByTextId,drawings, isDevServer, gallery));
+  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer, dModels));
+  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesByTextId,drawings, isDevServer, gallery, dModels));
 
   return {
     entry: {

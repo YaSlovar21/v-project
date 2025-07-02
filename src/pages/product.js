@@ -61,8 +61,22 @@ if ( draws && draws.length ) {
 }
 
 /* ScrollTrigger PIN секции с двумя моделями (общая и разрез)  в категории и в товаре */
+const parent = document.querySelector('.all-sect');
+const child = document.querySelector('.sticky-trigger');
+
+const parentHeight = parent.offsetHeight;
+const childHeight = child.offsetHeight;
+
+// Если дочерний элемент больше родителя - pin бессмысленен
+if (childHeight >= parentHeight) {
+  console.warn('Дочерний элемент выше родителя - pin не будет работать правильно');
+}
 
 const rightStickySide = new ScrollTrigger({
-  pin: true,
-  trigger: '.sticky-trigger'
-})
+  trigger: '.all-sect',
+  start: "top top",
+  end: `+=${parentHeight - childHeight}`, // Закрепление до достижения низа родителя
+  pin: '.sticky-trigger',
+  pinSpacing: false
+});
+

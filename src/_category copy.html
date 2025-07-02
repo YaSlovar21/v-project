@@ -21,7 +21,33 @@
       <div class="w-full bg-primary-darker shadow-sm rounded-xl">
         <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterSm %>" alt="<%= categoryData.categoryName %>">
       </div>
-
+      <!--С массивом sizeAr-->
+      <div class="grid grid-cols-2 grid-rows-2 border-b border-primary-gray items-start grid-flow-col relative mt-0 mb-20">
+        <div class="h-[50vh]  border-primary-gray px-[30px]">
+          <h1 class="text-primary-prblue mb-4 mt-10 text-5xl max-w-[66.6%] ml-auto  uppercase font-semibold font-fr relative">
+            <svg class="fill-primary-prredlight absolute top-2 -left-12" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2 22h20V2L2 22z"/></svg>
+            <%= categoryData.categoryName %>
+          </h1>
+          <p class="text-xl indent-[33.3%]  text-primary-darkbg max-w-7xl mb-8"><%= categoryData.categoryDesc %></p>
+          <button class="ui-button mt-auto ml-[33%]">Узнать цену</button>
+        </div>
+        <div class="grid grid-cols-3">
+          <div class="w-full border-t border-primary-graylight pt-4 pl-[30px]"><h2 class="up-title up-title_svg self-start text-primary-prblue">Характеристики</h2></div>
+          <ul class="ml-2 flex flex-col col-span-2 text-primary-darkbg *:border-primary-graylight *:text-3xl">
+            <% if (categoryData.sizesArr) { %>
+              <li class="p-4  border-t border-l font-fr">объем от <%=  Math.min(...categoryData.sizesArr) %> м³ до <%= Math.max(...categoryData.sizesArr) %> м³</li>
+            <% } %>
+            <li class="p-4 border-t border-l font-fr">для наземного использования</li>
+            <li class="p-4 border-t border-l border-b font-fr">внутренняя покраска</li>
+          </ul>
+        </div>
+        <div class="border-b border-l border-primary-gray h-full">
+          <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterSm %>" alt="<%= categoryData.categoryName %>">
+        </div>
+        <div class="border-l h-[50vh] border-primary-gray">
+          <img class="w-1/2 block mx-auto" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= categoryData.posterRazrez %>" alt="<%= categoryData.categoryName %>">
+        </div>
+      </div>
       <div class="container-4 my-16">
         <%= _.template(require('html-loader!./templates/router.html').default)({categoryData: categoryData, categoriesRealPathsByTextId:categoriesRealPathsByTextId, isDevServer}) %>
 

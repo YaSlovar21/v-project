@@ -15,6 +15,7 @@
 @import url(../blocks/form/form.css);
 
 @import url(../blocks/popupmenu/popupmenu.css);
+@import url(../blocks/figure/figure.css);
 
 .drawfig {
   cursor: none;

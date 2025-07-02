@@ -15,7 +15,7 @@
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     <!--max-w-[calc(100%-120px)] mx-auto pc:max-w-[calc(100%-40px)] mobile:max-w-[calc(100%-20px)]-->
     <main class="">
-      <div class="grid grid-cols-2">
+      <div class="all-sect grid grid-cols-2">
         <div class="flex flex-col <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
           <!--Блок 1-->
           <div class="h-[50vh] border-r w-full  border-primary-gray pl-[30px]">
@@ -24,19 +24,19 @@
             </h1>
             <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgs') { %>
               <p class="text-xl max-w-3xl">
-                <%= productData.h1_sm %> — <%= productData.acronym_exp %>, надёжное и прочное решение для хранения различных жидкостей. Изготовлен из
+                <%= productData.h1_sm %> — <%= productData.acronym_exp %>, надёжное решение для хранения различных жидкостей. Изготовлен из
                 высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
               </p>
             <% } %>
             <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgsd') { %>
               <p class="text-xl max-w-3xl">
-                <%= productData.h1_sm %> — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из
+                <%= productData.h1_sm %> — это надёжное решение для хранения различных жидкостей. Изготовлен из
                 высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
               </p>
             <% } %>
             <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgsp') { %>
               <p class="text-xl max-w-3xl">
-                <%= productData.h1_sm %> — это надёжное и прочное решение для хранения различных жидкостей. Изготовлен из
+                <%= productData.h1_sm %> — это надёжное решение для хранения различных жидкостей. Изготовлен из
                 высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
               </p>
             <% } %>
@@ -47,7 +47,7 @@
               <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
               <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
-                  <li class="p-3 ">
+                  <li class="p-3">
                      <h3><%= drawings[dId].ruName %></h3>
                      <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
                     <figure class="product-draw drawfig my-3">
@@ -67,50 +67,51 @@
           <div class="grid grid-cols-3 w-full border-t border-primary-gray">
             <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[30px] py-6 border-l border-r border-b self-start border-primary-gray">Характеристики</h2>
             <ul class="col-span-3 flex flex-col border-l border-r self-start border-primary-gray font-fr">
-              <%  productData.charsJson.filter(i=>i.nameChar!== 'Минимальный срок эксплуатации, лет').map((i, index)=> { %>
+              <%  charsSequence.map((i, index)=> { if (productData[i]) { %>
                 <li class="border-b grid grid-cols-3 border-primary-gray p-3 justify-between text-base">
                   <span class="pl-[30px]">[ <%= index+1 %> ]</span>
-                  <b><%= i.nameChar %></b>
-                  <p class="basis-24 w-full text-center"><%= i.nameChar==='Марка стали' ? '09Г2С' : i.valueChar %></p>
+                  <h3 class="text-lg font-medium"><%= charsTitleDict[i] %></h3>
+                  <p class="basis-24 w-full text-center font-['Inter'] text-sm"><%= productData[i] %> <%= charsMeasureDict[i] || '' %></p>
                 </li>
-                <!--
-                    <span>Номинальный объем, м3</span>
-                    <span>Диаметр, мм</span>
-                    <span>Высота, мм</span>
-                    <span>Длина, мм</span>
-                    <span>Толщина стенки, мм</span>
-                    <span>Масса, кг</span>
-                    <span>Марка стали</span>
-                    <span>Скорость проникновения коррозии, мм/год</span>
-                -->
-              <% }) %>
+              <% }}) %>
             </ul>
           </div>
         </div>
-        <div class="">
-          <div class="sticky-trigger">
+        <div class="self-start h-screen">
+          <div class="sticky-trigger ">
             <div class="border-b border-primary-gray h-[50vh]">
-              <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/rgsn-25-m3.png" alt="<%= productData.h1 %>">
+              <% if (productData.main_img_id  ) {%> <!--&& dModels[productData.main_img_id].fileName-->
+                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+              <% } else if (categoryInfo.main_img_id) { %>
+                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryInfo.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+              <% } %>
             </div>
             <div class="h-[50vh]">
-              <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/sechenie-rgsn-25-m3.png" alt="<%= productData.h1 %>">
+              <% if (productData.razrez_img_id ) {%>
+                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
+              <% } else if (categoryInfo.razrez_img_id) { %>
+                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryInfo.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
+              <% } %>
             </div>
           </div>
         </div>
       </div>
-      <section class="py-16 container-4 grid-cols-6 gap-5 gap-y-10 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
-        <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes('rgsn')).map((i)=> { %>
-          <div>
-            <figure class="aspect-[16/9] overflow-hidden relative">
-              <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
-            </figure>
-            <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
-          </div>
-        <% }) %>
+      <section class="py-16 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+        <h2 class="text-5xl font-fr uppercase font-medium text-primary-white mb-8">Фотографии изготовленных резервуаров <%= productData.acronymRu %></h2>
+        <div class="container-4 grid-cols-4 gap-5 gap-y-10">
+          <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes('rgsn')).map((i)=> { %>
+            <div>
+              <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
+                <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+              </figure>
+              <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
+            </div>
+          <% }) %>
+        </div>
       </section>
-      <section class="content mb-10">
-        <h2 class="text-3xl font-fr"><%= productData.h1 %></h2>
-        <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.intro %></p>
+      <section class="content mb-10 py-16">
+        <h2 class="text-4xl font-fr uppercase font-medium text-primary-prblue"><%= productData.h1 %></h2>
+        <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.introai %></p>
       </section>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>

@@ -32,7 +32,7 @@
           <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
             <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
           </h2>
-          <p class="text-[100px] olpc:text-[50px] font-fr absolute bottom-[160px] olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
+          <p class="text-[100px] mvpc:text-[80px] olpc:text-[50px] font-fr absolute bottom-[160px] mvpc:bottom-[120px] olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
           <div class="comparisonImage beforeImage" >
             <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
           </div>
@@ -62,7 +62,7 @@
                   <div class="absolute w-80 bg-white object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
                     <img class="w-full" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= c.imgUrl %>" alt="">
                   </div>
-                  <a href="<%= c.linkPath %>" class="text-4xl font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red">
+                  <a href="<%= c.linkPath %>" class="text-4xl mvpc:text-3xl font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red">
                     <span><%= c.itemRuName %></span>
                     <svg class="size-6 stroke-primary-gray group-hover:stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
@@ -90,7 +90,7 @@
         </section>
         <section class="">
           <h2 class="up-title up-title_svg">Подбор</h2>
-          <form name="quiz" class="my-8 w-2/3 mx-auto">
+          <form name="quiz" class="my-8 w-2/3 mvpc:w-[calc(100%-60px)] mx-auto">
             <h2 class="text-5xl font-fr uppercase font-semibold text-primary-prblue mb-10">Подбор и расчёт резервуара</h2>
             <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой резервуар Вам необходим?</h2>
             <div class="grid grid-cols-4 border border-primary-prblue rounded">

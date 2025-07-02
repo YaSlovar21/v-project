@@ -1,0 +1,16 @@
+.figure {
+  position: relative;
+}
+
+.figure_mate {
+  cursor: pointer;
+}
+
+.figure_mate::after {
+  transition: all .2s linear;
+  @apply absolute content-[''] z-[2] w-full h-full top-0 left-0 bg-primary-prblue bg-opacity-20;
+}
+
+.figure_mate:hover::after {
+  @apply bg-opacity-5;
+}
