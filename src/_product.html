@@ -15,37 +15,62 @@
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     <!--max-w-[calc(100%-120px)] mx-auto pc:max-w-[calc(100%-40px)] mobile:max-w-[calc(100%-20px)]-->
     <main class="">
-      <div class="all-sect grid grid-cols-2">
+      <div class="all-sect grid grid-cols-2 laptop:grid-cols-1">
         <div class="flex flex-col <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
           <!--Блок 1-->
-          <div class="h-[50vh] border-r w-full  border-primary-gray pl-[30px]">
-            <h1 class="text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative">
+          <div class="h-[50vh] border-r w-full  border-primary-gray px-[30px] mobile:border-none">
+            <h1 class="title-cat-prod">
               <%= productData.h1_sm %>
             </h1>
+
+            <!--РГС-->
             <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgs') { %>
-              <p class="text-xl max-w-3xl">
+              <p class="title-cat-intro">
                 <%= productData.h1_sm %> — <%= productData.acronym_exp %>, надёжное решение для хранения различных жидкостей. Изготовлен из
                 высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
               </p>
             <% } %>
+
+            <!--РГСД-->
             <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgsd') { %>
-              <p class="text-xl max-w-3xl">
+              <p class="title-cat-intro">
                 <%= productData.h1_sm %> — это надёжное решение для хранения различных жидкостей. Изготовлен из
                 высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
               </p>
             <% } %>
+
+            <!--РГСП-->
             <% if (categoryInfo.textId === 'gorizontalnye-rezervuary-rgsp') { %>
-              <p class="text-xl max-w-3xl">
+              <p class="title-cat-intro">
                 <%= productData.h1_sm %> — это надёжное решение для хранения различных жидкостей. Изготовлен из
                 высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
               </p>
+            <% } %>
+
+            <!--РВС-->
+            <% if (categoryInfo.textId === 'vertikalnye-rezervuary') { %>
+              <p class="title-cat-intro">
+                <%= productData.h1_sm %> — это надёжное решение для хранения различных жидкостей. Изготовлен из
+                высококачественной стали, что обеспечивает долговечность и устойчивость к коррозии. Металлический вертикальный резервуар (ёмкость) <%= productData.sizeUtf %> м³ для хранения таких сред как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
+              </p>
+            <% } %>
+
+            <!--РВС-->
+            <% if (categoryInfo.textId === 'silosy') { %>
+              <p class="title-cat-intro">
+                <%= productData.h1_sm %> — это вертикальный резервуар для хранения сыпучих рабочих сред, таких как: <%= categoryInfo.staffArr.slice(0, -1).map(i=> ` ${i}`.toLowerCase()) %>. Изготавливается из стали марок <%= productData.product_steel.map(i=> ` ${i}`) %>. С толщиной стенки <%= productData.thinAll %> мм.
+              </p>
+            <% } %>
+            <!--Картинка для мобильного-->
+            <% if (productData.main_img_id) {%> <!--&& dModels[productData.main_img_id].fileName-->
+              <img class="hidden mobile:block w-full mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
             <% } %>
           </div>
           <!--Блок 2 ЧЕРТЕЖИ если есть-->
           <% if (productData.drawingsGalleryIds) { %>
-            <div class="border-r border-t border-primary-gray">
+            <div class="border-r border-t border-primary-gray mobile:border-none">
               <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
-              <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
+              <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px] laptop:grid-cols-2 mobile:grid-cols-1">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
                   <li class="p-3">
                      <h3><%= drawings[dId].ruName %></h3>
@@ -65,7 +90,7 @@
             </div>
           <% } %>
           <div class="grid grid-cols-3 w-full border-t border-primary-gray">
-            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[30px] py-6 border-l border-r border-b self-start border-primary-gray">Характеристики</h2>
+            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[30px] py-6 border-l border-r border-b self-start border-primary-gray laptop:border-r-0 laptop:border-b">Характеристики</h2>
             <ul class="col-span-3 flex flex-col border-l border-r self-start border-primary-gray font-fr">
               <%  charsSequence.map((i, index)=> { if (productData[i]) { %>
                 <li class="border-b grid grid-cols-3 border-primary-gray p-3 justify-between text-base">
@@ -77,7 +102,7 @@
             </ul>
           </div>
         </div>
-        <div class="self-start h-screen">
+        <div class="self-start h-screen mobile:hidden">
           <div class="sticky-trigger ">
             <div class="border-b border-primary-gray h-[50vh]">
               <% if (productData.main_img_id  ) {%> <!--&& dModels[productData.main_img_id].fileName-->
@@ -96,23 +121,27 @@
           </div>
         </div>
       </div>
-      <section class="py-16 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
-        <h2 class="text-5xl font-fr uppercase font-medium text-primary-white mb-8">Фотографии изготовленных резервуаров <%= productData.acronymRu %></h2>
-        <div class="container-4 grid-cols-4 gap-5 gap-y-10">
-          <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes('rgsn')).map((i)=> { %>
-            <div>
-              <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
-                <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
-              </figure>
-              <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
-            </div>
-          <% }) %>
-        </div>
-      </section>
-      <section class="content mb-10 py-16">
-        <h2 class="text-4xl font-fr uppercase font-medium text-primary-prblue"><%= productData.h1 %></h2>
-        <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.introai %></p>
-      </section>
+      <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).length ) { %>
+        <section class="py-16 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+          <h2 class="text-4xl font-fr uppercase font-medium text-primary-white mb-8">Фотографии изготовленных <%= categoryInfo.catRoditelniiPadezhName %></h2>
+          <div class="container-4 grid-cols-4 gap-5 gap-y-10">
+            <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).map((i)=> { %>
+              <div>
+                <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
+                  <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+                </figure>
+                <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
+              </div>
+            <% }) %>
+          </div>
+        </section>
+      <% } %>
+      <% if (productData.introai) { %>
+        <section class="content mb-10 py-16">
+          <h2 class="text-4xl font-fr uppercase font-medium text-primary-prblue"><%= productData.h1 %></h2>
+          <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.introai %></p>
+        </section>
+      <% } %>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
       </div>

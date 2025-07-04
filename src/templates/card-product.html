@@ -1,16 +1,28 @@
 <!--const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;-->
 
 
-<li class="grid grid-cols-12 relative  hover:bg-blue-100">
-  <div class="pb-[100%] relative"><span class="absolute top-[50%] left-[50%]">[<%= obj.index || '' %>]</span></div>
-  <div class="flex justify-center relative items-center bg-blue-50 ">
+<li class="group grid grid-cols-12 relative border-t border-gray-200 transition-all hover:border-primary-prred hover:bg-blue-100">
+  <div class="pb-[100%] relative">
+    <span class="absolute top-[50%] left-[50%]">
+      [<%= obj.index || '' %>]
+    </span>
+  </div>
+  <div class="flex justify-center relative items-center ">
     <img class="w-[calc(100%-80px)] p" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>" >
   </div>
-  <h3 class="card-title self-center col-span-4 font-medium font-fr uppercase text-3xl text-primary-prblue mobile:text-2xl"><%= obj.h1_sm %></h3>
-  <p class="card-desc self-center text-4xl font-semibold text-primary-prblue mobile:max-w-full mobile:text-2xl"><%= obj.sizeUtf %> м³</p>
-  <p class="text-white text-[9px] mt-2"><%= !obj.drawingsGalleryIds ? 'Нет чертежа' : '' %></p>
-    <a href="/catalog/<%= obj.catLinkPath %>/<%= obj.textId %>.html">
-      <span class="inset0">
-      </span>
-    </a>
+  <h3 class="card-title self-center col-span-4 font-semibold font-fr uppercase text-4xl text-primary-prblue mobile:text-2xl"><%= obj.h1_sm %></h3>
+  <p class="card-desc self-center text-3xl font-semibold text-primary-prblue mobile:max-w-full mobile:text-2xl"><%= obj.sizeUtf %> м³</p>
+  <p class="text-white text-[9px] mt-2">
+    <%= !obj.drawingsGalleryIds ? 'Нет чертежа' : '' %>
+    <% if (obj.index === 8 && obj.categoryTextId === 'gorizontalnye-rezervuary-rgs') { %>
+      <span class="rounded-full bg-primary-prred p-2 text-white">Популярное</span>
+    <% } %>
+  </p>
+  <a class="col-start-12 flex" href="/catalog/<%= obj.catLinkPath %>/<%= obj.textId %>.html">
+    <svg class="size-7 m-auto fill-[#c4c4c4] group-hover:fill-primary-prred" width="50" height="51" viewBox="0 0 50 51" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.09138 50.8653L42.9504 12.941L42.8851 42.1839H50V0.800049H8.68146L8.61619 7.84966H37.859L0 45.7739L5.09138 50.8653Z" />
+    </svg>
+    <span class="inset0">
+    </span>
+  </a>
 </li>

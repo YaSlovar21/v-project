@@ -17,12 +17,11 @@ const dateNow = (new Date()).toString();
 let generatedPaths = [];
 
 
-function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer, dModels) {
+function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer, dModels, gallery) {
   const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
   const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
   //может добавить фильтр isPublished??
 
-  
   return new HtmlWebpackPlugin({
     templateParameters: { 
       canonicalURL,
@@ -32,7 +31,8 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
       categoryData: category,
       categoryProducts,
       categoriesByTextId,
-      dModels
+      dModels,
+      gallery
     },
     title: categoryName,
     meta: {
@@ -41,7 +41,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
     },
     filename: `catalog/${linkPath}/index.html`,
     template: "./src/_category.html", // путь к файлу index.html
-    chunks: ["index", "smoother"],
+    chunks: ["index", "smoother", "category"],
   });
 }
 
@@ -88,7 +88,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
   console.log("---------234--", sizesArrForCats);
   const staffArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.staffArr}), {});
   console.log(staffArrForCats);
-  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer, dModels));
+  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer, dModels, gallery));
   const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesByTextId,drawings, isDevServer, gallery, dModels));
 
   return {
@@ -98,7 +98,9 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       razrez: "./src/pages/gsap-razrez.js",
       smoother: "./src/pages/smoother.js",
       product: "./src/pages/product.js",
-      threed: "./src/pages/3d.js"
+      category: "./src/pages/category.js",
+      threed: "./src/pages/3d.js",
+
     },
     output: {
       path: path.resolve(__dirname, "dist"),

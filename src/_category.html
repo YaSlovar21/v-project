@@ -14,77 +14,75 @@
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     <main>
-
       <div class="all-sect grid grid-cols-2">
-        <div class="flex flex-col items-start grid-flow-col relative mt-0 mb-20">
+        <div class="flex flex-col items-start grid-flow-col relative mt-0">
           <!--Блок 1-->
-          <div class="h-[50vh] border-r w-full  border-primary-gray pl-[30px]">
-            <h1 class="text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative">
+          <div class="h-[50vh] border-r border-b w-full  border-primary-gray pl-[30px]">
+            <h1 class="title-cat-prod">
               <%= categoryData.categoryName %>
             </h1>
             <p class="text-xl max-w-3xl">
               <%= categoryData.categoryDesc %>
             </p>
           </div>
-          <!--Блок 2 ЧЕРТЕЖИ если есть-->
-          <% if (categoryData.drawingss) { %>
-            <div class="border-r border-t border-primary-gray">
-              <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
-              <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
-                <% categoryData.drawings?.map((dId) => { %>
-                  <li class="p-3">
-                     <h3><%= drawings[dId].ruName %></h3>
-                     <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
-                    <figure class="product-draw drawfig my-3">
-                      <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
-                    </figure>
-                    <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
-                      Скачать чертеж
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                      </svg>
-                    </a>
-                  </li>
-                <% }) %>
-              </ul>
-            </div>
+        </div>
+
+        <div class="flex border-b border-primary-gray h-[50vh]">
+          <%  if (categoryData.main_img_id) { %>
+            <img class="main-category-img w-1/2 block mx-auto my-auto" <%= categoryData.razrez_img_id ? `data-hover="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/${ dModels[categoryData.razrez_img_id].fileName}"` : '' %> src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryData.main_img_id].fileName %>" alt="<%= categoryData.categoryName %>">
           <% } %>
-          <div class="grid grid-cols-3 w-full border-t border-primary-gray">
-            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[30px] py-6 border-l border-r border-b self-start border-primary-gray">Характеристики</h2>
-            <ul class="col-span-3 flex flex-col border-l border-r self-start border-primary-gray font-fr">
-              Тут характеристики (3 блок в 1 колонке)
-            </ul>
-          </div>
         </div>
-        <div class="self-start h-screen">
-          <div class="sticky-trigger ">
-            <div class="border-b border-primary-gray h-[50vh]">
-              <%  if (categoryData.main_img_id) { %>
-                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryData.main_img_id].fileName %>" alt="<%= categoryData.categoryName %>">
-              <% } %>
-            </div>
-            <div class="h-[50vh]">
-              <% if (categoryData.razrez_img_id) { %>
-                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryData.razrez_img_id].fileName %>" alt="<%= categoryData.categoryName %>">
-              <% } %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <div class="content">
-      <div class="">
-        <h2 class="up-title up-title_svg self-start text-primary-prblue">Каталог</h2>
-      </div>
-      <div class="col-span-4">
-        <h2 class="text-4xl  uppercase font-medium mb-5 text-primary-prblue font-fr">Основные типоразмеры резервуаров</h2>
+
 
       </div>
-    </div>
-    <ul class="odd:*:bg-blue-50">
-      <% categoryProducts.slice(0, 8).map((c, index)=> { %>
-        <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: {...c, index: index+1}, isDevServer}) %>
-      <% }) %>
-    </ul>
+      <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).length ) { %>
+        <section class="py-16 px-[30px] bg-blue-50"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+          <h2 class="text-4xl font-fr uppercase font-semibold text-primary-prblue mb-8">Фотографии изготовленных <%= categoryData.catRoditelniiPadezhName %></h2>
+          <div class="container-4 grid-cols-4 gap-5 gap-y-10">
+            <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).map((i)=> { %>
+              <div>
+                <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
+                  <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+                </figure>
+                <figcaption class="block mt-3 text-base text-primary-prblue uppercase"><%= i.title %></figcaption>
+              </div>
+            <% }) %>
+          </div>
+        </section>
+      <% } %>
+      <!--Блок 2 ЧЕРТЕЖИ если есть назовем Примеры комплетации!!!-->
+      <% if (categoryData.drawingss) { %>
+        <div class="border-r border-t border-primary-gray">
+          <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
+          <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
+            <% categoryData.drawings?.map((dId) => { %>
+              <li class="p-3">
+                 <h3><%= drawings[dId].ruName %></h3>
+                 <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
+                <figure class="product-draw drawfig my-3">
+                  <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
+                </figure>
+                <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                  Скачать чертеж
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      <% } %>
+
+    <% if (categoryProducts && categoryProducts.length) { %>
+      <h2 class="text-4xl mt-16 content  uppercase font-semibold mb-5 text-primary-prblue font-fr">Основные типоразмеры резервуаров</h2>
+      <ul class="odd:*:bg-blue-50">
+        <% categoryProducts.sort((a,b)=> a.sizeUtf - b.sizeUtf).map((c, index)=> { %>
+          <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: {...c, index: index+1}, isDevServer}) %>
+        <% }) %>
+      </ul>
+    <% } %>
+
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
    </div>

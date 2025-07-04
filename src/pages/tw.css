@@ -140,6 +140,14 @@
     @apply text-[57px] uppercase font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
   }
 
+  .title-cat-prod {
+    @apply text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative laptop:text-4xl;
+  }
+
+  .title-cat-intro {
+    @apply text-xl max-w-3xl mobile:text-base;
+  }
+
   .subtitle {
     @apply text-[33px] uppercase text-[#B9B9B9] font-semibold text-4xl mb-12 mvpc:text-3xl mobile:text-2xl;
   }

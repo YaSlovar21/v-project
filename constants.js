@@ -22,6 +22,27 @@ const standartClasses = {
 }
 
 
+/*
+ID категорий 
+1	gorizontalnye-rezervuary
+2	gorizontalnye-rezervuary-rgs
+3	gorizontalnye-rezervuary-rgsp
+4	gorizontalnye-rezervuary-rgsd
+5	vertikalnye-rezervuary
+6	pozharnye-rezervuary
+7	emkosti-ep-i-epp
+8	rezervuary-dlya-vody
+9	rezervuary-dlya-vody-bagv
+10	rezervuary-dlya-nefteproduktov
+11	drugie-tipy-rezervuarov
+12	rezervuary-iz-nerzhaveyushchey-stali
+13	silosy
+14	vodonapornye-bashni
+15	shablon-dlya-futerovki
+16	ciklony
+
+*/
+
 
 /*
 const seoSequence = ["sizeUtf", "thinAll", "product_diameter", "product_width", "product_height", "product_massa", "product_steel", "product_corrosion_temp", "product_medium_density"]
@@ -82,3 +103,4 @@ module.exports = {
   charsTitleDict,
   charsMeasureDict
 }
+
