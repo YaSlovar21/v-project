@@ -15,37 +15,6 @@
   </div>
 </footer>
 
-<!--Всплывающее меню-->
-<div class="popup popup_type_menu popup-menu">
-  <div class="popup__container popup__container_menu relative">
-    <button class="popup__button-close absolute -top-10 right-0 w-6 h-6">
-      <svg class="stroke-primary-lightgray" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-      </svg>
-    </button>
-    <nav class="popup__menu">
-      <a class="popup__navlink" href="/">Главная</a>
-      <div class="dropdown popup__navlink">
-        <input type="checkbox" class="dropdown__checkbox" id="menu-checkbox">
-        <label class="dropdown__label" for="menu-checkbox">Продукция</label>
-        <ul class="dropdown__list">
-          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.kompls %>">Комплектующие для теплообменников</a></li>
-          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.ptoFood %>">Пищевые теплообменники</a></li>
-        </ul>
-      </div>
-      <a class="popup__navlink" href="<%= ROUTES.uslugi %>">Услуги</a>
-      <a class="popup__navlink" href="<%= ROUTES.about %>">О компании</a>
-      <a class="popup__navlink" href="<%= ROUTES.contacts %>">Контакты</a>
-    </nav>
-    <!--
-    <div class="popup__menu">
-      <a class="popup__navlink popup__navlink_dop" href="/equipment-selection">Рассчитать теплообменник</a>
-      <a class="popup__navlink popup__navlink_dop" href="/catalog">Каталог</a>
-    </div>
-    -->
-  </div>
-</div>
-
 
 <!--Форма обратного звонка  -->
 <div class="popup items-start justify-end popup-callback bg-primary-lightgray bg-opacity-10">

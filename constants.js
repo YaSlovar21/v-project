@@ -3,15 +3,14 @@ const ROUTES = {
     uslugi: '/uslugi/',
     about: '/about/',
     contacts: '/contacts/',
+    objects: '/nashi-otgruzki/',
+    rgs: '/catalog/gorizontalnye-rezervuary/rgs/',
+    rvs: '/catalog/vertikalnye-rezervuary/',
+    silosy: '/catalog/silosy/'
 };
 
 const ROUTES_SPEC = {
-  /*
-    ptoNewGofr: '/plastinchatye-teploobmenniki/novaya-rossijskaya-plastina-teploobmennika.html',
-    ptoTeploizol: '/plastinchatye-teploobmenniki/teploizolyaciya.html',
-    ptoPayan: '/plastinchatye-teploobmenniki/plastinchatye-payanye-teploobmenniki/',
-    ptoPoddony: '/plastinchatye-teploobmenniki/poddony-iz-nerzhaveyushchej-stali.html'
-  */
+  
 };
 
 

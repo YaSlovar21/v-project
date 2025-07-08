@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%= require(`html-loader!./inner-google${isDevServer ? '-dev-server' : ''}.html`).default %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link href="<%= canonicalURL %>/<%= htmlWebpackPlugin.options.filename.split('index.html')[0] %>"  rel="canonical" />
+  </head>
+  <body class="page bg-white">
+    <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
+    <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    <main class="relative">
+      <ul class="even:*:bg-blue-50">
+        <% uslugi.map((u)=> { %> 
+          <li class="p-[30px]">
+            <h2><%= u.name %></h2>
+            <div class="grid grid-cols-6">
+              <p></p>
+              <div class="col-span-2">
+                <figure class="figure figure_mate max-h-[40vh] w-[calc(100%-40px)] ">
+                  <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/uslugi/<%=u.images[0]%>" alt="<%= `${u.name}-фото-1` %>">
+                </figure>
+                <% if (u.images.length>2) { %>
+                <div class="grid grid-cols-3">
+                  <% u.images.slice(1,).map((ui) => { %> 
+                  <figure class="figure figure_mate max-h-[40vh] w-[calc(100%-40px)] ">
+                    <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/uslugi/<%=ui%>" alt="<%= `${u.name}-фото-1` %>">
+                  </figure>
+                  <% }) %>
+                </div>
+                <% } %>
+              </div>
+              <div class="col-span-2">
+                <% if (u.descMD) { %> 
+                  <p class="text-lg mt-4"><%= markdown.toHTML(u.descMD) %></p>
+                <% } %>
+              </div>
+            </div>
+          </li>  
+        <% }) %>
+      </ul>
+    </main>
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+    <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+  </body>
+</html>

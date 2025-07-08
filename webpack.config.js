@@ -10,7 +10,9 @@ const canonicalURL = 'https://www.rezervuar22.ru'
 
 const { paths } = require('./sitemap');
 const { ROUTES, webpackRules,   charsSequence,  charsTitleDict,  charsMeasureDict } = require('./constants');
+const { formatDate } = require('./src/utils');
 
+var markdown = require( "markdown" ).markdown;
 
 
 const dateNow = (new Date()).toString();
@@ -41,7 +43,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
     },
     filename: `catalog/${linkPath}/index.html`,
     template: "./src/_category.html", // путь к файлу index.html
-    chunks: ["index", "smoother", "category"],
+    chunks: ["index", "smoother", "category", "all"],
   });
 }
 
@@ -60,7 +62,8 @@ function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, is
       gallery,
       charsSequence,  charsTitleDict,  charsMeasureDict, // потом перенесем в БД
       categoryInfo: categoriesByTextId[categoryTextId],
-      dModels
+      dModels,
+      markdown
     },
     title: title_my,
     meta: {
@@ -69,12 +72,12 @@ function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, is
     },
     filename: `catalog/${categoriesByTextId[categoryTextId].linkPath}/${textId}.html`,
     template: "./src/_product.html", // путь к файлу index.html
-    chunks: ["product"],
+    chunks: ["product", "all"],
   });
 } 
 
 //function generateConfig(infoBlogData, isDevServer) {
-function generateConfig(isDevServer, categories, products, gallery, popular , drawings) {
+function generateConfig(isDevServer, categories, products, gallery, popular , drawings, objects, uslugi) {
   console.log(drawings);
 
   //const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
@@ -100,7 +103,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       product: "./src/pages/product.js",
       category: "./src/pages/category.js",
       threed: "./src/pages/3d.js",
-
+      all: "./src/pages/all.js"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -237,7 +240,41 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           description: ``,
         },
         template: "./src/index.html", // путь к файлу index.html
-        chunks: ["index", "razrez"],
+        chunks: ["index", "razrez", "all"],
+      }),
+      new HtmlWebpackPlugin({
+        templateParameters: { 
+          canonicalURL,
+          ROUTES,
+          isDevServer,
+          objects,
+          formatDate
+        },
+        title: "Наши отгрузки",
+        meta: {
+          keywords: "",
+          description: ``,
+        },
+        filename: `nashi-otgruzki/index.html`,
+        template: "./src/_objects.html", // путь к файлу index.html
+        chunks: ["index", "all"],
+      }),
+      new HtmlWebpackPlugin({
+        templateParameters: { 
+          canonicalURL,
+          ROUTES,
+          isDevServer,
+          uslugi,
+          markdown
+        },
+        title: "Услуги по металлообработке",
+        meta: {
+          keywords: "",
+          description: ``,
+        },
+        filename: `uslugi/index.html`,
+        template: "./src/_uslugi.html", // путь к файлу index.html
+        chunks: ["index", "all"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -245,14 +282,14 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           ROUTES,
           isDevServer,
         },
-        title: "О производстве ",
+        title: "О производстве",
         meta: {
           keywords: "",
           description: ``,
         },
         filename: `${ROUTES.about.split('/')[1]}/index.html`,
         template: "./src/_about.html", // путь к файлу index.html
-        chunks: ["index", "threed"],
+        chunks: ["index", "threed", "all"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -267,7 +304,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `${ROUTES.contacts.split('/')[1]}/index.html`,
         template: "./src/contacts.html", // путь к файлу index.html
-        chunks: ["index", "smoother"],
+        chunks: ["index", "smoother", "all"],
       }),
   
 
@@ -308,6 +345,19 @@ function productsMapper(prods) {
   }));
 }
 
+function objectsMapper(objs) {
+  return objs.map(i=> ({
+    ...i,
+    tags: JSON.parse(i.tags)
+  }))
+}
+
+function uslugiMapper(ulist) {
+  return ulist.map(i=> ({
+    ...i,
+    images: JSON.parse(i.images)
+  }))
+}
 
 
 module.exports = () => {
@@ -357,9 +407,25 @@ module.exports = () => {
             },
           }).then(res => res.json()), 
 
+          //data[5] - objects
+          fetch1('https://api-cms.kupcov.com/data/objects', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8',
+            },
+          }).then(res => res.json()), 
+
+          //data[6] - uslugi
+          fetch1('https://api-cms.kupcov.com/data/uslugi', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8',
+            },
+          }).then(res => res.json()), 
+
         ])
         .then((data) => {
-          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]) ));
+          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]), objectsMapper(data[5]), uslugiMapper(data[6]) ));
         })
      
   });

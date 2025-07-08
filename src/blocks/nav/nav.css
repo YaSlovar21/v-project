@@ -119,12 +119,9 @@
     flex-direction: column;
     position: absolute;
     align-items: stretch;
-    top: calc(100% + 17px);
-    top: 0;
-    left: -16px;
-    left: calc(100% + 17px);
-    width: 210%;
-    width: 110%;
+    top: calc(100%);
+    left: 0;
+    width: 100%;
     z-index: 10;
     transition: opacity 0.5s ease-in-out, color .2s ease-in;
     transition: all .4s ease-in;
@@ -132,11 +129,11 @@
 
     visibility: hidden;
     opacity: 0;
-    @apply bg-primary-white border border-primary-red px-5 py-2;
+    @apply bg-primary-white border border-primary-red;
 }
 
 .nav__submenu_prod {
-  width: 350%;
+  width: 100%;
 }
 
 @media screen and (max-width:768px) {

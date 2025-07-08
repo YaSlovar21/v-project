@@ -42,7 +42,7 @@ module.exports = {
   
         'mobile': {'max': '639px'},
         // => @media (max-width: 639px) { ... }
-        'mobilesm': { 'max': '345px' },
+        'mobilesm': { 'max': '400px' },
       },
       colors: {
         primary: {

@@ -1,5 +1,5 @@
 :root {
-
+  --aside-width: 30px;
 }
 
 
@@ -23,7 +23,7 @@
 
 @media screen and (max-width: 768px) {
   :root {
-
+    --aside-width: 10px;
   }
 }
 

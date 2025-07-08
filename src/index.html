@@ -28,7 +28,7 @@
             <% }) %>
           </ul>-->
         </section>
-        <section class="content comparisonSection w-1/2 block mx-auto relative overflow-hidden" data-speed="1.3">
+        <section class="content comparisonSection w-1/2 mobile:w-full block mx-auto relative overflow-hidden" data-speed="1.3">
           <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
             <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
           </h2>
@@ -184,5 +184,6 @@
       <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     </div>
   </div>
+  <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
 </body>
 </html>

@@ -124,7 +124,7 @@
       <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).length ) { %>
         <section class="py-16 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
           <h2 class="text-4xl font-fr uppercase font-medium text-primary-white mb-8">Фотографии изготовленных <%= categoryInfo.catRoditelniiPadezhName %></h2>
-          <div class="container-4 grid-cols-4 gap-5 gap-y-10">
+          <div class="container-4 gap-5 gap-y-10">
             <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).map((i)=> { %>
               <div>
                 <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
@@ -139,13 +139,14 @@
       <% if (productData.introai) { %>
         <section class="content mb-10 py-16">
           <h2 class="text-4xl font-fr uppercase font-medium text-primary-prblue"><%= productData.h1 %></h2>
-          <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  productData.introai %></p>
+          <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  markdown.toHTML(productData.introai) %></p>
         </section>
       <% } %>
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
       </div>
     </div>
+     <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     <div class="cursor cursor--large"></div>
     <div class="cursor cursor--small"></div>
   </body>
