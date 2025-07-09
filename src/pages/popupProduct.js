@@ -5,7 +5,7 @@ import {
   popupImageSelectorsCongig
 } from '../js/utils/constants.js'
 
-const popupImage = new PopupWithImage(popupImageSelectorsCongig, popupImageSelector);
+const popupImage = new PopupWithImage(popupImageSelectorsCongig, '.popup-product');
 popupImage.setEventListeners();
 
 document.querySelectorAll('.popup-image-item').forEach((item) => {

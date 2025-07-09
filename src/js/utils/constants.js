@@ -42,8 +42,9 @@ export const popupWithMenuSelector = '.popup-menu';
 
 // конфиг селекторов в модальном окне с картиной и подписью
 export const popupImageSelectorsCongig = {
-    popupImageSelector: '.popup__image',
-    popupImageDescSelector: '.popup__image-description'
+    popupImageSelector: '.popup-image',
+    popupImageDescSelector: '.popup-image-description',
+    hasDocLinkSelector: '.popup-docpdf-link'
 }
 
 

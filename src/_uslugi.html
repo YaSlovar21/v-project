@@ -12,35 +12,45 @@
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     <main class="relative">
+      <div class="breadcrumbs">
+        <a class="breadcrumbs__link" href="/">Главная</a>
+        <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.uslugi %>">Услуги</a>
+      </div>
+      <h2 class="title-page content font-semibold mb-0 mt-32">Услуги по металлообработке</h2>
       <ul class="even:*:bg-blue-50">
-        <% uslugi.map((u)=> { %> 
-          <li class="p-[30px]">
-            <h2><%= u.name %></h2>
+        <% uslugi.map((u, index)=> { %> 
+          <li class="px-[30px] py-[calc(2*var(--aside-width))]">
+            <h2 class="title-page max-w-6xl text-5xl mt-0"><%= index+1 %>. <%= u.name %></h2>
             <div class="grid grid-cols-6">
               <p></p>
               <div class="col-span-2">
-                <figure class="figure figure_mate max-h-[40vh] w-[calc(100%-40px)] ">
+                <figure class="figure figure_mate w-[calc(100%-40px)] ">
                   <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/uslugi/<%=u.images[0]%>" alt="<%= `${u.name}-фото-1` %>">
                 </figure>
                 <% if (u.images.length>2) { %>
-                <div class="grid grid-cols-3">
-                  <% u.images.slice(1,).map((ui) => { %> 
-                  <figure class="figure figure_mate max-h-[40vh] w-[calc(100%-40px)] ">
+                <div class="grid grid-cols-3 mt-5">
+                  <% u.images.map((ui) => { %> 
+                  <figure class="figure figure_mate w-[calc(100%-40px)] ">
                     <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/uslugi/<%=ui%>" alt="<%= `${u.name}-фото-1` %>">
                   </figure>
                   <% }) %>
                 </div>
                 <% } %>
               </div>
-              <div class="col-span-2">
+              <div class="col-span-2 [&_p]:mb-2 text-lg">
                 <% if (u.descMD) { %> 
-                  <p class="text-lg mt-4"><%= markdown.toHTML(u.descMD) %></p>
+                  <%= markdown.toHTML(u.descMD) %>
                 <% } %>
               </div>
             </div>
           </li>  
         <% }) %>
       </ul>
+      Предоставим предложение в максимально короткие сроки, а так же изготовим в короткие и реальные сроки. При необходимости окрасим изделие.
+
+      Производство находится в г. Барнаул (Алтайский край).
+
+      Свяжитесь с нами. Мы предоставим Вам коммерческое предложение с расчетом стоимости, сроками изготовления и условиями доставки.
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
     <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>

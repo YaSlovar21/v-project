@@ -2,7 +2,7 @@
 <!--Всплывающее меню-->
 <div class="popup popup_type_menu popup-menu">
   <div class="popup__container popup__container_menu relative">
-    <button class="popup__button-close absolute -top-10 right-0 w-6 h-6">
+    <button class="popup-button-close absolute -top-10 right-0 w-6 h-6">
       <svg class="stroke-primary-lightgray" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
@@ -27,5 +27,22 @@
       <a class="popup__navlink popup__navlink_dop" href="/catalog">Каталог</a>
     </div>
     -->
+  </div>
+</div>
+
+
+<!--Product Popup-->
+<div class="popup popup-product bg-blue-50">
+  <div class="popup-container w-full flex justify-center overflow-y-auto relative">
+    <button class="popup-button-close absolute top-10 right-10 w-8 h-8">
+      <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="h-full">
+        <img class="popup-image" alt="картинка под загрузку" src="../../images/text-logo-big.svg">
+        <p class="popup-image-description"></p>
+        <a class="popup-docpdf-link uppercase font-fr text-3xl my-6 link-beauty flex" href="#">Смотреть документ PDF</a>
+    </div>
   </div>
 </div>

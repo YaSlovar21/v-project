@@ -72,7 +72,7 @@ function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, is
     },
     filename: `catalog/${categoriesByTextId[categoryTextId].linkPath}/${textId}.html`,
     template: "./src/_product.html", // путь к файлу index.html
-    chunks: ["product", "all"],
+    chunks: ["product", "productPopups", "all"],
   });
 } 
 
@@ -101,6 +101,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       razrez: "./src/pages/gsap-razrez.js",
       smoother: "./src/pages/smoother.js",
       product: "./src/pages/product.js",
+      productPopups: "./src/pages/popupProduct.js",
       category: "./src/pages/category.js",
       threed: "./src/pages/3d.js",
       all: "./src/pages/all.js"

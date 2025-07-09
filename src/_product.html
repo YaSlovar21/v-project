@@ -19,6 +19,11 @@
         <div class="flex flex-col <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
           <!--Блок 1-->
           <div class="h-[50vh] border-r w-full  border-primary-gray px-[30px] mobile:border-none">
+             <div class="breadcrumbs">
+              <a class="breadcrumbs__link" href="/">Главная</a>
+              <a class="breadcrumbs__link" href="/catalog/<%= categoryInfo.linkPath %>/"><%= categoryInfo.categoryName %></a>
+              <a class="breadcrumbs__link breadcrumbs__link_type_here" href="/catalog/<%= categoryInfo.linkPath %>/<%= productData.textId %>.html"><%= productData.h1_sm %></a>
+            </div>
             <h1 class="title-cat-prod">
               <%= productData.h1_sm %>
             </h1>
@@ -75,8 +80,8 @@
                   <li class="p-3">
                      <h3><%= drawings[dId].ruName %></h3>
                      <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
-                    <figure class="product-draw drawfig my-3">
-                      <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
+                    <figure class="product-draw popup-image-item drawfig my-3">
+                      <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="" data-pdf="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
                     </figure>
                     <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
                       Скачать чертеж
@@ -104,14 +109,14 @@
         </div>
         <div class="self-start h-screen mobile:hidden">
           <div class="sticky-trigger ">
-            <div class="border-b border-primary-gray h-[50vh]">
+            <div class="border-b border-primary-gray flex items-center h-[50vh]">
               <% if (productData.main_img_id  ) {%> <!--&& dModels[productData.main_img_id].fileName-->
                 <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } else if (categoryInfo.main_img_id) { %>
                 <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryInfo.main_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } %>
             </div>
-            <div class="h-[50vh]">
+            <div class="h-[50vh] flex items-center">
               <% if (productData.razrez_img_id ) {%>
                 <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } else if (categoryInfo.razrez_img_id) { %>

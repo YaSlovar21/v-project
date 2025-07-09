@@ -14,6 +14,10 @@
         <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
         <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
         <div class="content relative mt-10">
+          <div class="breadcrumbs">
+            <a class="breadcrumbs__link" href="/">Главная</a>
+            <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.contacts %>">Контакты</a>
+          </div>
           <h1 class="title-page font-fr">Контакты</h1>
           <ul class="container-2 gap-y-10 gap-x-0 mb-40">
             <li class="row-span-2 pr-10">

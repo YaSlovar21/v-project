@@ -12,6 +12,10 @@
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
     <main class="content relative mt-10 mb-20">
+      <div class="breadcrumbs">
+        <a class="breadcrumbs__link" href="/">Главная</a>
+        <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.about %>">О компании</a>
+      </div>
       <h1 class="text-primary-prblue mb-4 mt-10 text-7xl ml-[16.6%]  uppercase font-semibold font-fr relative">О производстве</h1>
       <p class="indent-[16.6%] text-2xl text-primary-prblue">
         Стальные емкости и резервуары от производителя в Барнауле

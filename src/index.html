@@ -28,11 +28,11 @@
             <% }) %>
           </ul>-->
         </section>
-        <section class="content comparisonSection w-1/2 mobile:w-full block mx-auto relative overflow-hidden" data-speed="1.3">
-          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 text-primary-lightgray">
+        <section class="content comparisonSection w-1/2 mobile:w-full block mx-auto relative overflow-hidden mobile:overflow-visible" data-speed="1.3">
+          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 mobile:-top-24 text-primary-lightgray">
             <img src="<%= require('./images/text-logo.svg')%>" alt="Текстовое лого">
           </h2>
-          <p class="text-[100px] mvpc:text-[80px] olpc:text-[50px] font-fr absolute bottom-[160px] mvpc:bottom-[120px] olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
+          <p class="text-[100px] mvpc:text-[80px] olpc:text-[50px] font-fr absolute bottom-[160px] mvpc:bottom-[120px] mobile:bottom-0 olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
           <div class="comparisonImage beforeImage" >
             <img class="object-contain object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
           </div>
