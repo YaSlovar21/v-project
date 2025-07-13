@@ -4,8 +4,19 @@ import {
   popupImageSelector,     //попап с картинкой (селектор)
   popupImageSelectorsCongig
 } from '../js/utils/constants.js'
+import { smoother } from './smoother.js';
 
-const popupImage = new PopupWithImage(popupImageSelectorsCongig, '.popup-product');
+
+function handleClose() {
+  smoother.paused(false);
+}
+
+const popupImage = new PopupWithImage(
+  popupImageSelectorsCongig, 
+  '.popup-product',
+  handleClose
+);
+
 popupImage.setEventListeners();
 
 document.querySelectorAll('.popup-image-item').forEach((item) => {
@@ -17,6 +28,7 @@ document.querySelectorAll('.popup-image-item').forEach((item) => {
         desc: evt.target.querySelector('img') ? evt.target.querySelector('img').alt : evt.target.alt,
         docPdfLink: evt.target.querySelector('img') ? evt.target.querySelector('img').dataset.pdf : evt.target.dataset.pdf,
       });
+      smoother.paused(true);
     });
   });
   

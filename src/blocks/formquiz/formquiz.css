@@ -10,9 +10,13 @@
 }
 
 .formquiz__inputcheckbox:checked + .formquiz__figchoice{
-  @apply bg-primary-darkbg text-primary-red border-primary-red;
+  @apply bg-primary-darkbg text-primary-prred border-primary-prred;
 }
 
+.formquiz__inputcheckbox:checked + .formquiz__figchoice::after{
+  @apply content-[''] w-3 h-3 bg-primary-prred rounded-full absolute top-3 left-3;
+
+}
 
 .formquiz__inputsizecheck:checked + .formquiz__sizechoice {
  @apply border-primary-red bg-primary-red;

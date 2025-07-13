@@ -18,7 +18,7 @@
       <div class="all-sect grid grid-cols-2 laptop:grid-cols-1">
         <div class="flex flex-col <%= !productData.drawingsGalleryIds ? 'grid-rows-2' : '' %> items-start grid-flow-col relative mt-0 mb-20">
           <!--Блок 1-->
-          <div class="h-[50vh] border-r w-full  border-primary-gray px-[30px] mobile:border-none">
+          <div class="h-[50vh] border-r w-full  border-primary-gray px-[var(--aside-width)] laptop:h-auto mobile:border-none">
              <div class="breadcrumbs">
               <a class="breadcrumbs__link" href="/">Главная</a>
               <a class="breadcrumbs__link" href="/catalog/<%= categoryInfo.linkPath %>/"><%= categoryInfo.categoryName %></a>
@@ -68,22 +68,22 @@
             <% } %>
             <!--Картинка для мобильного-->
             <% if (productData.main_img_id) {%> <!--&& dModels[productData.main_img_id].fileName-->
-              <img class="hidden mobile:block w-full mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+              <img class="hidden mobile:block w-full mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
             <% } %>
           </div>
           <!--Блок 2 ЧЕРТЕЖИ если есть-->
           <% if (productData.drawingsGalleryIds) { %>
-            <div class="border-r border-t border-primary-gray mobile:border-none">
-              <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
-              <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px] laptop:grid-cols-2 mobile:grid-cols-1">
+            <div class="border-r border-t border-primary-gray bg-blue-100 mobile:border-none">
+              <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[var(--aside-width)] py-6 self-start">Чертежи</h2>
+              <ul class="grid grid-cols-3 gap-0  pl-[var(--aside-width)] laptop:grid-cols-2 mobile:grid-cols-1">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
                   <li class="p-3">
                      <h3><%= drawings[dId].ruName %></h3>
                      <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
                     <figure class="product-draw popup-image-item drawfig my-3">
-                      <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="" data-pdf="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                      <img src="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="" data-pdf="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= drawings[dId].slugifyPdfFile %>">
                     </figure>
-                    <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                    <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= drawings[dId].slugifyPdfFile %>">
                       Скачать чертеж
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -95,11 +95,11 @@
             </div>
           <% } %>
           <div class="grid grid-cols-3 w-full border-t border-primary-gray">
-            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[30px] py-6 border-l border-r border-b self-start border-primary-gray laptop:border-r-0 laptop:border-b">Характеристики</h2>
+            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[var(--aside-width)] pb-6 pt-[calc(var(--aside-width)*2)] border-l border-r border-b self-start border-primary-gray laptop:border-r-0 laptop:border-b">Характеристики</h2>
             <ul class="col-span-3 flex flex-col border-l border-r self-start border-primary-gray font-fr">
               <%  charsSequence.map((i, index)=> { if (productData[i]) { %>
                 <li class="border-b grid grid-cols-3 border-primary-gray p-3 justify-between text-base">
-                  <span class="pl-[30px]">[ <%= index+1 %> ]</span>
+                  <span class="pl-[var(--aside-width)]">[ <%= index+1 %> ]</span>
                   <h3 class="text-lg font-medium"><%= charsTitleDict[i] %></h3>
                   <p class="basis-24 w-full text-center font-['Inter'] text-sm"><%= productData[i] %> <%= charsMeasureDict[i] || '' %></p>
                 </li>
@@ -111,29 +111,29 @@
           <div class="sticky-trigger ">
             <div class="border-b border-primary-gray flex items-center h-[50vh]">
               <% if (productData.main_img_id  ) {%> <!--&& dModels[productData.main_img_id].fileName-->
-                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+                <img class="w-1/2 block mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } else if (categoryInfo.main_img_id) { %>
-                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryInfo.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+                <img class="w-1/2 block mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[categoryInfo.main_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } %>
             </div>
             <div class="h-[50vh] flex items-center">
               <% if (productData.razrez_img_id ) {%>
-                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[productData.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
+                <img class="w-1/2 block mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[productData.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } else if (categoryInfo.razrez_img_id) { %>
-                <img class="w-1/2 block mx-auto" src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryInfo.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
+                <img class="w-1/2 block mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[categoryInfo.razrez_img_id].fileName %>" alt="<%= productData.h1 %>">
               <% } %>
             </div>
           </div>
         </div>
       </div>
       <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).length ) { %>
-        <section class="py-16 bg-primary-prblue px-[30px]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+        <section class="py-16 bg-primary-prblue px-[var(--aside-width)]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
           <h2 class="text-4xl font-fr uppercase font-medium text-primary-white mb-8">Фотографии изготовленных <%= categoryInfo.catRoditelniiPadezhName %></h2>
           <div class="container-4 gap-5 gap-y-10">
             <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).map((i)=> { %>
               <div>
                 <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
-                  <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+                  <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>">
                 </figure>
                 <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
               </div>
@@ -142,9 +142,11 @@
         </section>
       <% } %>
       <% if (productData.introai) { %>
-        <section class="content mb-10 py-16">
+        <section class="content content-ai [&_p_strong]:block [&_p_strong]:mb-2  mb-10 py-16">
           <h2 class="text-4xl font-fr uppercase font-medium text-primary-prblue"><%= productData.h1 %></h2>
-          <p class="text-base mt-8 max-w-[50%] text-primary-darkbg"><%=  markdown.toHTML(productData.introai) %></p>
+          <div class="text-base mt-8 max-w-[50%] text-primary-darkbg ">
+            <%=  markdown.toHTML(productData.introai) %>
+          </div>
         </section>
       <% } %>
     </main>
@@ -152,7 +154,9 @@
       </div>
     </div>
      <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
-    <div class="cursor cursor--large"></div>
+    <div class="cursor cursor-large">
+      <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#003049"><path d="M446.67-278.67h66.66V-444h165.34v-66.67H513.33V-676h-66.66v165.33H281.33V-444h165.34v165.33ZM479.73-80Q397-80 324-111.5 251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480v318.67q0 33.55-23.89 57.44T798.67-80H479.73Zm.27-66.67q139.58 0 236.46-96.87 96.87-96.88 96.87-236.46t-96.87-236.46Q619.58-813.33 480-813.33t-236.46 96.87Q146.67-619.58 146.67-480t96.87 236.46q96.88 96.87 236.46 96.87Zm0-330.66Z"/></svg>
+    </div>
     <div class="cursor cursor--small"></div>
   </body>
 </html>

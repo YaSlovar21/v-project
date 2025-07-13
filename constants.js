@@ -6,11 +6,16 @@ const ROUTES = {
     objects: '/nashi-otgruzki/',
     rgs: '/catalog/gorizontalnye-rezervuary/rgs/',
     rvs: '/catalog/vertikalnye-rezervuary/',
-    silosy: '/catalog/silosy/'
+    silosy: '/catalog/silosy/',
+    
+    sonsent: '/sonsent/'
 };
 
-const ROUTES_SPEC = {
-  
+const ROUTES_FOR_SITEMAP = {
+  uslugi: '/uslugi/',
+  about: '/about/',
+  contacts: '/contacts/',
+  objects: '/nashi-otgruzki/',
 };
 
 
@@ -20,6 +25,13 @@ const standartClasses = {
   ctaButtonClass: 'cta-button',
 }
 
+
+const sonsentCompanyObj = {
+  companyName: 'ООО «Викинг»',
+  companyInn: '2224181910',
+  companyOgrn: '1162225088046',
+  companySonsentEmail: 'sales.oooviking@gmail.com'
+}
 
 /*
 ID категорий 
@@ -95,11 +107,14 @@ const charsMeasureDict = {
 }
 
 module.exports = {
-  ROUTES_SITEMAP: ROUTES,
-  ROUTES: {...ROUTES, ...ROUTES_SPEC},
+  ROUTES_SITEMAP: ROUTES_FOR_SITEMAP,
+  ROUTES: {...ROUTES},
   standartClasses,
   charsSequence,
   charsTitleDict,
-  charsMeasureDict
+  charsMeasureDict,
+
+  /* данные для обработки перс данных */
+  sonsentCompanyObj
 }
 

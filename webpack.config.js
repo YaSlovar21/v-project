@@ -6,11 +6,11 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const HttpsProxyAgent = require('https-proxy-agent');
 const fetch1 = require('node-fetch');
 
-const canonicalURL = 'https://www.rezervuar22.ru'
+const canonicalURL = 'http://www.rezervuar22.ru.website.yandexcloud.net'
 
 const { paths } = require('./sitemap');
-const { ROUTES, webpackRules,   charsSequence,  charsTitleDict,  charsMeasureDict } = require('./constants');
-const { formatDate } = require('./src/utils');
+const { ROUTES, webpackRules,   charsSequence,  charsTitleDict,  charsMeasureDict, sonsentCompanyObj } = require('./constants');
+const { formatDate, pushPathToSitemap } = require('./src/utils');
 
 var markdown = require( "markdown" ).markdown;
 
@@ -19,10 +19,14 @@ const dateNow = (new Date()).toString();
 let generatedPaths = [];
 
 
+
 function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer, dModels, gallery) {
   const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
   const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
   //может добавить фильтр isPublished??
+  
+  const dateNow = (new Date()).toString();
+  generatedPaths.push({ path: `/catalog/${linkPath}/`, lastmod: dateNow, priority: 0.9, changefreq: 'monthly' });
 
   return new HtmlWebpackPlugin({
     templateParameters: { 
@@ -34,7 +38,8 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
       categoryProducts,
       categoriesByTextId,
       dModels,
-      gallery
+      gallery,
+      markdown
     },
     title: categoryName,
     meta: {
@@ -50,6 +55,10 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
 // --- ПРОДУКТ --- //
 function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, isDevServer, gallery, dModels) {
   const { id,	textId,	categoryTextId,	title_my,	h1,	intro,	charsJson,	seoKeywordsMy,	seoDescription,	isPublished	}= product;
+  
+  const dateNow = (new Date()).toString();
+  generatedPaths.push({ path: `/catalog/${categoriesByTextId[categoryTextId].linkPath}/${textId}.html`, lastmod: dateNow, priority: 0.9, changefreq: 'monthly' });
+  
   //нет картинки в карточках товаров
   return new HtmlWebpackPlugin({
     templateParameters: { 
@@ -307,13 +316,28 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         template: "./src/contacts.html", // путь к файлу index.html
         chunks: ["index", "smoother", "all"],
       }),
-  
+      new HtmlWebpackPlugin({
+        templateParameters: { 
+          canonicalURL,
+          ROUTES,
+          sonsentCompanyObj,
+          isDevServer,
+        },
+        title: "Соглашение об обработке персональных данных",
+        meta: {
+          keywords: "",
+          description: ``,
+        },
+        filename: `sonsent/index.html`,
+        template: "./src/sonsent.html", // путь к файлу index.html
+        chunks: ["index", "all"],
+      }),
 
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: "[name].css",
       }),
-      //new SitemapPlugin({ base: canonicalURL, paths: paths.concat(generatedPaths).sort((a,b)=> b.priority - a.priority) }),
+      new SitemapPlugin({ base: canonicalURL, paths: paths.concat(generatedPaths).sort((a,b)=> b.priority - a.priority) }),
     ].concat(htmlCategoriesPagePlugins, htmlProductPagesPlugins )//, htmlTisPlugins, htmlArticlesPlugins,htmlSpecPagesPluginst),
   }
 };

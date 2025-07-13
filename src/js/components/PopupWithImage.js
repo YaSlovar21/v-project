@@ -1,10 +1,14 @@
 import Popup from './Popup.js';
 
 export default class PopupWithImage extends Popup {
-    constructor({popupImageSelector, popupImageDescSelector, hasDocLinkSelector}, popupSelector) {
+    constructor({popupImageSelector, popupImageDescSelector, hasDocLinkSelector}, popupSelector, handleClose) {
         super(popupSelector)
         this._popupImage = this._modal.querySelector(popupImageSelector);
         this._popupImageDesc = this._modal.querySelector(popupImageDescSelector);
+
+        if (handleClose) {
+            this._handleCloseFunc = handleClose;
+        }
 
         if (hasDocLinkSelector) {
             this._popupLink = this._modal.querySelector(hasDocLinkSelector);
@@ -23,6 +27,7 @@ export default class PopupWithImage extends Popup {
     }
 
     close() {
+        this._handleCloseFunc();
         setTimeout(()=> {
           this._popupImage.src = "";
         }, 500)

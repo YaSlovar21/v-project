@@ -57,5 +57,18 @@
 }
 
 .container-spt {
-  opacity: .2;
+ 
+}
+
+/* 2 класса для бегущего наложения на абзац на главной*/
+.linemasc {
+  @apply bg-black origin-left;
+}
+
+.linex {
+  @apply whitespace-nowrap text-primary-prblue;
+}
+
+.content-ai p p strong {
+  @apply block mb-2;
 }

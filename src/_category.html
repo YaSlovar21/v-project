@@ -33,7 +33,7 @@
 
         <div class="flex border-b border-primary-gray h-[50vh]">
           <%  if (categoryData.main_img_id) { %>
-            <img class="main-category-img w-1/2 block mx-auto my-auto" <%= categoryData.razrez_img_id ? `data-hover="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/${ dModels[categoryData.razrez_img_id].fileName}"` : '' %> src="http://www.rezervuar22.ru.website.yandexcloud.net/api-images/gallery/<%= dModels[categoryData.main_img_id].fileName %>" alt="<%= categoryData.categoryName %>">
+            <img class="main-category-img w-1/2 block mx-auto my-auto" <%= categoryData.razrez_img_id ? `data-hover="${canonicalURL}/api-images/gallery/${ dModels[categoryData.razrez_img_id].fileName}"` : '' %> src="<%= canonicalURL %>/api-images/gallery/<%= dModels[categoryData.main_img_id].fileName %>" alt="<%= categoryData.categoryName %>">
           <% } %>
         </div>
 
@@ -47,7 +47,7 @@
               <div class="">
                 <div class="aspect-[16/9] w-full flex justify-start">
                   <figure class="figure h-full  figure_mate  overflow-hidden relative rounded-sm">
-                    <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/gallery/<%= i.fileName %>">
+                    <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>">
                   </figure>
                 </div>
                 <figcaption class="block pt-2 border-t border-primary-lightgray mt-3 text-sm text-primary-prblue uppercase"><%= i.title %></figcaption>
@@ -66,9 +66,9 @@
                  <h3><%= drawings[dId].ruName %></h3>
                  <!-- <h3 class="font-fr mb-2 mt-8">Заголовок чертежа</h3>-->
                 <figure class="product-draw drawfig my-3">
-                  <img src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
+                  <img src="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= drawings[dId].slugifyPngFile %>" class="w-full" alt="">
                 </figure>
-                <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/<%= drawings[dId].slugifyPdfFile %>">
+                <a class="flex gap-2 font-fr"  target="_blank" href="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= drawings[dId].slugifyPdfFile %>">
                   Скачать чертеж
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-blue-600">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -81,13 +81,27 @@
       <% } %>
 
     <% if (categoryProducts && categoryProducts.length) { %>
-      <h2 class="text-4xl mt-16 content  uppercase font-semibold mb-5 text-primary-prblue font-fr">Основные типоразмеры резервуаров</h2>
-      <ul class="odd:*:bg-blue-50">
-        <% categoryProducts.sort((a,b)=> a.sizeUtf - b.sizeUtf).map((c, index)=> { %>
-          <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: {...c, index: index+1}, isDevServer}) %>
-        <% }) %>
-      </ul>
+      <section>
+        <h2 class="text-4xl mt-16 content  uppercase font-semibold mb-5 text-primary-prblue font-fr">Основные типоразмеры резервуаров</h2>
+        <ul class="odd:*:bg-blue-50">
+          <% categoryProducts.sort((a,b)=> a.sizeUtf - b.sizeUtf).map((c, index)=> { %>
+            <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: {...c, index: index+1}, isDevServer}) %>
+          <% }) %>
+        </ul>
+      </section>
     <% } %>
+
+    <% if (categoryData.categoryDescBottom) { %>
+      <section class="additional-bottom-category-desc p-[var(--aside-width)]">
+        <h2 class="text-4xl mt-16 uppercase font-semibold mb-5 text-primary-prblue font-fr">Подробнее про <%= categoryData.categoryName %></h2>
+        <% if(categoryData.isDescBottomMd) { %> 
+          <%= markdown.toHTML(categoryData.categoryDescBottom) %>
+        <% } else { %>
+          <%= categoryData.categoryDescBottom %>
+        <% } %> 
+      </section>
+    <% } %> 
+    
 
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>

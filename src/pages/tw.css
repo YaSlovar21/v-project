@@ -141,7 +141,7 @@
   }
 
   .title-cat-prod {
-    @apply text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative laptop:text-4xl;
+    @apply text-primary-prblue mb-4 mt-10 text-6xl uppercase font-medium font-fr relative laptop:text-5xl;
   }
 
   .title-cat-intro {

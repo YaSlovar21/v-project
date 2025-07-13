@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.html"],
+  
   theme: {
     fontFamily: {
       'fr': ['Fira', 'Arial', 'sans-serif'],

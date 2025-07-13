@@ -20,10 +20,10 @@ ScrollSmoother.create({
 });
 
 const draws = Array.from(document.querySelectorAll('.product-draw'))
-const cursorOuter = document.querySelector(".cursor--large");
-const cursorInner = document.querySelector(".cursor--small");
+const cursorOuter = document.querySelector(".cursor-large");
+//const cursorInner = document.querySelector(".cursor--small");
 
-cursorInner.classList.add('hidden');
+//cursorInner.classList.add('hidden');
 cursorOuter.classList.add('hidden');
 
 const listenerCurs = (e)=> {
@@ -32,8 +32,7 @@ const listenerCurs = (e)=> {
 
 function updateCursor(evt) {
   console.log('обновляем курсор на объекте');
-  //const rectMap = evt.target.closest('.product-draw').getBoundingClientRect();
-	gsap.to([cursorInner, cursorOuter], {
+	gsap.to([cursorOuter], {
 		x:  evt.pageX ,
 		y:  evt.pageY ,
 	});
@@ -44,7 +43,7 @@ if ( draws && draws.length ) {
   draws.map(z => {
     z.addEventListener("mouseenter", (evt)=> {
       console.log('зашли')
-      cursorInner.classList.remove('hidden');
+      //cursorInner.classList.remove('hidden');
       cursorOuter.classList.remove('hidden');
       window.addEventListener("mousemove", listenerCurs);
       window.addEventListener("scroll", listenerCurs);
@@ -52,7 +51,7 @@ if ( draws && draws.length ) {
 
     z.addEventListener("mouseleave", (evt)=> {
       console.log('вышли с', z)
-      cursorInner.classList.add('hidden');
+      //cursorInner.classList.add('hidden');
       cursorOuter.classList.add('hidden');
       window.removeEventListener("mousemove", listenerCurs)
       window.removeEventListener("scroll", listenerCurs);

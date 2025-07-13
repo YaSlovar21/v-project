@@ -31,9 +31,9 @@
   pointer-events: none;
   z-index: 100;
 }
-.cursor--large {
+.cursor-large {
   --size: 40px;
-  border: 1px solid #1d33fc;
+  
 }
 
 .cursor--small {
