@@ -1,13 +1,14 @@
 
 <!--Всплывающее меню-->
-<div class="popup popup_type_menu popup-menu">
-  <div class="popup__container popup__container_menu relative">
-    <button class="popup-button-close absolute -top-10 right-0 w-6 h-6">
-      <svg class="stroke-primary-lightgray" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+<div class="popup popup-menu bg-blue-50">
+  <div class="popup__container flex flex-col justify-between w-full p-[var(--aside-width)] relative">
+    <button class="popup-button-close absolute top-10 right-10 w-6 h-6">
+      <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
     </button>
-    <nav class="popup__menu">
+    <img class="w-1/2 mt-3" src="../../images/text-logo.svg" alt="Производитель резервуаров Викинг">
+    <nav class="flex flex-col w-full border-t border-r border-l border-primary-gray *:border-b *:border-primary-gray">
       <a class="popup__navlink" href="/">Главная</a>
       <div class="dropdown popup__navlink">
         <input type="checkbox" class="dropdown__checkbox" id="menu-checkbox">
@@ -32,17 +33,59 @@
 
 
 <!--Product Popup-->
-<div class="popup popup-product bg-blue-50 bg-opacity-50">
+<div class="popup popup-product bg-blue-50">
   <div class="popup-container w-full flex justify-center overflow-y-auto relative">
-    <button class="popup-button-close absolute top-10 right-10 w-8 h-8">
+    <button class="popup-button-close absolute top-10 right-10 w-8 h-8 transition-all hover:rotate-90">
       <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
     </button>
-    <div class="h-full">
+    <div class="h-full py-10">
         <img class="popup-image" alt="картинка под загрузку" src="../../images/text-logo-big.svg">
         <p class="popup-image-description"></p>
         <a class="popup-docpdf-link uppercase font-fr text-3xl my-6 link-beauty flex" href="#">Смотреть документ PDF</a>
+    </div>
+  </div>
+</div>
+
+<!--MainPopupWithForm-->
+<div class="popup popup-with-form">
+  <div class="popup-container bg-white ml-auto w-1/2 border-l border-primary-lightgray box-content overflow-y-auto relative">
+    <button class="popup-button-close absolute top-10 right-10 w-8 h-8 transition-all hover:rotate-90">
+      <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="h-full py-10">
+        <form class="form-in-popup h-full flex flex-col p-[var(--aside-width)]" novalidate>
+        <h3 class="popup-heading text-4xl uppercase font-semibold font-fr text-primary-prblue">Отправить заявку на расчёт</h3>
+        <div class="flex flex-col justify-between mt-[10vh]">
+                <label class="form__field basis-full mb-4">
+                <input class="form__input form__input_up raschet-bem__input_type_flex" placeholder="Ваше имя или организация" type="text" name="name" id="name-input" required minlength="1">
+                <span class="form__input-error name-input-error"></span>
+                </label>
+                <label class="form__field basis-full  mb-4">
+                <!--<span class="form__label-title block mobile:hidden">Ваш телефон</span>
+                <span class="form__label-title hidden mobile:block">Телефон</span>-->
+                <input placeholder="Телефон" type="tel" name="tel" id="tel-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
+                <span class="form__input-error tel-input-error"></span>
+                </label>
+                <label class="form__field basis-full mb-4">
+                <!--<span class="form__label-title block mobile:hidden">Email, куда отправить расчёт</span>
+                <span class="form__label-title hidden mobile:block">Email</span>-->
+                <input  placeholder="E-mail" type="email" name="email" id="email-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
+                <span class="form__input-error email-input-error"></span>
+                </label>
+            </div>
+            <div class="mt-8 w-full flex-1 flex flex-col">
+                <label class="form__field form__field_type_textarea flex-1">
+                  <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Опишите Вашу задачу</h2>
+                  <textarea class="popup-textarea-input form__input form__input_up form__input_type_textarea " placeholder="Опишите Вашу задачу" name="comment" id="comment-pto-free-input"></textarea>
+                  <span class="form__input-error comment-pto-free-input-error"></span>
+                </label>
+                <button class="ui-button form__submit-button w-full" type="submit">Отправить</button>
+            </div>
+          </form>
     </div>
   </div>
 </div>

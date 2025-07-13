@@ -11,7 +11,7 @@
   <body class="page bg-white">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
-    <main class="relative">
+    <main class="relative p-[var(--aside-width)]">
       <div class="breadcrumbs">
         <a class="breadcrumbs__link" href="/">Главная</a>
         <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.sonsent %>">Соглашение об обработке персональных данных</a>

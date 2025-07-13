@@ -3,11 +3,7 @@
   display: none;
   border: none;
   outline: none;
+
+  @apply pr-0 laptop:block; 
 }
 
-@media screen and (max-width: 1024px) {
-  .nav__mobile-icon {
-    display: block;
-    padding-right: 0;
-  }
-}

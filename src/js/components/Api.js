@@ -32,14 +32,13 @@ export default class Api {
   }
 
 
-    sendCallForm(formDataJson) {
-      return fetch(`${this._baseUrl}/forms/call-form`, {
+    sendSmallForm(formDataJson) {
+      return fetch(`${this._baseUrl}/forms/small-form`, {
         method : 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formDataJson),
-        //isBase64Encoded: false
     })
     .then((response) => {
         return this._isResponseOk(response);
@@ -47,7 +46,7 @@ export default class Api {
     }
 
     sendBigForm(formDataJson) {
-      return fetch(`${this._baseUrl}/forms/base-form`, {
+      return fetch(`${this._baseUrl}/forms/big-form`, {
         method : 'POST',
         headers: {
           'Content-Type': 'application/json',

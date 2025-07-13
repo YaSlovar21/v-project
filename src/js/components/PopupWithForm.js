@@ -7,13 +7,11 @@ export default class PopupWithForm extends Popup {
         this._formCleanError = formCleanError;
         this._formElement = this._modal.querySelector(formSelector); //.popup__form
 
-        this._heading = this._modal.querySelector('.popup-form__title');
-        //this._comment = this._modal.querySelector('#comment-free-input');
+        this._heading = this._modal.querySelector('.popup-heading');
+        this._comment = this._modal.querySelector('.popup-textarea-input');
 
         this._inputSelector = formInputSelector;
-
         this._checker = checherValidation;
-
     }
 
 
@@ -30,14 +28,14 @@ export default class PopupWithForm extends Popup {
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value;
         });
-        console.log(this._formValues);
+        //console.log(this._formValues);
         // возвращаем объект значений
         return this._formValues;
     }
 
     open(heading, comment) {
-      this._heading.textContent = heading ? heading : 'Заявка в свободной форме';
-      //this._comment.textContent = comment ? comment : '';
+      this._heading.textContent = heading ? heading : 'Отправить заявку на расчёт';
+      this._comment.textContent = comment ? comment : '';
       super.open();
     }
 

@@ -64,7 +64,7 @@ document.fonts.ready.then(() => {
 });
 
 */
-document.addEventListener("DOMContentLoaded", () => {
+document.fonts.ready.then(() => {
   const originalText = document.getElementById("original-text");
   const animatedText = document.getElementById("animated-text");
   

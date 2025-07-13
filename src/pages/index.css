@@ -20,6 +20,10 @@
 
 @import url(../blocks/figure/figure.css);
 
+@import url(../blocks/animatecss/_base.css);
+@import url(../blocks/animatecss/_vars.css);
+@import url(../blocks/animatecss/fading_entrances/fadeInRight.css);
+
 .comparisonSection {
   position: relative;
   padding-bottom: 56.25%; /* to maintain aspect ratio (responsive!) */

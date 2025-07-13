@@ -12,10 +12,10 @@
   text-transform: uppercase;
   text-decoration: underline;
   margin-bottom: 3px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   margin-right: 5px;
-  @apply text-primary-prblue;
+  @apply text-primary-prblue font-fr;
 }
 
 

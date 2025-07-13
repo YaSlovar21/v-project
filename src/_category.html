@@ -17,7 +17,7 @@
       <div class="all-sect grid grid-cols-2">
         <div class="flex flex-col items-start grid-flow-col relative mt-0">
           <!--Блок 1-->
-          <div class="h-[50vh] border-r border-b w-full  border-primary-gray pl-[30px]">
+          <div class="h-[50vh] border-r border-b w-full  border-primary-gray pl-[var(--aside-width)] pt-[calc(var(--aside-width))]">
             <div class="breadcrumbs">
               <a class="breadcrumbs__link" href="/">Главная</a>
               <a class="breadcrumbs__link breadcrumbs__link_type_here" href="/catalog/<%= categoryData.linkPath %>/"><%= categoryData.categoryName %></a>
@@ -40,7 +40,7 @@
 
       </div>
       <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).length ) { %>
-        <section class="py-16 px-[30px] "> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+        <section class="py-16 px-[var(--aside-width)] "> <!--ВНИМАНИЕ КОСТЫЛЬ-->
           <h2 class="text-4xl font-fr uppercase font-semibold text-primary-prblue mb-8">Фотографии изготовленных <%= categoryData.catRoditelniiPadezhName %></h2>
           <div class="container-4 grid-cols-4 gap-5 gap-y-10">
             <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).map((i)=> { %>
@@ -60,7 +60,7 @@
       <% if (categoryData.drawingss) { %>
         <div class="border-r border-t border-primary-gray">
           <!--<h2 class="text-2xl uppercase font-fr font-medium">Чертежи</h2>-->
-          <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[30px]">
+          <ul class="grid grid-cols-3 gap-0 bg-blue-100 pl-[var(--aside-width)]">
             <% categoryData.drawings?.map((dId) => { %>
               <li class="p-3">
                  <h3><%= drawings[dId].ruName %></h3>
@@ -92,7 +92,7 @@
     <% } %>
 
     <% if (categoryData.categoryDescBottom) { %>
-      <section class="additional-bottom-category-desc p-[var(--aside-width)]">
+      <section class="additional-bottom-category-desc prose prose-xl prose-vik p-[var(--aside-width)]">
         <h2 class="text-4xl mt-16 uppercase font-semibold mb-5 text-primary-prblue font-fr">Подробнее про <%= categoryData.categoryName %></h2>
         <% if(categoryData.isDescBottomMd) { %> 
           <%= markdown.toHTML(categoryData.categoryDescBottom) %>
