@@ -110,10 +110,10 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       razrez: "./src/pages/gsap-razrez.js",
       smoother: "./src/pages/smoother.js",
       product: "./src/pages/product.js",
-      //productPopups: "./src/pages/popupProduct.js",
-      formPopup: "./src/pages/popupWithFormPage.js",
+      productPopups: "./src/pages/popupProduct.js",
+      // formPopup: "./src/pages/popupWithFormPage.js",
       category: "./src/pages/category.js",
-      threed: "./src/pages/3d.js",
+      //threed: "./src/pages/3d.js",
       all: "./src/pages/all.js"
     },
     output: {
@@ -130,7 +130,13 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       port: 8081, // порт, чтобы открывать сайт по адресу localhost:8080, но можно поменять порт
       open: true, // сайт будет открываться сам при запуске npm run dev
     },
+    resolve: {
+      alias: {
+        gsap$: path.resolve(__dirname, "node_modules/gsap/index.js")
+      }
+    },
     module: {
+      
       /* */
       rules: [
         // rules — это массив правил

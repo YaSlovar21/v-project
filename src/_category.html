@@ -94,15 +94,14 @@
     <% if (categoryData.categoryDescBottom) { %>
       <section class="additional-bottom-category-desc prose prose-xl prose-vik p-[var(--aside-width)]">
         <h2 class="text-4xl mt-16 uppercase font-semibold mb-5 text-primary-prblue font-fr">Подробнее про <%= categoryData.categoryName %></h2>
-        <% if(categoryData.isDescBottomMd) { %> 
+        <% if(categoryData.isDescBottomMd) { %>
           <%= markdown.toHTML(categoryData.categoryDescBottom) %>
         <% } else { %>
           <%= categoryData.categoryDescBottom %>
-        <% } %> 
+        <% } %>
       </section>
-    <% } %> 
+    <% } %>
     
-
     </main>
     <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
    </div>

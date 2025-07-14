@@ -1,14 +1,25 @@
 import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
+import ScrollSmoother from "gsap/ScrollSmoother";
+import Observer from "gsap/Observer";
+//import Observer from "gsap/Observer";
 
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollTrigger } from "gsap/all"
-gsap.registerPlugin(ScrollSmoother);
-gsap.registerPlugin(ScrollTrigger);
+// Регистрация плагинов (выполнится только один раз)
+gsap.registerPlugin(Observer, ScrollTrigger, SplitText, ScrollSmoother);
 
-// create the scrollSmoother before your scrollTriggers
-export let smoother = ScrollSmoother.create({
-  smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
-  effects: true, // looks for data-speed and data-lag attributes on elements
-  //smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+// Создаем и экспортируем экземпляр ScrollSmoother
+export const smoother = ScrollSmoother.create({
+  smooth: 2,
+  effects: true,
+  smoothTouch: 0.05,
   normalizeScroll: true
 });
+
+
+export const getSmoother = () => {
+  return smoother;
+}
+
+// Экспортируем основные объекты GSAP для использования в проекте
+export { gsap, ScrollTrigger, SplitText };

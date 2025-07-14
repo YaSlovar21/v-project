@@ -1,3 +1,4 @@
+
 import Popup from './Popup.js';
 
 export default class PopupWithImage extends Popup {
@@ -28,6 +29,7 @@ export default class PopupWithImage extends Popup {
 
     close() {
         this._handleCloseFunc();
+
         setTimeout(()=> {
           this._popupImage.src = "";
         }, 500)

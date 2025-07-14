@@ -1,22 +1,4 @@
-import { gsap } from "gsap";
-
-import { ScrollTrigger, SplitText } from "gsap/all";
-
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-
-
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollSmoother);
-
-
-// create the scrollSmoother before your scrollTriggers
-ScrollSmoother.create({
-  smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
-  effects: true, // looks for data-speed and data-lag attributes on elements
-  smoothTouch: 0.05, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
-  normalizeScroll: true
-});
+import { gsap, ScrollTrigger, SplitText } from "./smoother.js";
 
 gsap.utils.toArray(".comparisonSection").forEach(section => {
 	let tl = gsap.timeline({
@@ -45,7 +27,7 @@ gsap.utils.toArray(".comparisonSection").forEach(section => {
   // Появление третьей галочки на 80% timeline
   .to(section.querySelector(".button-3"), { opacity: 1, duration:  0.01 }, 0.4)
   .to("body", { backgroundColor: "#fff", duration: 0.14 }, 0.85);
-  
+
 });
 
 
@@ -67,10 +49,10 @@ document.fonts.ready.then(() => {
 document.fonts.ready.then(() => {
   const originalText = document.getElementById("original-text");
   const animatedText = document.getElementById("animated-text");
-  
+
   // Клонируем текст для анимации
   //animatedText.innerHTML = originalText.innerHTML;
-  
+
   // Инициализируем SplitText для линий
   const splitText =SplitText.create("#animated-text", {
     type: "lines",
@@ -83,9 +65,9 @@ document.fonts.ready.then(() => {
     /*const mask = document.createElement('div');
     mask.className = 'absolute top-0 left-0 h-full w-full linemasc';
     line.prepend(mask);*/
-    
+
     // Анимация
-    gsap.fromTo(line, 
+    gsap.fromTo(line,
     {
       width: 0, // Начальное состояние
       transformOrigin: "left center" // Точка трансформации

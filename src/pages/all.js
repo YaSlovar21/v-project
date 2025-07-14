@@ -1,6 +1,7 @@
 import Api from "../js/components/Api";
 import FormValidatorNew from "../js/components/FormValidatorNew";
 import Popup from "../js/components/Popup";
+import { gsap, ScrollTrigger, smoother } from './smoother.js';
 
 const popupMenu = new Popup('.popup-menu');
 popupMenu.setEventListeners();
@@ -10,6 +11,9 @@ navMobileButton.addEventListener('click', () => {
     popupMenu.open();
     console.log('111');
 });
+
+
+//mport {getSmoother} from '../pages/smoother.js';
 
 /* ОТПРАВКА ФОРМЫ */
 const formInPopupConfig = {
@@ -51,7 +55,7 @@ const modal = new PopupWithForm({
             if (resp.message && resp.message==='Норм') {
               modal.close();
             } else {
-                throw new Error('Вернулся какой то не такой объект') 
+                throw new Error('Вернулся какой то не такой объект')
             }
         } catch(e) {
             console.log('Что то пошло не так', e);
@@ -74,4 +78,8 @@ modal.setEventListeners();
 
 buttonToOpenPopupWithForm.addEventListener('click', ()=>{
     modal.open();
+    console.log('smoother buttonToOpenPopupWithForm', smoother )
+    if (smoother) {
+      smoother.paused(true);
+    }
 })
