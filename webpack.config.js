@@ -111,6 +111,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
       smoother: "./src/pages/smoother.js",
       product: "./src/pages/product.js",
       productPopups: "./src/pages/popupProduct.js",
+      formBigVik: "./src/pages/big-form-vik.js",
       // formPopup: "./src/pages/popupWithFormPage.js",
       category: "./src/pages/category.js",
       //threed: "./src/pages/3d.js",
@@ -249,7 +250,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           popular,
           dModels,
           sizesArrForCats,
-          staffArrForCats
+          staffArrForCats,
+          categoriesByTextId
         },
         title: "Производство стальных резервуаров и ёмкостей",
         meta: {
@@ -257,7 +259,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           description: ``,
         },
         template: "./src/index.html", // путь к файлу index.html
-        chunks: ["index", "razrez", "all"],
+        chunks: ["index", "formBigVik"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -274,7 +276,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `nashi-otgruzki/index.html`,
         template: "./src/_objects.html", // путь к файлу index.html
-        chunks: ["index", "all"],
+        chunks: ["all"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -291,7 +293,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `uslugi/index.html`,
         template: "./src/_uslugi.html", // путь к файлу index.html
-        chunks: ["index", "all"],
+        chunks: ["all"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -306,7 +308,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `${ROUTES.about.split('/')[1]}/index.html`,
         template: "./src/_about.html", // путь к файлу index.html
-        chunks: ["index", "threed", "all"],
+        chunks: ["threed", "all"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -321,7 +323,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `${ROUTES.contacts.split('/')[1]}/index.html`,
         template: "./src/contacts.html", // путь к файлу index.html
-        chunks: ["index", "smoother", "all"],
+        chunks: ["smoother", "all"],
       }),
       new HtmlWebpackPlugin({
         templateParameters: { 
@@ -337,7 +339,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `sonsent/index.html`,
         template: "./src/sonsent.html", // путь к файлу index.html
-        chunks: ["index", "all"],
+        chunks: ["all"],
       }),
 
       new CleanWebpackPlugin(),

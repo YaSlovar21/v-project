@@ -1,3 +1,7 @@
+import './tw.css';
+import './index.css';
+import '../images/favicon.svg';
+
 import Api from "../js/components/Api";
 import FormValidatorNew from "../js/components/FormValidatorNew";
 import Popup from "../js/components/Popup";
@@ -24,8 +28,6 @@ const formInPopupConfig = {
     errorClass: 'form__input-error_visible'
   }
 
-
-
 const formApi = new Api({
     baseUrl: 'https://api-cms.kupcov.com',
     headers: {
@@ -48,6 +50,9 @@ const formInPopupValidator = new FormValidatorNew(formInPopupConfig, formInPopup
 formInPopupValidator.enableValidation();
 
 const modal = new PopupWithForm({
+    handleClose: ()=> {
+      smoother.paused(false);
+    },
     formSubmitHandler:  async (valuesObj) => {
         console.log(valuesObj);
         try {

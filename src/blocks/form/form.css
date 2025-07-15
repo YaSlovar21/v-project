@@ -29,7 +29,7 @@
 }
 
 .form__submit-button {
-    @apply  transition-all duration-300 lowercase text-white mt-8;
+    @apply  transition-all duration-300 text-white mt-8;
 }
 
 .form__input_up {

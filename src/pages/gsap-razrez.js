@@ -56,7 +56,8 @@ document.fonts.ready.then(() => {
   // Инициализируем SplitText для линий
   const splitText =SplitText.create("#animated-text", {
     type: "lines",
-    linesClass: "line linex relative overflow-hidden block"
+    linesClass: "line linex relative overflow-hidden block",
+    autoSplit: true,
   });
 
   // Создаем маски и настраиваем анимацию

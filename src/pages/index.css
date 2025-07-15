@@ -23,6 +23,9 @@
 @import url(../blocks/animatecss/_base.css);
 @import url(../blocks/animatecss/_vars.css);
 @import url(../blocks/animatecss/fading_entrances/fadeInRight.css);
+@import url(../blocks/animatecss/fading_entrances/fadeInBottomLeft.css);
+@import url(../blocks/animatecss/fading_entrances/fadeInBottomRight.css);
+@import url(../blocks/animatecss/fading_entrances/fadeIn.css);
 
 .comparisonSection {
   position: relative;
@@ -61,7 +64,7 @@
 }
 
 .container-spt {
- 
+
 }
 
 /* 2 класса для бегущего наложения на абзац на главной*/

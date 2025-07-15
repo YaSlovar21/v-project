@@ -2,12 +2,11 @@ export default class FormValidatorNew {
   constructor(params, formElement) {
 
     this._inputSelector = params.inputSelector;
-
     this._inputErrorClass = params.inputErrorClass;
     this._errorClass = params.errorClass;
-
     this._submitButtonSelector = params.submitButtonSelector;
     this._inactiveButtonClass = params.inactiveButtonClass;
+
 
     this._formElement = formElement;
 
@@ -160,7 +159,9 @@ checkStep(number) {
   }
   return true;
 }
+
 enableStepValidation() {
+  
   this._sets = [];
 
   const firstStepFieldset = this._formElement.querySelector('.first-step');
