@@ -20,7 +20,7 @@ let generatedPaths = [];
 
 
 
-function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer, dModels, gallery) {
+function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId, isDevServer, dModels, gallery, additionalData) {
   const { textId, linkPath, categoryName, categoryDesc, categoryDescAi,	posterSm,	isPublished	}  = category;
   const categoryProducts = products.filter(p => p.categoryTextId === category.textId).map(i=> ({...i, posterSm, catLinkPath: linkPath})); //прокинули в каждый товар постер с категории
   //может добавить фильтр isPublished??
@@ -39,7 +39,8 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
       categoriesByTextId,
       dModels,
       gallery,
-      markdown
+      markdown, //функция
+      additionalData
     },
     title: categoryName,
     meta: {
@@ -53,7 +54,7 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
 }
 
 // --- ПРОДУКТ --- //
-function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, isDevServer, gallery, dModels) {
+function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, isDevServer, gallery, dModels, additionalData) {
   const { id,	textId,	categoryTextId,	title_my,	h1,	intro,	charsJson,	seoKeywordsMy,	seoDescription,	isPublished	}= product;
   
   const dateNow = (new Date()).toString();
@@ -72,7 +73,8 @@ function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, is
       charsSequence,  charsTitleDict,  charsMeasureDict, // потом перенесем в БД
       categoryInfo: categoriesByTextId[categoryTextId],
       dModels,
-      markdown
+      markdown, //функция
+      additionalData
     },
     title: title_my,
     meta: {
@@ -86,9 +88,13 @@ function generateProductPageHtmlPlugin(product, categoriesByTextId, drawings, is
 } 
 
 //function generateConfig(infoBlogData, isDevServer) {
-function generateConfig(isDevServer, categories, products, gallery, popular , drawings, objects, uslugi) {
-  console.log(drawings);
-
+function generateConfig(isDevServer, categories, products, gallery, popular , drawings, objects, uslugi, contactsData) {
+  
+  const additionalData = {
+    ROUTES,
+    contacts: contactsData.reduce((res, curr)=> ({...res, [curr.id]: curr}), {})
+  };
+  console.log('additionalData', additionalData.contacts);
   //const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
   //пробросим объект категории весь
   const categoriesByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat}), {});
@@ -97,11 +103,11 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
   const dModels = gallery.filter(i=>i.consumersIds.includes("3d")).reduce((result, dobj) => ({...result, [dobj.id]: dobj}), {});
   //console.log(gallery);
   const sizesArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.sizesArr?.sort((a,b)=> a-b) || null}), {});
-  console.log("---------234--", sizesArrForCats);
+  //console.log("---------234--", sizesArrForCats);
   const staffArrForCats = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.staffArr}), {});
-  console.log(staffArrForCats);
-  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer, dModels, gallery));
-  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesByTextId,drawings, isDevServer, gallery, dModels));
+  //console.log(staffArrForCats);
+  const htmlCategoriesPagePlugins = categories.map(c => generateCategoryPagesHtmlPlugins(c, products,categoriesByTextId, isDevServer, dModels, gallery,additionalData));
+  const htmlProductPagesPlugins = products.map(p => generateProductPageHtmlPlugin(p, categoriesByTextId,drawings, isDevServer, gallery, dModels, additionalData));
 
   return {
     entry: {
@@ -251,7 +257,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           dModels,
           sizesArrForCats,
           staffArrForCats,
-          categoriesByTextId
+          categoriesByTextId,
+          additionalData
         },
         title: "Производство стальных резервуаров и ёмкостей",
         meta: {
@@ -267,7 +274,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           ROUTES,
           isDevServer,
           objects,
-          formatDate
+          formatDate,
+          additionalData
         },
         title: "Наши отгрузки",
         meta: {
@@ -284,7 +292,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           ROUTES,
           isDevServer,
           uslugi,
-          markdown
+          markdown,
+          additionalData
         },
         title: "Услуги по металлообработке",
         meta: {
@@ -300,6 +309,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           canonicalURL,
           ROUTES,
           isDevServer,
+          additionalData
         },
         title: "О производстве",
         meta: {
@@ -314,7 +324,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         templateParameters: { 
           canonicalURL,
           ROUTES,
-          isDevServer
+          isDevServer,
+          additionalData
         },
         title: "Контакты ООО Викинг",
         meta: {
@@ -331,6 +342,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           ROUTES,
           sonsentCompanyObj,
           isDevServer,
+          additionalData
         },
         title: "Соглашение об обработке персональных данных",
         meta: {
@@ -393,6 +405,22 @@ function uslugiMapper(ulist) {
   }))
 }
 
+function contactsMapper(contactsArr) {
+  return contactsArr.map(item => ({
+    ...item,
+    additional_data: item.additional_data
+})) 
+}
+
+const proxyAgent = new HttpsProxyAgent.HttpsProxyAgent('http://10.10.14.14:3128');
+
+const initFetchObj = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+  },
+  agent: proxyAgent
+}`
 
 module.exports = () => {
   const isDevServer = process.env.WEBPACK_SERVE;
@@ -400,66 +428,31 @@ module.exports = () => {
   return new Promise((resolve, reject) => {
       Promise.all([
           //data[0] - categories
-          fetch1('https://api-cms.kupcov.com/data/categories', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-          }).then(res => res.json()), 
+          fetch1('https://api-cms.kupcov.com/data/categories', initFetchObj).then(res => res.json()), 
 
           //data[1] - products
-          fetch1('https://api-cms.kupcov.com/data/products', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-          }).then(res => res.json()), 
+          fetch1('https://api-cms.kupcov.com/data/products', initFetchObj).then(res => res.json()), 
           
-           //data[2] - gallery
-           fetch1('https://api-cms.kupcov.com/gallery', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-          }).then(res => res.json()), 
+          //data[2] - gallery
+          fetch1('https://api-cms.kupcov.com/gallery', initFetchObj).then(res => res.json()), 
 
-          
           //data[3] - popular
-          fetch1('https://api-cms.kupcov.com/data/popular', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiZHJvbW90cm9uIiwiaWF0IjoxNzQyMjAxMjE0fQ.uDGcewQnXnfoc64I7tiTcvo6hpeblN-5QN2xc0MUz0k'
-            },
-          }).then(res => res.json()), 
+          fetch1('https://api-cms.kupcov.com/data/popular', initFetchObj ).then(res => res.json()), 
           
           //data[4] - drawings
-          fetch1('https://api-cms.kupcov.com/drawings', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-          }).then(res => res.json()), 
+          fetch1('https://api-cms.kupcov.com/drawings', initFetchObj).then(res => res.json()), 
 
           //data[5] - objects
-          fetch1('https://api-cms.kupcov.com/data/objects', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-          }).then(res => res.json()), 
+          fetch1('https://api-cms.kupcov.com/data/objects', initFetchObj).then(res => res.json()), 
 
           //data[6] - uslugi
-          fetch1('https://api-cms.kupcov.com/data/uslugi', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-          }).then(res => res.json()), 
+          fetch1('https://api-cms.kupcov.com/data/uslugi', initFetchObj).then(res => res.json()), 
 
+          //data[7] - contacts
+          fetch1('https://api-cms.kupcov.com/contacts', initFetchObj).then(res => res.json()), 
         ])
         .then((data) => {
-          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]), objectsMapper(data[5]), uslugiMapper(data[6]) ));
+          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]), objectsMapper(data[5]), uslugiMapper(data[6]), contactsMapper(data[7]) ));
         })
      
   });

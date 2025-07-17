@@ -12,7 +12,7 @@
     <div id="smooth-wrapper">
       <div id="smooth-content">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-    <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
     <!--max-w-[calc(100%-120px)] mx-auto pc:max-w-[calc(100%-40px)] mobile:max-w-[calc(100%-20px)]-->
     <main class="">
       <div class="all-sect grid grid-cols-2 laptop:grid-cols-1">
@@ -150,7 +150,7 @@
         </section>
       <% } %>
     </main>
-    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
       </div>
     </div>
      <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>

@@ -132,6 +132,9 @@ const formInPopupValidator = new FormValidatorNew(formInPopupConfig, formInPopup
 formInPopupValidator.enableValidation();
 
 const modal = new PopupWithForm({
+    handleClose: ()=> {
+      smoother?.paused(false);
+    },
     formSubmitHandler:  async (valuesObj) => {
         console.log(valuesObj);
         try {

@@ -10,8 +10,7 @@
   </head>
   <body class="page bg-white">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-
-    <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
     <main class="relative">
       <div class="breadcrumbs">
         <a class="breadcrumbs__link" href="/">Главная</a>
@@ -54,7 +53,7 @@
       Свяжитесь с нами. Мы предоставим Вам коммерческое предложение с расчетом стоимости, сроками изготовления и условиями доставки.
     </main>
 
-    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
 
     <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
   </body>

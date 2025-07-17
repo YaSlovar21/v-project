@@ -12,7 +12,7 @@
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-        <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+        <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
         <div class="content relative mt-10">
           <div class="breadcrumbs">
             <a class="breadcrumbs__link" href="/">Главная</a>
@@ -42,7 +42,7 @@
             </li>
           </ul>
         </div>
-      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
     </div>
   </div>
   <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>

@@ -26,7 +26,7 @@
       <% if (isDevServer) { %>
         <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
       <% } %>
-      <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+      <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
       <main class="">
         <section class="mt-[60px] mb-32 items-start">
         <h1 class="mb-8 text-[104px] font-fr uppercase font-semibold text-primary-prblue ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
@@ -81,7 +81,7 @@
           <h2 class="up-title up-title_svg">Каталог</h2>
           <h2 class="text-6xl font-fr uppercase font-semibold text-primary-prblue"><span class="text-primary-lightblue">Ведущие</span> категории сегодня</h2>
           <div class="relative grid grid-cols-12">
-            <ul class=" relative w-full mt-12 col-start-4 col-span-6">
+            <ul class=" relative w-full mt-12 col-start-6 col-span-7">
               <% popular.filter(i => i.isPublished ===true).map((c, index)=> { %>
                 <li class="block group">
                   <div class="absolute w-80 bg-white object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
@@ -111,10 +111,10 @@
           </h2>
           <p class="text-[100px] pc:text-[90px] mvpc:text-[80px] olpc:text-[50px] font-fr absolute bottom-[160px] pc:bottom-[140px] mvpc:bottom-[120px] mobile:bottom-0 olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
           <div class="comparisonImage beforeImage" >
-            <img class="object-contain object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[37].fileName%>" alt="before">
+            <img class="object-contain object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[37].fileName %>" alt="before">
           </div>
           <div class="comparisonImage afterImage">
-            <img class="object-contain object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[38].fileName%>" alt="after">
+            <img class="object-contain object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[38].fileName %>" alt="after">
           </div>
             <!-- Кнопки с tooltips -->
           <div class="absolute top-[30%] left-[20%] group">
@@ -153,7 +153,6 @@
             </div>
           </div>
         </section>
-
 
         <section class="my-28 relative">
           <!--Костыль-->
@@ -242,10 +241,8 @@
             </div>
           </form>
         </section>
-
-
       </main>
-      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
     </div>
   </div>
   <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>

@@ -1,20 +1,30 @@
-<footer class="bg-primary-darkbg  py-10">
-  <!--<div class="content container-2">
-    <img src="../../images/header-logo-theme-dark.svg" alt="">
-    <div class="flex w-full justify-between">
-      <ul>
-        <a class="block mb-4 text-3xl text-white" href="tel:79999992272">8(999)999-22-72</a>
-        <a  class="block text-white" href="mailto:info@rezervuar22.ru">info@rezervuar22.ru</a>
-      </ul>
-      <p class="text-xl text-white">Рабочие часы: 08:00-17:00</p>
-    </div>
-  </div>-->
-  <div class="content p-10 rounded-3xl flex">
-    <img src="../../images/header-logo-theme-dark.svg" class="header__logo-img" alt="Лого Дромотрон"/>
+<footer class="bg-[#001b29] py-10 grid grid-cols-2">
+
+  <div class="content rounded-3xl flex col-span-2">
+    <img src="../../images/header-logo-theme-dark.svg" class="header__logo-img" alt="Лого ВИКИНГ"/>
     <img src="../../images/text-logo-big.svg" class="w-2/4 ml-auto" >
   </div>
+  <div class="">
+    <ul>
+      <li><a class="block mb-4 text-3xl text-white" href="<%= additionalData.contacts[7].contact_url %>"><%= additionalData.contacts[7].contact_text %></a></li>
+      <li><a class="block text-white" href="<%= additionalData.contacts[6].contact_url %>"><%= additionalData.contacts[6].contact_text %></a></li>
+      <li><a class="block text-white text-sm" href="<%= ROUTES.sonsent %>">Соглашение об обработке персональных данных</a></li>
+    </ul>
+  </div>
+  <div class="mt-8">
+    <h3 class="text-white text-lg font-fr font-medium uppercase">Продукция</h3>
+    <ul class="my-2 *:mb-1">
+      <li><a class="text-white text-base" href="<%= ROUTES.rgs %>">Горизонтальные резервуары</a></li>
+      <li><a class="text-white text-base" href="<%= ROUTES.rvs %>">Вертикальные резервуары</a></li>
+      <li><a class="text-white text-base" href="<%= ROUTES.silosy %>">Силосы</a></li>
+    </ul>
+    <ul class="mt-6">
+      <li><a class="text-white text-lg font-fr font-medium uppercase" href="<%= ROUTES.uslugi %>">Услуги</a></li>
+      <li><a class="text-white text-lg font-fr font-medium uppercase" href="<%= ROUTES.uslugi %>">География работы</a></li>
+      <li><a class="text-white text-lg font-fr font-medium uppercase" href="<%= ROUTES.uslugi %>">Контакты</a></li>
+    </ul>
+  </div>
 </footer>
-
 
 <!--Форма обратного звонка  -->
 <div class="popup items-start justify-end popup-callback bg-primary-lightgray bg-opacity-10">

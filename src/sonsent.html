@@ -10,7 +10,7 @@
   </head>
   <body class="page bg-white">
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
-    <%=_.template(require('html-loader!./insets/asides/inner-header.html').default)({ROUTES: ROUTES, page: 'main'}) %>
+    <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
     <main class="relative p-[var(--aside-width)]">
       <div class="breadcrumbs">
         <a class="breadcrumbs__link" href="/">Главная</a>
@@ -18,7 +18,7 @@
       </div>
       <%= _.template(require('html-loader!./templates/sonsent.html').default)({__: sonsentCompanyObj}) %>
     </main>
-    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
     <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
   </body>
 </html>

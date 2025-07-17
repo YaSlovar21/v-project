@@ -9,12 +9,15 @@ import Observer from "gsap/Observer";
 gsap.registerPlugin(Observer, ScrollTrigger, SplitText, ScrollSmoother);
 
 // Создаем и экспортируем экземпляр ScrollSmoother
-export const smoother = ScrollSmoother.create({
+
+const isWrapperInPage = document.querySelector('#smooth-wrapper') && document.querySelector('#smooth-content');
+
+export const smoother = isWrapperInPage ? ScrollSmoother.create({
   smooth: 2,
   effects: true,
   smoothTouch: 0.05,
   normalizeScroll: true
-});
+}) : null;
 
 
 export const getSmoother = () => {
