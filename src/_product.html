@@ -71,6 +71,15 @@
               <img class="hidden mobile:block w-full mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
             <% } %>
           </div>
+
+          <div class="hidden laptop:block border-b border-primary-gray items-center h-[50vh]">
+            <% if (productData.main_img_id  ) {%> <!--&& dModels[productData.main_img_id].fileName-->
+              <img class="w-1/2 block mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[productData.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+            <% } else if (categoryInfo.main_img_id) { %>
+              <img class="w-1/2 block mx-auto" src="<%= canonicalURL %>/api-images/gallery/<%= dModels[categoryInfo.main_img_id].fileName %>" alt="<%= productData.h1 %>">
+            <% } %>
+          </div>
+
           <!--Блок 2 ЧЕРТЕЖИ если есть-->
           <% if (productData.drawingsGalleryIds) { %>
             <div class="border-r border-t border-primary-gray bg-blue-100 mobile:border-none">

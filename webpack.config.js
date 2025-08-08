@@ -420,7 +420,7 @@ const initFetchObj = {
     'Content-Type': 'application/json;charset=utf-8',
   },
   agent: proxyAgent
-}`
+}
 
 module.exports = () => {
   const isDevServer = process.env.WEBPACK_SERVE;

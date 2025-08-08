@@ -12,16 +12,16 @@
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
     <main class="relative">
-      <div class="breadcrumbs">
+      <div class="breadcrumbs ml-[var(--aside-width)] mt-32">
         <a class="breadcrumbs__link" href="/">Главная</a>
         <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.uslugi %>">Услуги</a>
       </div>
-      <h2 class="title-page content font-semibold mb-0 mt-32">Услуги по металлообработке</h2>
+      <h2 class="title-page content font-semibold mb-0 ">Услуги по металлообработке</h2>
       <ul class="even:*:bg-blue-50">
         <% uslugi.map((u, index)=> { %>
           <li class="px-[var(--aside-width)] py-[calc(2*var(--aside-width))]">
             <h2 class="title-page max-w-6xl text-5xl mt-0"><%= index+1 %>. <%= u.name %></h2>
-            <div class="grid grid-cols-6 laptop:grid-cols-1 *:col-span-1">
+            <div class="grid grid-cols-6 laptop:grid-cols-1 laptop:*:col-span-1">
               <p></p>
               <div class="col-span-2">
                 <figure class="figure figure_mate w-[calc(100%-40px)] ">

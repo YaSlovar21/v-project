@@ -1,6 +1,6 @@
 <!--const { id,	textId,	categoryTextId,	title,	h1,	intro,	charsJson,	seoKeywords,	seoDescription,	isPublished	}= product;-->
 
-
+<!--
 <li class="group grid grid-cols-12 relative border-t border-gray-200 transition-all hover:border-primary-prred hover:bg-blue-100">
   <div class="pb-[100%] relative">
     <span class="absolute top-[50%] left-[50%]">
@@ -24,5 +24,47 @@
     </svg>
     <span class="inset0">
     </span>
+  </a>
+</li>
+-->
+
+<li class="group grid grid-cols-12 relative border-t border-gray-200 transition-all hover:border-red-700 hover:bg-blue-50 laptop:py-5">
+  <!-- Палитра цветов (для справки, можно удалить) -->
+  <!--
+    prblue: '#003049', '#00253a', '#001a2b', '#00101d', '#00050e'
+    prred: '#C1121F', '#a90f1b', '#910c17', '#790a13', '#60070f'
+  -->
+
+  <div class="pb-[100%] relative">
+    <span class="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 mobile:text-xs">
+      [<%= obj.index || '' %>]
+    </span>
+  </div>
+
+  <div class="flex justify-center relative items-center col-span-1 mobile:hidden">
+    <img class="w-[calc(100%-80px)] pc:w-[calc(100%-60px)] laptop:w-[calc(100%-40px)] mobile:hidden" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%><%= obj.posterSm %>" alt="<%= obj.h1 %>">
+  </div>
+
+  <h3 class="card-title self-center col-span-4 pc:col-span-4 olpc:col-span-3 laptop:col-span-5 font-semibold font-fr uppercase text-4xl pc:text-3xl mvpc:text-2xl laptop:text-xl mobile:text-lg text-blue-900">
+    <%= obj.h1_sm %>
+  </h3>
+
+  <p class="card-desc self-center text-3xl pc:text-2xl mvpc:text-xl laptop:text-lg laptop:col-span-3 mobile:text-base font-semibold text-blue-900 mobile:max-w-full">
+    <%= obj.sizeUtf %> м³
+  </p>
+
+  <p class="text-white text-[9px] pc:text-[8px] mt-2 justify-self-center self-center">
+    <% if (obj.drawingsGalleryIds) { %>
+      <span class="rounded-full bg-red-800 pc:bg-red-900 p-2 pc:p-1.5 laptop:p-1 text-white">
+        Популярное
+      </span>
+    <% } %>
+  </p>
+
+  <a class="col-start-12 flex" href="/catalog/<%= obj.catLinkPath %>/<%= obj.textId %>.html">
+    <svg class="w-7 h-7 pc:w-6 pc:h-6 mvpc:w-5 mvpc:h-5 laptop:w-4 laptop:h-4 mobile:w-3 mobile:h-3 m-auto fill-gray-300 group-hover:fill-red-700" width="50" height="51" viewBox="0 0 50 51" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.09138 50.8653L42.9504 12.941L42.8851 42.1839H50V0.800049H8.68146L8.61619 7.84966H37.859L0 45.7739L5.09138 50.8653Z" />
+    </svg>
+    <span class="inset0"></span>
   </a>
 </li>

@@ -29,7 +29,7 @@
       <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
       <main class="">
         <section class="mt-[60px] mb-32 items-start">
-        <h1 class="mb-8 text-[104px] font-fr uppercase font-semibold text-primary-prblue ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
+        <h1 class="title-page font-semibold max-w-[75%]">Производство стальных резервуаров</h1>
           <!--
         <ul class="container-6 w-full">
               <li class="col-span-2">
@@ -46,9 +46,9 @@
         -->
         </section>
         <section class=" content relative"  id="catalog">
-          <h2 class="up-title up-title_svg top-0 left-0">Каталог резервуаров</h2>
+          <h2 class="title-section">Каталог резервуаров</h2>
           <div class="container-spt relative">
-             <p class="text-4xl font-fr mb-10 text-[#c4c4c4]">
+             <p class="text-4xl font-fr mb-10 text-[#c4c4c4] mobile:text-xl">
               Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы
               специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного
               объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в
@@ -58,7 +58,7 @@
             </p>
 
             <!-- Анимируемый текст (поверх) -->
-            <p class="text-primary-prblue text-4xl font-fr mb-10 absolute top-0 left-0 w-full"
+            <p class="text-primary-prblue text-4xl font-fr mb-10 absolute top-0 left-0 w-full mobile:text-xl"
               id="animated-text"
               aria-hidden="true">
               Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы
@@ -78,16 +78,19 @@
           </ul>
         </section>
         <section class="content my-[130px] relative">
-          <h2 class="up-title up-title_svg">Каталог</h2>
-          <h2 class="text-6xl font-fr uppercase font-semibold text-primary-prblue"><span class="text-primary-lightblue">Ведущие</span> категории сегодня</h2>
-          <div class="relative grid grid-cols-12">
+          <!--<h2 class="up-title up-title_svg">Каталог</h2>-->
+          <h2 class="title-section"><span class="text-primary-lightblue">Ведущие</span> категории сегодня</h2>
+          <div class="relative grid grid-cols-12 laptop:block">
             <ul class=" relative w-full mt-12 col-start-6 col-span-7">
               <% popular.filter(i => i.isPublished ===true).map((c, index)=> { %>
-                <li class="block group">
-                  <div class="absolute w-80 bg-white object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible">
+                <li class="block group laptop:grid laptop:grid-cols-4 laptop:mb-8 laptop:border-t laptop:border-primary-prblue">
+                  <div class="absolute w-80 bg-white object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible laptop:hidden">
                     <img class="w-full" src="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= c.imgUrl %>" alt="">
                   </div>
-                  <a href="<%= c.linkPath %>" class="text-4xl mvpc:text-3xl font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red">
+                  <div class="hidden laptop:block">
+                    <img class="w-full max-w-[75%]" src="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= c.imgUrl %>" alt="">
+                  </div>
+                  <a href="<%= c.linkPath %>" class="text-4xl mvpc:text-3xl laptop:text-lg font-fr flex py-4 pr-4 justify-between border-t border-primary-prblue text-primary-prblue hover:text-primary-prred hover:border-primary-red laptop:col-span-3 laptop:border-none">
                     <span><%= c.itemRuName %></span>
                     <svg class="size-6 stroke-primary-gray group-hover:stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
@@ -99,7 +102,7 @@
           </div>
         </section>
         <section class="content comparisonSection relative w-1/2 mobile:w-full block mx-auto overflow-hidden mobile:overflow-visible" data-speed="1.3">
-          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 mobile:-top-24 text-primary-lightgray">
+          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 mobile:-top-24 text-primary-lightgray laptop:invisible">
             <svg class="text-logo-cs fill-[#003049] w-full" width="800" height="240" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M76.6321 0.775895C64.3867 2.48898 49.903 6.83757 32.9176 14.0852C14.7471 21.7282 10.0069 24.4955 6.97852 29.1076C4.74013 32.402 4.8718 32.7973 7.76854 38.7272C10.6653 44.5254 10.9286 47.1609 11.8503 74.5702C12.377 90.9103 12.9037 125.963 12.9037 152.45C13.0354 206.873 12.5087 211.353 4.34512 218.996L0 223.213L11.7186 224.135C37.921 226.244 77.1587 221.236 107.838 212.144C137.727 203.183 153.001 187.897 158.663 161.542C164.851 132.42 150.367 97.6309 122.453 75.2291C118.108 71.5393 114.421 67.7178 114.421 66.5319C114.421 63.3693 119.425 59.416 130.222 54.5403C146.154 47.1609 150.762 40.045 146.022 30.4254C142.599 23.8366 138.78 19.3562 130.88 13.2946C117.055 2.75253 96.5143 -1.99139 76.6321 0.775895ZM101.913 22.3871C110.34 25.945 114.421 37.4095 109.681 44.13C108.496 45.8431 98.3577 53.8814 87.2974 62.1833C73.2086 72.7253 66.7568 78.2599 66.2301 80.6318C65.7034 82.4767 65.5718 84.058 65.8351 84.3216C66.0985 84.4533 71.7603 87.4842 78.2121 91.0421C114.421 110.545 131.275 128.335 135.62 151.659C136.805 158.116 136.542 160.488 134.304 168.131C127.325 191.06 103.361 204.369 63.5967 207.136C45.4262 208.454 46.8746 216.097 47.6646 126.358C48.0596 72.1982 48.718 49.9282 49.903 45.9749C54.1165 31.7431 71.2336 20.8058 89.7991 20.674C94.0125 20.5422 99.411 21.3329 101.913 22.3871Z"/>
               <path d="M242.932 53.3537C237.402 56.121 228.975 61.2602 224.103 64.8181C213.833 72.0658 195.399 89.9873 190.132 98.0256C188.157 101.056 186.051 103.165 185.524 102.901C184.865 102.506 184.075 98.5527 183.549 93.9405C182.495 83.662 185.26 69.5621 190.396 59.9424C192.371 55.9892 194.214 52.4312 194.477 51.7724C194.741 51.2453 187.762 50.8499 179.072 50.8499C170.25 50.8499 163.14 51.1135 163.14 51.5088C163.14 51.7724 164.852 54.8032 166.958 58.0976C173.015 67.5854 174.2 77.7321 173.41 112.126C172.225 159.828 174.99 184.338 184.075 207.004C188.421 217.941 197.769 233.095 202.641 237.312L205.669 239.948L204.748 234.15C204.221 230.987 201.324 222.158 198.164 214.383C191.317 197.911 189.474 189.082 189.474 172.742C189.474 138.217 208.829 106.855 239.772 90.9097C244.644 88.4059 250.042 86.4293 251.886 86.4293C258.601 86.4293 258.601 86.1658 258.206 149.55C257.942 183.284 257.284 210.035 256.494 212.538C255.704 214.779 253.071 218.205 250.569 220.181C248.199 222.026 246.092 224.135 246.092 224.925C246.092 226.243 278.088 226.638 279.405 225.321C279.931 224.794 278.746 222.685 277.035 220.577C270.978 213.461 270.714 210.166 270.188 151.263C269.529 88.5377 269.924 83.9256 277.035 76.0191L281.511 71.1434L278.22 65.2135C271.899 54.2761 264.394 48.2144 256.757 48.2144C254.651 48.2144 248.331 50.5864 242.932 53.3537Z"/>

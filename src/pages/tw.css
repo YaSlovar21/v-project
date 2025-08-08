@@ -138,11 +138,13 @@
     */
   }
   .title-page {
-    @apply text-[57px] uppercase font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
+    @apply text-[94px] mvpc:text-6xl font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
   }
-
+  .title-section {
+    @apply text-6xl mvpc:text-5xl font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
+  }
   .title-cat-prod {
-    @apply text-primary-prblue mb-4 mt-0 text-6xl uppercase font-medium font-fr relative laptop:text-5xl;
+    @apply text-primary-prblue mb-4 mt-0 text-6xl uppercase font-medium font-fr relative laptop:text-4xl mobile:text-3xl;
   }
 
   .title-cat-intro {

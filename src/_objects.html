@@ -12,13 +12,15 @@
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
     <main class="relative">
-       <div class="breadcrumbs">
+      <div class="breadcrumbs ml-[var(--aside-width)] mt-32">
         <a class="breadcrumbs__link" href="/">Главная</a>
         <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.objects %>">Актуальное</a>
       </div>
-      <ul class="even:*:bg-blue-50">
+      <h1 class="title-page ml-[var(--aside-width)] max-w-[75%] mr-auto my-2">Производим ёмкостное оборудование и резервуары</h1>
+      <p class="content text-4xl">И отправляем его по всей России</p>
+      <ul class="even:*:bg-blue-50 mt-16">
         <% objects.map((o, index)=> { %>
-          <li class="grid grid-cols-6 p-[var(--aside-width)] laptop:grid-cols-1 *:col-span-1">
+          <li class="grid grid-cols-6 p-[var(--aside-width)] laptop:grid-cols-1 laptop:*:col-span-1">
             <p class="hidden"><%= formatDate(o.date) %></p>
             <p class="text-fr text-primary-prred">[<%= index +1 %>]</p>
             <figure class="figure figure_mate col-span-2 max-h-[40vh] w-[calc(100%-40px)] ">

@@ -79,3 +79,4 @@ const rightStickySide = new ScrollTrigger({
   pinSpacing: false
 });
 
+rightStickySide.refresh();

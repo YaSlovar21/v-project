@@ -4,7 +4,7 @@ module.exports = {
   
   theme: {
     fontFamily: {
-      'fr': ['Fira', 'Arial', 'sans-serif'],
+      'fr': ['Onest', 'Arial', 'sans-serif'],
     },
     extend: {
       typography: ({ theme }) => ({

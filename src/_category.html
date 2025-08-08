@@ -14,10 +14,10 @@
     <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
     <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
     <main>
-      <div class="all-sect grid grid-cols-2">
+      <div class="all-sect grid grid-cols-2 laptop:grid-cols-1">
         <div class="flex flex-col items-start grid-flow-col relative mt-0">
           <!--Блок 1-->
-          <div class="h-[50vh] border-r border-b w-full  border-primary-gray pl-[var(--aside-width)] pt-[calc(var(--aside-width))]">
+          <div class="h-[50vh] border-r border-b w-full  border-primary-gray pl-[var(--aside-width)] pt-[calc(var(--aside-width))] laptop:h-auto laptop:pb-32 laptop:border-r-0">
             <div class="breadcrumbs">
               <a class="breadcrumbs__link" href="/">Главная</a>
               <a class="breadcrumbs__link breadcrumbs__link_type_here" href="/catalog/<%= categoryData.linkPath %>/"><%= categoryData.categoryName %></a>
@@ -30,14 +30,11 @@
             </p>
           </div>
         </div>
-
         <div class="flex border-b border-primary-gray h-[50vh]">
           <%  if (categoryData.main_img_id) { %>
             <img class="main-category-img w-1/2 block mx-auto my-auto" <%= categoryData.razrez_img_id ? `data-hover="${canonicalURL}/api-images/gallery/${ dModels[categoryData.razrez_img_id].fileName}"` : '' %> src="<%= canonicalURL %>/api-images/gallery/<%= dModels[categoryData.main_img_id].fileName %>" alt="<%= categoryData.categoryName %>">
           <% } %>
         </div>
-
-
       </div>
       <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).length ) { %>
         <section class="py-16 px-[var(--aside-width)] "> <!--ВНИМАНИЕ КОСТЫЛЬ-->
