@@ -32,7 +32,7 @@
         <section class="mt-[60px] mb-16 items-start">
         <h1 class="title-page font-semibold max-w-[75%] ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
         <div class="relative overflow-hidden group">
-          <div class="flex animate-marquee hover:[animation-play-state:paused]">
+          <div class="flex animate-marquee animation-play-state:paused hover:[animation-play-state:running]">
               <% gallery.filter(i => i.consumersIds.includes('gallery')).map((i)=> { %>
               <figure class="mx-4 flex-shrink-0">
                 <img class="h-[300px] w-[250px] object-cover object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>" alt="Team Member #1" />
