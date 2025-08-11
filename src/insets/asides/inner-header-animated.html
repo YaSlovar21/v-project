@@ -2,17 +2,18 @@
   <div class="header__up">
     <!----------- ВНУТРИ ХИДЕРА ----------------------->
     <div class="grid grid-cols-12 border-b border-primary-gray mobile:grid-cols-1 mobile:*:col-span-1">
-      <div class="col-span-6 grid grid-cols-6 border-r border-primary-gray">
-        <a href="/" class="header__logo max-w-60 col-span-2 h-full w-full pl-[var(--aside-width)] py-7 mobile:flex mobile:items-center">
+      <div class="col-span-6 grid grid-cols-6 border-r border-primary-gray mobile:flex mobile:border-none mobile:p-[var(--aside-width)]">
+        <a href="/" class="header__logo max-w-60 col-span-2 h-full w-full pl-[var(--aside-width)] py-7 mobile:hidden">
           <figure src="../../images/header-logo-theme-white.svg" class="header__logo-img relative max-w-[calc(100%-20px)] mobilesm:max-w-[calc(100%-10px)]" alt="Лого">
             <img class="w-full absolute z-[0] animated fadeInBottomLeft" src="../../images/logo-anim/1l.svg">
             <img class="w-full absolute z-[1] animated fadeInBottomRight" src="../../images/logo-anim/1r.svg">
             <img class="w-full absolute z-[2] fadeIn animated" src="../../images/logo-anim/center.svg">
           </figure>
         </a>
-        <div class="col-span-4 px-4 mvpc:px-0 py-10 ">
+        <div class="col-span-4 px-4 mvpc:px-0 py-10 mobile:max-w-[50%]">
           <img class=" max-w-[97%] " src="../../images/text-logo.svg" alt="Текстовое лого">
         </div>
+        <button class="nav__mobile-icon  ml-auto"><img src="../../images/menu-link-mobile.svg" alt="Кнопка меню" ></button>
       </div>
       <div class="col-span-6 flex flex-col justify-between h-full pb-7 pt-16 px-4 mobile:px-[var(--aside-width)] mobile:py-4">
         <div class="flex justify-between items-start mobilesm:hidden">
@@ -37,7 +38,8 @@
     </div>
     <!---------------------------------->
   </div>
-  <div class="bg-blue-100">
+  <hr class="hidden mobile:block" />
+  <div class="bg-blue-100 mobile:hidden">
     <nav class="w-full col-span-10  laptop:hidden">
       <ul class="grid grid-cols-6  font-fr">
         <li class="nav__ul-item pl-[var(--aside-width)]">

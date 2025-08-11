@@ -19,6 +19,7 @@
       display: inline-block;
       transform-origin: left;
     }
+
   </style>
   <div id="smooth-wrapper">
     <div id="smooth-content">
@@ -28,8 +29,17 @@
       <% } %>
       <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
       <main class="">
-        <section class="mt-[60px] mb-32 items-start">
-        <h1 class="title-page font-semibold max-w-[75%]">Производство стальных резервуаров</h1>
+        <section class="mt-[60px] mb-16 items-start">
+        <h1 class="title-page font-semibold max-w-[75%] ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
+        <div class="relative overflow-hidden group">
+          <div class="flex animate-marquee hover:[animation-play-state:paused]">
+              <% gallery.filter(i => i.consumersIds.includes('gallery')).map((i)=> { %>
+              <figure class="mx-4 flex-shrink-0">
+                <img class="h-[300px] w-[250px] object-cover object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>" alt="Team Member #1" />
+              </figure>
+            <% }) %>
+          </div>
+        </div>
           <!--
         <ul class="container-6 w-full">
               <li class="col-span-2">
@@ -46,13 +56,13 @@
         -->
         </section>
         <section class=" content relative"  id="catalog">
-          <h2 class="title-section">Каталог резервуаров</h2>
+          <!--<h2 class="title-section">Каталог резервуаров</h2>-->
           <div class="container-spt relative">
              <p class="text-4xl font-fr mb-10 text-[#c4c4c4] mobile:text-xl">
               Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы
               специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного
               объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в
-              металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь
+              металлообработке и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь
               и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя
               «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.
             </p>
@@ -64,7 +74,7 @@
               Компания «Викинг» представляет широкий ассортимент стальных резервуаров для промышленного применения. Мы
               специализируемся на производстве надежных наземных и подземных конструкций, вертикальных резервуаров различного
               объема, а также силосов для хранения сыпучих материалов. Каждый наш резервуар – это результат многолетнего опыта в
-              металлургии и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь
+              металлообработке и точного следования современным технологическим стандартам. Мы используем только высококачественную сталь
               и инновационные методы производства, что гарантирует долговечность и безопасность эксплуатации наших изделий. Доверяя
               «Викингу», вы получаете не просто резервуар, а надежное решение для ваших производственных задач.
             </p>
@@ -157,6 +167,16 @@
           </div>
         </section>
 
+        <section class="bg-motiv py-24 grid grid-cols-4">
+          <h2></h2>
+          <div class="col-span-2">
+            <p class="col-span-2 font-medium text-5xl font-fr text-white">
+              Мы гарантируем долговечность и безопасность эксплуатации каждого изделия. Наши резервуары — это надёжное решение для ваших производственных задач.
+            </p>
+            <button class="ui-button bg-white mt-4">Запросить расчёт</button>
+          </div>
+        </section>
+
         <section class="my-28 relative">
           <!--Костыль-->
           <span class="up-title up-title_svg ml-[var(--aside-width)]">Галерея</span>
@@ -174,16 +194,16 @@
         </section>
         <section class="">
           <h2 class="text-5xl formquiz__content font-fr uppercase font-semibold text-primary-prblue mb-10">Подбор и расчёт резервуара</h2>
-          <form name="quiz" class="my-8 w-2/3 mvpc:w-[calc(100%-60px)] w-full mx-auto" novalidate>
+          <form name="quiz" class="my-8 w-1/2 mvpc:w-[calc(100%-60px)] mx-auto" novalidate>
             <h3 class="text-3xl  formquiz__content uppercase font-fr text-primary-prblue mb-2">Какой резервуар Вам необходим?</h3>
             <div class="grid grid-cols-12 border-y border-primary-gray">
-              <div class="col-start-2 col-span-10 grid grid-cols-4 border-x border-primary-gray">
+              <div class="col-start-0 col-span-12 grid grid-cols-4 border-x border-primary-gray">
                 <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f, i) => { %>
-                  <label class="formquiz__labelcheckbox relative <%= i!==3 ? 'border-r border-primary-gray' : '' %>">
+                  <label class="formquiz__labelcheckbox relative">
                     <input type="radio" value="<%= f %>" data-alias="<%= categoriesByTextId[f].categorySingularName %>" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
-                    <figure class="formquiz__figchoice">
-                      <img class="h-[70%] w-[70%] object-center object-contain" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[categoriesByTextId[f].main_img_id].fileName %>">
-                      <span class="text-xl mt-auto block font-fr uppercase"><%= categoriesByTextId[f].categorySingularName %></span>
+                    <figure class="formquiz__figchoice pb-[100%]">
+                      <img class="h-[70%] w-[70%] object-center object-contain absolute -translate-x-1/2" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[categoriesByTextId[f].main_img_id].fileName %>">
+                      <span class="text-sm absolute bottom-4 left-4 block font-fr uppercase"><%= categoriesByTextId[f].categorySingularName %></span>
                     </figure>
                   </label>
                 <% }) %>

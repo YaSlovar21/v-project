@@ -138,7 +138,7 @@
     */
   }
   .title-page {
-    @apply text-[94px] mvpc:text-6xl font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
+    @apply text-[94px] mvpc:text-6xl font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-3xl;
   }
   .title-section {
     @apply text-6xl mvpc:text-5xl font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;

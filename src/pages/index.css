@@ -76,6 +76,14 @@
   @apply whitespace-nowrap text-primary-prblue;
 }
 
+/* заголовок в описании товара отданный после перезаписывания */
 .content-ai p p strong {
   @apply block mb-2;
+}
+
+/*секция мотивационная на главной */
+.bg-motiv {
+  background:
+    url('../images/bg-motiv.png') top left no-repeat,
+    #0054D1; /* Цвет фона (идёт последним) */
 }

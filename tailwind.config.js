@@ -7,6 +7,15 @@ module.exports = {
       'fr': ['Onest', 'Arial', 'sans-serif'],
     },
     extend: {
+      animation: {
+        marquee: 'marquee 20s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
       typography: ({ theme }) => ({
         vik: {
           css: {
@@ -61,7 +70,11 @@ module.exports = {
           prredlight: '#CD131F',
           floral: '#FEF8EC'
         },
-
+        mary: {
+          blue: '#0139B0',
+          blue100: '#0139B01A',
+          blueacc: '#0054D1'
+        }
       }
     }
   },
