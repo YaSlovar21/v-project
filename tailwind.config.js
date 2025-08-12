@@ -73,7 +73,10 @@ module.exports = {
         mary: {
           blue: '#0139B0',
           blue100: '#0139B01A',
-          blueacc: '#0054D1'
+          blueacc: '#0054D1', //и background-secondary
+          secondary: '#60697D',
+          primary: '#010A1B',
+          lightred: '#CD2C2C26'
         }
       }
     }

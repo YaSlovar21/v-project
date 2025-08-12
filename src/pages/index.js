@@ -174,16 +174,16 @@ buttonToOpenPopupWithForm.addEventListener('click', ()=>{
 
 /* GSAP RAZREZ */
 
-gsap.utils.toArray(".comparisonSection").forEach(section => {
+gsap.utils.toArray(".comparisonSectionWrapper").forEach(section => {
 	let tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: section,
-				start: "center center",
+				start: "top top",
         // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
 				end: () => "+=" + section.offsetWidth,
 				scrub: true,
 				pin: true,
-        anticipatePin: 1
+        //anticipatePin: 1
 			},
 			defaults: {ease: "none"}
 		});
@@ -191,6 +191,7 @@ gsap.utils.toArray(".comparisonSection").forEach(section => {
 	tl
   .to("body", { backgroundColor: "#000", duration: 0.14 }, 0)
   .to(".text-logo-cs", {fill: '#f2f2f2', duration:0}, 0.05)
+  .to(".text-logo-cs1", { yPercent: -50, duration:0.1}, 0.05)
   .fromTo(section.querySelector(".afterImage"), { xPercent: 100, x: 0}, {xPercent: 0}, 0)
 	  // ...and the image the opposite way (at the same time)
 	.fromTo(section.querySelector(".afterImage img"), {xPercent: -100, x: 0}, {xPercent: 0}, 0)

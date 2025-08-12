@@ -258,6 +258,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           sizesArrForCats,
           staffArrForCats,
           categoriesByTextId,
+          uslugiForMainPage: uslugi.filter(u => u.isForMainPage),
+
           additionalData
         },
         title: "Производство стальных резервуаров и ёмкостей",

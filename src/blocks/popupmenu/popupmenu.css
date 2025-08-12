@@ -3,7 +3,7 @@
   opacity: 0;
   transition: opacity 0.7s, visibility 0s linear;
   z-index: 22;
-  @apply flex fixed top-0 left-0 w-full h-screen;
+  @apply flex fixed top-0 left-0 w-full h-full;
 }
 
 

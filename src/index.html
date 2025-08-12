@@ -33,7 +33,7 @@
         <h1 class="title-page font-semibold max-w-[75%] ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
         <div class="relative overflow-hidden group">
           <div class="flex animate-marquee animation-play-state:paused hover:[animation-play-state:running]">
-              <% gallery.filter(i => i.consumersIds.includes('gallery')).map((i)=> { %>
+              <% [].concat(gallery.filter(i => i.consumersIds.includes('gallery'))).concat(gallery.filter(i => i.consumersIds.includes('gallery'))).map((i)=> { %>
               <figure class="mx-4 flex-shrink-0">
                 <img class="h-[300px] w-[250px] object-cover object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>" alt="Team Member #1" />
               </figure>
@@ -111,8 +111,15 @@
             </ul>
           </div>
         </section>
+        <section class="content relative comparisonSectionWrapper pt-20">
+        <h2 class=" top-0 left-0  h-[11.458vw] w-full font-black overflow-hidden text-primary-lightgray laptop:invisible">
+          <div class="text-logo-cs1 w-full">
+            <span class="w-full block h-[11.458vw] uppercase text-[11.758vw] text-center">Качественно</span>
+            <span class="w-full block h-[11.458vw] uppercase text-[11.758vw] text-center">И в срок</span>
+          </div>
+        </h2>
         <section class="content comparisonSection relative w-1/2 mobile:w-full block mx-auto overflow-hidden mobile:overflow-visible" data-speed="1.3">
-          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0 mobile:-top-24 text-primary-lightgray laptop:invisible">
+          <h2 class="text-[200px] olpc:text-[120px] absolute top-0 left-0  text-primary-lightgray invisible">
             <svg class="text-logo-cs fill-[#003049] w-full" width="800" height="240" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M76.6321 0.775895C64.3867 2.48898 49.903 6.83757 32.9176 14.0852C14.7471 21.7282 10.0069 24.4955 6.97852 29.1076C4.74013 32.402 4.8718 32.7973 7.76854 38.7272C10.6653 44.5254 10.9286 47.1609 11.8503 74.5702C12.377 90.9103 12.9037 125.963 12.9037 152.45C13.0354 206.873 12.5087 211.353 4.34512 218.996L0 223.213L11.7186 224.135C37.921 226.244 77.1587 221.236 107.838 212.144C137.727 203.183 153.001 187.897 158.663 161.542C164.851 132.42 150.367 97.6309 122.453 75.2291C118.108 71.5393 114.421 67.7178 114.421 66.5319C114.421 63.3693 119.425 59.416 130.222 54.5403C146.154 47.1609 150.762 40.045 146.022 30.4254C142.599 23.8366 138.78 19.3562 130.88 13.2946C117.055 2.75253 96.5143 -1.99139 76.6321 0.775895ZM101.913 22.3871C110.34 25.945 114.421 37.4095 109.681 44.13C108.496 45.8431 98.3577 53.8814 87.2974 62.1833C73.2086 72.7253 66.7568 78.2599 66.2301 80.6318C65.7034 82.4767 65.5718 84.058 65.8351 84.3216C66.0985 84.4533 71.7603 87.4842 78.2121 91.0421C114.421 110.545 131.275 128.335 135.62 151.659C136.805 158.116 136.542 160.488 134.304 168.131C127.325 191.06 103.361 204.369 63.5967 207.136C45.4262 208.454 46.8746 216.097 47.6646 126.358C48.0596 72.1982 48.718 49.9282 49.903 45.9749C54.1165 31.7431 71.2336 20.8058 89.7991 20.674C94.0125 20.5422 99.411 21.3329 101.913 22.3871Z"/>
               <path d="M242.932 53.3537C237.402 56.121 228.975 61.2602 224.103 64.8181C213.833 72.0658 195.399 89.9873 190.132 98.0256C188.157 101.056 186.051 103.165 185.524 102.901C184.865 102.506 184.075 98.5527 183.549 93.9405C182.495 83.662 185.26 69.5621 190.396 59.9424C192.371 55.9892 194.214 52.4312 194.477 51.7724C194.741 51.2453 187.762 50.8499 179.072 50.8499C170.25 50.8499 163.14 51.1135 163.14 51.5088C163.14 51.7724 164.852 54.8032 166.958 58.0976C173.015 67.5854 174.2 77.7321 173.41 112.126C172.225 159.828 174.99 184.338 184.075 207.004C188.421 217.941 197.769 233.095 202.641 237.312L205.669 239.948L204.748 234.15C204.221 230.987 201.324 222.158 198.164 214.383C191.317 197.911 189.474 189.082 189.474 172.742C189.474 138.217 208.829 106.855 239.772 90.9097C244.644 88.4059 250.042 86.4293 251.886 86.4293C258.601 86.4293 258.601 86.1658 258.206 149.55C257.942 183.284 257.284 210.035 256.494 212.538C255.704 214.779 253.071 218.205 250.569 220.181C248.199 222.026 246.092 224.135 246.092 224.925C246.092 226.243 278.088 226.638 279.405 225.321C279.931 224.794 278.746 222.685 277.035 220.577C270.978 213.461 270.714 210.166 270.188 151.263C269.529 88.5377 269.924 83.9256 277.035 76.0191L281.511 71.1434L278.22 65.2135C271.899 54.2761 264.394 48.2144 256.757 48.2144C254.651 48.2144 248.331 50.5864 242.932 53.3537Z"/>
@@ -122,7 +129,16 @@
               <path d="M720.971 50.5146C698.983 51.0417 689.239 51.8324 688.186 52.8866C687.264 53.809 686.737 54.7315 687.132 54.8632C687.396 55.1268 689.371 56.181 691.609 57.2352C697.139 60.1343 701.089 66.5913 701.879 74.6296C702.406 78.451 702.274 110.341 701.616 145.525C700.563 214.18 700.431 215.234 693.321 222.877L690.687 225.644L697.007 226.698C703.328 227.621 741.907 226.698 743.092 225.513C743.355 225.249 741.907 223.141 739.8 220.769C737.694 218.528 734.928 213.784 733.743 210.358C730.32 200.607 729.003 171.88 729.398 121.41C729.793 78.5828 729.925 74.6296 732.295 70.0174C737.694 59.8707 752.836 57.1034 766.398 63.824C769.558 65.4053 778.248 72.3894 785.753 79.3735C793.258 86.2258 799.71 91.2333 799.974 90.4426C800.764 87.8071 783.646 53.809 780.355 51.5688C776.931 49.1969 778.775 49.1969 720.971 50.5146Z"/>
             </svg>
           </h2>
-          <p class="text-[100px] pc:text-[90px] mvpc:text-[80px] olpc:text-[50px] font-fr absolute bottom-[160px] pc:bottom-[140px] mvpc:bottom-[120px] mobile:bottom-0 olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span></p>
+
+          <!--<p class="text-[64px] pc:text-[90px] mvpc:text-[80px] olpc:text-[50px] font-fr absolute bottom-[160px] pc:bottom-[140px] mvpc:bottom-[120px] mobile:bottom-0 olpc:bottom-16 left-0 text-primary-prblue">качественно и <span class="text-primary-prred">в срок</span>
+          </p>-->
+          <div class="bg-mary-blue100 p-4 flex justify-between w-full mt-auto absolute bottom-0 left-0 z-[5]">
+            <div>
+              <h3 class="title-text">Ищете резервуар для хранения и сбора жидкостей?</h3>
+              <p class="text-secondary text-secondary_p1">Свяжитесь с нами, мы подберём нужное оборудование под ваши цели</p>
+            </div>
+            <button class="ui-button">Написать</button>
+          </div>
           <div class="comparisonImage beforeImage" >
             <img class="object-contain object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[37].fileName %>" alt="before">
           </div>
@@ -131,12 +147,12 @@
           </div>
             <!-- Кнопки с tooltips -->
           <div class="absolute top-[30%] left-[20%] group">
-            <button class="button-3 w-12 h-12 bg-primary-prred rounded-full flex items-center justify-center opacity-0 transition-all hover:scale-110 hover:bg-primary-prblue">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <button class="button-3 w-12 h-12 laptop:h-6 laptop:w-6 bg-primary-prred rounded-full flex items-center justify-center opacity-0 transition-all hover:scale-110 hover:bg-primary-prblue">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white laptop:h-3 laptop:w-3" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
             </button>
-            <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-white text-gray-800 px-3 py-2 rounded-md shadow-lg text-sm w-40">
+            <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-white text-gray-800 px-3 py-2 rounded-md shadow-lg text-sm w-40 laptop:text-xs">
               Текст1
               <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-0 border-t-4 border-l-transparent border-r-transparent border-t-white"></div>
             </div>
@@ -144,7 +160,7 @@
 
           <div class="absolute top-[50%] left-[80%] group">
             <button class="button-1 w-12 h-12 bg-primary-prred rounded-full flex items-center justify-center opacity-0 transition-all hover:scale-110 hover:bg-primary-prblue">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white laptop:h-3 laptop:w-3" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
             </button>
@@ -155,30 +171,30 @@
           </div>
 
           <div class="absolute top-[50%] left-[40%] group">
-            <button class="button-2 w-12 h-12 bg-primary-prred rounded-full flex items-center justify-center opacity-0 transition-all hover:scale-110 hover:bg-primary-prblue">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <button class="button-2 w-12 h-12 laptop:h-6 laptop:w-6 bg-primary-prred rounded-full flex items-center justify-center opacity-0 transition-all hover:scale-110 hover:bg-primary-prblue">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white laptop:h-3 laptop:w-3" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
             </button>
-            <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-white text-gray-800 px-3 py-2 rounded-md shadow-lg text-sm w-40">
+            <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-white text-gray-800 px-3 py-2 rounded-md shadow-lg text-sm w-40 laptop:text-xs">
               Текст3
               <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-0 border-t-4 border-l-transparent border-r-transparent border-t-white"></div>
             </div>
           </div>
         </section>
-
-        <section class="bg-motiv py-24 grid grid-cols-4">
-          <h2></h2>
+        </section>
+        <section class="bg-motiv py-24 grid grid-cols-4 px-[var(--aside-width)] mvpc:grid-cols-3 mobile:grid-cols-1 mobile:*:col-span-1">
+          <h2 class="up-title text-white">О нас</h2>
           <div class="col-span-2">
-            <p class="col-span-2 font-medium text-5xl font-fr text-white">
+            <p class="col-span-2 font-medium text-5xl font-fr text-white mvpc:text-4xl laptop:text-2xl">
               Мы гарантируем долговечность и безопасность эксплуатации каждого изделия. Наши резервуары — это надёжное решение для ваших производственных задач.
             </p>
-            <button class="ui-button bg-white mt-4">Запросить расчёт</button>
+            <button class="ui-button ui-button_white mt-4">Запросить расчёт</button>
           </div>
         </section>
 
-        <section class="my-28 relative">
-          <!--Костыль-->
+        <!--<section class="my-28 relative">
+          Костыль
           <span class="up-title up-title_svg ml-[var(--aside-width)]">Галерея</span>
           <h2 class="mb-4 text-6xl font-fr uppercase font-semibold text-primary-prblue ml-[var(--aside-width)]">Изготовленные резевуары</h2>
           <div class="py-16 container-4 gap-5 gap-y-10 bg-primary-prblue px-[30px]">
@@ -191,76 +207,109 @@
               </div>
             <% }) %>
           </div>
+        </section>-->
+
+        <section class="grid grid-cols-4 my-24 content mvpc:grid-cols-3">
+          <h2 class="up-title row-span-2 mvpc:row-span-1">Услуги</h2>
+          <p class="title-section col-span-2 mt-0 mobilesm: mobilesm:col-span-3">Помогаем бизнесу справится с разноплановыми задачами</p>
+          <ul class="col-span-3 grid grid-cols-4 mvpc:grid-cols-3 gap-5 mobile:grid-cols-1">
+            <% uslugiForMainPage.map((u)=> { %>
+              <li class="bg-mary-blue100 transition-all hover:bg-mary-lightred relative p-8 rounded-md">
+                <img class="w-6 h-6 absolute top-8 left-8" src="<%= canonicalURL %>/api-images/uslugi/icons/<%= u.icon_svg %>" alt="услуга <%= u.name_sm %>">
+                <h3 class="up-title pl-10 pb-10 border-b border-mary-blueacc border-opacity-15"><%= u.name_sm %></h3>
+                <p class="text-secondary mt-36 mobile:mt-12"><%= u.desc_sm %></p>
+              </li>
+            <% }) %>
+          </ul>
         </section>
-        <section class="">
-          <h2 class="text-5xl formquiz__content font-fr uppercase font-semibold text-primary-prblue mb-10">Подбор и расчёт резервуара</h2>
-          <form name="quiz" class="my-8 w-1/2 mvpc:w-[calc(100%-60px)] mx-auto" novalidate>
-            <h3 class="text-3xl  formquiz__content uppercase font-fr text-primary-prblue mb-2">Какой резервуар Вам необходим?</h3>
-            <div class="grid grid-cols-12 border-y border-primary-gray">
-              <div class="col-start-0 col-span-12 grid grid-cols-4 border-x border-primary-gray">
+
+        <section class="container-4 gap-5 content">
+          <h2 class="up-title">Коммерческое предложение</h2>
+          <form name="quiz" class="col-span-2 mvpc:col-span-3 mx-auto" novalidate>
+            <h3 class="title-section mt-0 mb-4">Мы готовы подобрать для вас лучшее решение</h3>
+            <p class="text-mary-secondary">Заполните форму и ожидайте звонка в течение 5 минут</p>
+            <div class="grid grid-cols-2 gap-5 mt-10 laptop:grid-cols-1">
+              <label class="form__field basis-full mb-4">
+                <span class="title-form block">Email, куда отправить расчёт</span>
+                <input class="form__input form__input_up raschet-bem__input_type_flex" placeholder="Ваше имя или организация" type="text" name="name" id="name-input" required minlength="1">
+                <span class="form__input-error name-input-error"></span>
+              </label>
+              <label class="form__field basis-full  mb-4">
+                <span class="title-form block">Email, куда отправить расчёт</span>
+                <input placeholder="Телефон" type="tel" name="tel" id="tel-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
+                <span class="form__input-error tel-input-error"></span>
+              </label>
+              <label class="form__field basis-full mb-4">
+                <span class="title-form block">Email, куда отправить расчёт</span>
+                <input  placeholder="E-mail" type="email" name="email" id="email-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
+                <span class="form__input-error email-input-error"></span>
+              </label>
+              <label class="form__field basis-full mb-4">
+                <span class="title-form block">Email, куда отправить расчёт</span>
+                <input  placeholder="E-mail" type="email" name="email" id="email-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
+                <span class="form__input-error email-input-error"></span>
+              </label>
+            </div>
+            <h3 class="title-form">Какой резервуар Вам необходим?</h3>
+            <div class="grid grid-cols-12">
+              <div class="col-start-0 col-span-12 grid grid-cols-4 gap-4 laptop:grid-cols-2">
                 <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f, i) => { %>
-                  <label class="formquiz__labelcheckbox relative">
+                  <label class="formquiz__labelcheckbox relative pb-[100%]">
                     <input type="radio" value="<%= f %>" data-alias="<%= categoriesByTextId[f].categorySingularName %>" class="formquiz__inputcheckbox absolute invisible" name="rezervuartype">
-                    <figure class="formquiz__figchoice pb-[100%]">
-                      <img class="h-[70%] w-[70%] object-center object-contain absolute -translate-x-1/2" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[categoriesByTextId[f].main_img_id].fileName %>">
-                      <span class="text-sm absolute bottom-4 left-4 block font-fr uppercase"><%= categoriesByTextId[f].categorySingularName %></span>
+                    <figure class="formquiz__figchoice h-full w-full absolute">
+                      <img class="h-[99%] w-[99%] object-center object-contain absolute left-1/3" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[categoriesByTextId[f].main_img_id].fileName %>">
                     </figure>
+                    <span class="text-sm absolute bottom-4 left-4 block font-fr uppercase text-mary-blueacc max-w-[70%]"><%= categoriesByTextId[f].categorySingularName %></span>
                   </label>
                 <% }) %>
               </div>
             </div>
-            <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
-              <fieldset class="mt-6 formquiz__content" id="sizes-<%= f %>">
-                <h3 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой объем Вам необходим?</h3>
-                <div class="flex">
-                  <% sizesArrForCats[f].map((size)=> { %>
-                    <label class="formquiz__labelcheckbox relative mb-2 mr-2 flex flex-wrap hover:bg-blue-200">
-                      <input type="checkbox" value="<%= size %>" class="formquiz__inputsizecheck absolute invisible" name="sizes-<%= f %>">
-                      <span class="formquiz__sizechoice font-fr uppercase"><%= size %> м³</span>
-                    </label>
-                  <% }) %>
-                </div>
-              </fieldset>
-            <% }) %>
-            <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
-              <fieldset class="mt-6 formquiz__content" id="staff-<%= f %>">
-                <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Что будет храниться в ёмкости?</h2>
-                <div class="flex">
-                  <% staffArrForCats[f].map((staff)=> { %>
-                    <label class="formquiz__labelcheckbox relative mb-2 mr-2 flex flex-wrap hover:bg-blue-200">
-                      <input type="checkbox" value="<%= staff %>" class="formquiz__inputsizecheck absolute invisible" name="staff-<%= f %>">
-                      <span class="formquiz__sizechoice font-fr uppercase"><%= staff %></span>
-                    </label>
-                  <% }) %>
-                </div>
-              </fieldset>
-            <% }) %>
-            <h2 class="text-3xl formquiz__content uppercase font-fr text-primary-prblue mt-6 mb-2">Ваши контактные данные</h2>
-            <div class="formquiz__content flex flex-wrap justify-between mobile:flex-col ">
-                <label class="form__field basis-full mb-4">
-                <input class="form__input form__input_up raschet-bem__input_type_flex" placeholder="Ваше имя или организация" type="text" name="name" id="name-input" required minlength="1">
-                <span class="form__input-error name-input-error"></span>
-                </label>
-                <label class="form__field basis-full  mb-4">
-                <!--<span class="form__label-title block mobile:hidden">Ваш телефон</span>
-                <span class="form__label-title hidden mobile:block">Телефон</span>-->
-                <input placeholder="Телефон" type="tel" name="tel" id="tel-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
-                <span class="form__input-error tel-input-error"></span>
-                </label>
-                <label class="form__field basis-full mb-4">
-                <!--<span class="form__label-title block mobile:hidden">Email, куда отправить расчёт</span>
-                <span class="form__label-title hidden mobile:block">Email</span>-->
-                <input  placeholder="E-mail" type="email" name="email" id="email-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
-                <span class="form__input-error email-input-error"></span>
-                </label>
+            <div class="grid grid-cols-2 gap-5 laptop:grid-cols-1">
+              <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
+                <!--
+                <fieldset class="mt-6 formquiz__content" id="sizes-<%= f %>">
+                  <h3 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Какой объем Вам необходим?</h3>
+                  <div class="flex">
+                    <% sizesArrForCats[f].map((size)=> { %>
+                      <label class="formquiz__labelcheckbox relative mb-2 mr-2 flex flex-wrap hover:bg-blue-200">
+                        <input type="checkbox" value="<%= size %>" class="formquiz__inputsizecheck absolute invisible" name="sizes-<%= f %>">
+                        <span class="formquiz__sizechoice font-fr uppercase"><%= size %> м³</span>
+                      </label>
+                    <% }) %>
+                  </div>
+                </fieldset>
+                -->
+                <fieldset class="mt-6 p-0" id="sizes-<%= f %>">
+                  <h3 class="title-form">Какой объем Вам необходим?</h3>
+                  <div class="flex">
+                    <select class="w-full py-[13px] px-4 border border-mary-blue border-opacity-15 rounded" name="sizes-<%= f %>">
+                      <% sizesArrForCats[f].map((size)=> { %>
+                        <option value="<%= size %>"><%= size %> м³</option>
+                      <% }) %>
+                    </select>
+                  </div>
+                </fieldset>
+              <% }) %>
+              <% ["gorizontalnye-rezervuary-rgs", "gorizontalnye-rezervuary-rgsp", "vertikalnye-rezervuary", "silosy"].map((f) => { %>
+                <fieldset class="mt-6 p-0" id="staff-<%= f %>">
+                  <h2 class="title-form">Что будет храниться в ёмкости?</h2>
+                  <div class="flex">
+                    <select  class="w-full py-[13px] px-4 border border-mary-blue border-opacity-15 rounded" name="staff-<%= f %>">
+                      <% staffArrForCats[f].map((staff)=> { %>
+                        <option value="<%= staff %>"><%= staff %></option>
+                      <% }) %>
+                    </select>
+                  </div>
+                </fieldset>
+              <% }) %>
             </div>
-            <div class="formquiz__content mt-6 w-full">
+            <div class="mt-6 w-full">
                 <label class="form__field form__field_type_textarea">
-                  <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Опишите Вашу задачу</h2>
+                  <h2 class="title-form">Опишите Вашу задачу</h2>
                 <textarea class="form__input form__input_up form__input_type_textarea" placeholder="Опишите Вашу задачу" name="comment" id="comment-pto-free-input"></textarea>
                 <span class="form__input-error comment-pto-free-input-error"></span>
                 </label>
-                <button class="ui-button form__submit-button w-full" type="submit">Отправить</button>
+                <button class="ui-button form__submit-button" type="submit">Оставить заявку</button>
             </div>
           </form>
         </section>

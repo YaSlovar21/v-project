@@ -19,7 +19,7 @@
 }
 
 .formquiz__inputcheckbox:checked + .formquiz__figchoice{
-  @apply bg-primary-darkbg text-primary-prred border-primary-prred;
+  /*@apply bg-primary-darkbg text-primary-prred border-primary-prred;*/
 }
 
 .formquiz__inputcheckbox:checked + .formquiz__figchoice::after{
