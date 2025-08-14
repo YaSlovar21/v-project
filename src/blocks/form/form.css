@@ -15,10 +15,8 @@
 }
 
 .form__input {
-    @apply w-full p-4 text-lg bg-[#D7E6F2] text-primary-black outline-none mobile:text-base mobile:p-3;
+    @apply w-full px-4 py-[14px] text-lg border border-mary-blue rounded border-opacity-15 mvpc:text-base text-mary-primary outline-none mobile:text-sm;
 }
-
-
 
 .form__input::placeholder {
     @apply text-primary-gray;
@@ -32,27 +30,23 @@
     @apply  transition-all duration-300 text-white mt-8;
 }
 
-.form__input_up {
-    @apply bg-transparent py-4 border border-primary-gray rounded-sm;
-}
-
 .form__submit-button_disabled {
     @apply bg-gray-700 hover:bg-gray-700 cursor-not-allowed border-none hover:text-primary-white;
 }
 
 .form__input-error {
-    font-size: 10px;
-    letter-spacing: .04em;
-    color: var(--theme-main-color);
-    opacity: 0;
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    transition: 0.3s;
-    width: 100%;
-  }
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--theme-main-color);
+  opacity: 0;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  transition: 0.3s;
+  width: 100%;
+}
 
-  .form__input-error_visible {
-    opacity: 1;
-  }
+.form__input-error_visible {
+  opacity: 1;
+}
 

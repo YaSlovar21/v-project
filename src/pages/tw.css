@@ -150,6 +150,11 @@
   .title-section {
     @apply text-6xl mvpc:text-5xl font-fr font-medium mt-8 mb-16 text-primary-prblue mvpc:text-[52px] mobile:text-3xl mobilesm:text-2xl;
   }
+
+  .title-section_sm {
+    @apply text-4xl olpc:text-3xl laptop:text-2xl;
+  }
+
   .title-text {
     @apply text-2xl font-medium font-fr text-mary-primary mb-2;
   }
@@ -166,7 +171,7 @@
     @apply text-mary-secondary text-base leading-snug;
   }
   .text-secondary_p1 {
-    @apply text-lg;
+    @apply text-lg mobile:text-base;
   }
   .title-cat-intro {
     @apply text-xl max-w-3xl mobile:text-base;

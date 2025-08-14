@@ -14,11 +14,12 @@
         <input type="checkbox" class="dropdown__checkbox" id="menu-checkbox">
         <label class="dropdown__label" for="menu-checkbox">Продукция</label>
         <ul class="dropdown__list">
-          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="">Резервуары РГС</a></li>
-          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="">Резервуары РГСД</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.rgs %>">Резервуары РГС</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.rvs %>">Резервуары вертикальные</a></li>
         </ul>
       </div>
       <a class="popup__navlink" href="<%= ROUTES.uslugi %>">Услуги</a>
+      <a class="popup__navlink" href="<%= ROUTES.about %>">Галерея</a>
       <a class="popup__navlink" href="<%= ROUTES.about %>">О компании</a>
       <a class="popup__navlink" href="<%= ROUTES.contacts %>">Контакты</a>
     </nav>
@@ -51,39 +52,45 @@
 <!--MainPopupWithForm-->
 <div class="popup popup-with-form">
   <div class="popup-container bg-white ml-auto w-1/2 border-l border-primary-lightgray box-content overflow-y-auto relative">
-    <button class="popup-button-close absolute top-10 right-10 w-8 h-8 transition-all hover:rotate-90">
-      <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-      </svg>
-    </button>
+
     <div class="h-full py-10">
-        <form class="form-in-popup h-full flex flex-col p-[var(--aside-width)]" novalidate>
-        <h3 class="popup-heading text-4xl uppercase font-semibold font-fr text-primary-prblue">Отправить заявку на расчёт</h3>
+      <div class="flex w-full justify-between p-[var(--aside-width)]">
+        <h3 class="popup-heading text-3xl font-semibold font-fr text-mary-primary">Отправить заявку на расчёт</h3>
+        <button class="popup-button-close w-8 h-8 transition-all hover:rotate-90">
+          <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+        <form class="form-in-popup flex flex-col p-[var(--aside-width)]" novalidate>
         <div class="flex flex-col justify-between mt-[10vh]">
                 <label class="form__field basis-full mb-4">
+                <h4 class="title-form">Как к Вам обращаться?</h4>
                 <input class="form__input form__input_up raschet-bem__input_type_flex" placeholder="Ваше имя или организация" type="text" name="name" id="name-input" required minlength="1">
                 <span class="form__input-error name-input-error"></span>
                 </label>
                 <label class="form__field basis-full  mb-4">
                 <!--<span class="form__label-title block mobile:hidden">Ваш телефон</span>
                 <span class="form__label-title hidden mobile:block">Телефон</span>-->
+                <h4 class="title-form">Ваш телефон?</h4>
                 <input placeholder="Телефон" type="tel" name="tel" id="tel-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
                 <span class="form__input-error tel-input-error"></span>
                 </label>
                 <label class="form__field basis-full mb-4">
                 <!--<span class="form__label-title block mobile:hidden">Email, куда отправить расчёт</span>
                 <span class="form__label-title hidden mobile:block">Email</span>-->
+                <h4 class="title-form">Email, куда отправить расчёт?</h4>
                 <input  placeholder="E-mail" type="email" name="email" id="email-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
                 <span class="form__input-error email-input-error"></span>
                 </label>
             </div>
             <div class="mt-8 w-full flex-1 flex flex-col">
                 <label class="form__field form__field_type_textarea flex-1">
-                  <h2 class="text-3xl uppercase font-fr text-primary-prblue mb-2">Опишите Вашу задачу</h2>
+                  <h4 class="title-form">Расскажите подробнее про вашу задачу</h4>
                   <textarea class="popup-textarea-input form__input form__input_up form__input_type_textarea " placeholder="Опишите Вашу задачу" name="comment" id="comment-pto-free-input"></textarea>
                   <span class="form__input-error comment-pto-free-input-error"></span>
                 </label>
-                <button class="ui-button form__submit-button w-full" type="submit">Отправить</button>
+                <button class="ui-button form__submit-button" type="submit">Отправить</button>
             </div>
           </form>
     </div>

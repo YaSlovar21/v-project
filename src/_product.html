@@ -24,7 +24,7 @@
               <a class="breadcrumbs__link" href="/catalog/<%= categoryInfo.linkPath %>/"><%= categoryInfo.categoryName %></a>
               <a class="breadcrumbs__link breadcrumbs__link_type_here" href="/catalog/<%= categoryInfo.linkPath %>/<%= productData.textId %>.html"><%= productData.h1_sm %></a>
             </div>
-            <h1 class="title-cat-prod">
+            <h1 class="title-section font-semibold">
               <%= productData.h1_sm %>
             </h1>
 
@@ -83,7 +83,7 @@
           <!--Блок 2 ЧЕРТЕЖИ если есть-->
           <% if (productData.drawingsGalleryIds) { %>
             <div class="border-r border-t border-primary-gray bg-blue-100 mobile:border-none">
-              <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[var(--aside-width)] py-6 self-start">Чертежи</h2>
+              <h2 class="text-3xl laptop:text-2xl col-span-3 font-fr font-medium pl-[var(--aside-width)] py-6 self-start">Чертежи</h2>
               <ul class="grid grid-cols-3 gap-0  pl-[var(--aside-width)] laptop:grid-cols-2 mobile:grid-cols-1">
                 <% productData.drawingsGalleryIds?.map((dId) => { %>
                   <li class="p-3">
@@ -104,7 +104,7 @@
             </div>
           <% } %>
           <div class="grid grid-cols-3 w-full border-t border-primary-gray">
-            <h2 class="text-3xl col-span-3 uppercase font-fr font-medium pl-[var(--aside-width)] pb-6 pt-[calc(var(--aside-width)*2)] border-l border-r border-b self-start border-primary-gray laptop:border-r-0 laptop:border-b">Характеристики</h2>
+            <h2 class="text-3xl laptop:text-2xl col-span-3 font-fr font-medium pl-[var(--aside-width)] pb-6 pt-[calc(var(--aside-width)*2)] border-l border-r border-b self-start border-primary-gray laptop:border-r-0 laptop:border-b">Характеристики</h2>
             <ul class="col-span-3 flex flex-col border-l border-r self-start border-primary-gray font-fr">
               <%  charsSequence.map((i, index)=> { if (productData[i]) { %>
                 <li class="border-b grid grid-cols-3 border-primary-gray p-3 justify-between text-base">
@@ -136,15 +136,15 @@
         </div>
       </div>
       <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).length ) { %>
-        <section class="py-16 bg-primary-prblue px-[var(--aside-width)]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
-          <h2 class="text-4xl font-fr uppercase font-medium text-primary-white mb-8">Фотографии изготовленных <%= categoryInfo.catRoditelniiPadezhName %></h2>
+        <section class="py-16 px-[var(--aside-width)]"> <!--ВНИМАНИЕ КОСТЫЛЬ-->
+          <h2 class="text-4xl font-fr  mvpc:text-3xl laptop:text-2xl font-medium text-mary-primary mb-8">Фотографии изготовленных <%= categoryInfo.catRoditelniiPadezhName %></h2>
           <div class="container-4 gap-5 gap-y-10">
             <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).map((i)=> { %>
               <div>
                 <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
                   <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>">
                 </figure>
-                <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption>
+                <!-- <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption> -->
               </div>
             <% }) %>
           </div>
@@ -152,7 +152,7 @@
       <% } %>
       <% if (productData.introai) { %>
         <section class="content content-ai [&_p_strong]:block [&_p_strong]:mb-2  mb-10 py-16">
-          <h2 class="text-4xl font-fr uppercase font-medium text-primary-prblue"><%= productData.h1 %></h2>
+          <h2 class="title-section title-section_sm"><%= productData.h1 %></h2>
           <div class="text-base mt-8 max-w-[50%] text-primary-darkbg ">
             <%=  markdown.toHTML(productData.introai) %>
           </div>

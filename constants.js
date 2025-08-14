@@ -117,4 +117,3 @@ module.exports = {
   /* данные для обработки перс данных */
   sonsentCompanyObj
 }
-

@@ -27,7 +27,9 @@ function generateCategoryPagesHtmlPlugins(category, products,categoriesByTextId,
   
   const dateNow = (new Date()).toString();
   generatedPaths.push({ path: `/catalog/${linkPath}/`, lastmod: dateNow, priority: 0.9, changefreq: 'monthly' });
-
+  
+  console.log(`catalog/${linkPath}/index.html`);
+  console.log(`catalog/${linkPath}`);
   return new HtmlWebpackPlugin({
     templateParameters: { 
       canonicalURL,

@@ -22,7 +22,7 @@
               <a class="breadcrumbs__link" href="/">Главная</a>
               <a class="breadcrumbs__link breadcrumbs__link_type_here" href="/catalog/<%= categoryData.linkPath %>/"><%= categoryData.categoryName %></a>
             </div>
-            <h1 class="title-cat-prod">
+            <h1 class="title-section font-semibold">
               <%= categoryData.categoryName %>
             </h1>
             <p class="text-xl max-w-3xl">
@@ -38,8 +38,8 @@
       </div>
       <% if (gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).length ) { %>
         <section class="py-16 px-[var(--aside-width)] "> <!--ВНИМАНИЕ КОСТЫЛЬ-->
-          <h2 class="text-4xl font-fr uppercase font-semibold text-primary-prblue mb-8">Фотографии изготовленных <%= categoryData.catRoditelniiPadezhName %></h2>
-          <div class="container-4 grid-cols-4 gap-5 gap-y-10">
+          <h2 class="text-4xl mvpc:text-3xl laptop:text-2xl font-fr font-semibold text-primary-prblue mb-8">Фотографии изготовленных <%= categoryData.catRoditelniiPadezhName %></h2>
+          <div class="container-4 gap-5 gap-y-10">
             <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(categoryData.textId)).map((i)=> { %>
               <div class="">
                 <div class="aspect-[16/9] w-full flex justify-start">
@@ -47,7 +47,7 @@
                     <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>">
                   </figure>
                 </div>
-                <figcaption class="block pt-2 border-t border-primary-lightgray mt-3 text-sm text-primary-prblue uppercase"><%= i.title %></figcaption>
+               <!-- <figcaption class="block pt-2 border-t border-primary-lightgray mt-3 text-sm text-primary-prblue uppercase"><%= i.title %></figcaption>-->
               </div>
             <% }) %>
           </div>
@@ -79,7 +79,7 @@
 
     <% if (categoryProducts && categoryProducts.length) { %>
       <section>
-        <h2 class="text-4xl mt-16 content  uppercase font-semibold mb-5 text-primary-prblue font-fr">Основные типоразмеры резервуаров</h2>
+        <h2 class="text-4xl mt-16 content font-semibold mb-5 text-primary-prblue font-fr">Основные типоразмеры резервуаров</h2>
         <ul class="odd:*:bg-blue-50">
           <% categoryProducts.sort((a,b)=> a.sizeUtf - b.sizeUtf).map((c, index)=> { %>
             <%= _.template(require('html-loader!./templates/card-product.html').default)({obj: {...c, index: index+1}, isDevServer}) %>
@@ -90,7 +90,7 @@
 
     <% if (categoryData.categoryDescBottom) { %>
       <section class="additional-bottom-category-desc prose prose-xl prose-vik p-[var(--aside-width)]">
-        <h2 class="text-4xl mt-16 uppercase font-semibold mb-5 text-primary-prblue font-fr">Подробнее про <%= categoryData.categoryName %></h2>
+        <h2 class="text-4xl mt-16 font-semibold mb-5 text-primary-prblue font-fr mobilesm:text-2xl">Подробнее про <%= categoryData.categoryName.toLowerCase() %></h2>
         <% if(categoryData.isDescBottomMd) { %>
           <%= markdown.toHTML(categoryData.categoryDescBottom) %>
         <% } else { %>
