@@ -141,7 +141,7 @@
           <div class="container-4 gap-5 gap-y-10">
             <% gallery.filter(i => i.consumersIds.includes('gallery') && i.consumersIds.includes(productData.categoryTextId)).map((i)=> { %>
               <div>
-                <figure class="figure figure_mate aspect-[16/9] overflow-hidden relative rounded-sm">
+                <figure class="aspect-[16/9] overflow-hidden rounded relative">
                   <img class="h-full w-auto object-contain object-left" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>">
                 </figure>
                 <!-- <figcaption class="block mt-3 text-base text-primary-white uppercase"><%= i.title %></figcaption> -->
@@ -153,7 +153,7 @@
       <% if (productData.introai) { %>
         <section class="content content-ai [&_p_strong]:block [&_p_strong]:mb-2  mb-10 py-16">
           <h2 class="title-section title-section_sm"><%= productData.h1 %></h2>
-          <div class="text-base mt-8 max-w-[50%] text-primary-darkbg ">
+          <div class="text-base mt-8 max-w-[990px] text-primary-darkbg ">
             <%=  markdown.toHTML(productData.introai) %>
           </div>
         </section>
