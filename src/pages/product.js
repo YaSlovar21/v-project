@@ -63,20 +63,27 @@ if ( draws && draws.length ) {
 const parent = document.querySelector('.all-sect');
 const child = document.querySelector('.sticky-trigger');
 
-const parentHeight = parent.offsetHeight;
-const childHeight = child.offsetHeight;
 
-// Если дочерний элемент больше родителя - pin бессмысленен
-if (childHeight >= parentHeight) {
-  console.warn('Дочерний элемент выше родителя - pin не будет работать правильно');
-}
 
-const rightStickySide = new ScrollTrigger({
-  trigger: '.all-sect',
-  start: "top top",
-  end: `+=${parentHeight - childHeight}`, // Закрепление до достижения низа родителя
-  pin: '.sticky-trigger',
-  pinSpacing: false
+
+window.addEventListener('load', function() {
+
+  const parentHeight = parent.offsetHeight;
+  const childHeight = child.offsetHeight;
+
+    // Если дочерний элемент больше родителя - pin бессмысленен
+    if (childHeight >= parentHeight) {
+      console.warn('Дочерний элемент выше родителя - pin не будет работать правильно');
+    }
+
+
+  const rightStickySide = new ScrollTrigger({
+    trigger: '.all-sect',
+    start: "top top",
+    end: `+=${parentHeight - childHeight}`, // Закрепление до достижения низа родителя
+    pin: '.sticky-trigger',
+    pinSpacing: false
+  });
+
+  rightStickySide.refresh();
 });
-
-rightStickySide.refresh();
