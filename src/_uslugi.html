@@ -25,13 +25,13 @@
               <p></p>
               <div class="col-span-2">
                 <figure class="figure figure_mate w-[calc(100%-40px)] ">
-                  <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/uslugi/<%=u.images[0]%>" alt="<%= `${u.name}-фото-1` %>">
+                  <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'https://www.rezervuar22.ru' : ''%>/api-images/uslugi/<%=u.images[0]%>" alt="<%= `${u.name}-фото-1` %>">
                 </figure>
                 <% if (u.images.length>2) { %>
                 <div class="grid grid-cols-3 mt-5">
                   <% u.images.map((ui) => { %>
                   <figure class="figure figure_mate w-[calc(100%-40px)] ">
-                    <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'http://www.rezervuar22.ru.website.yandexcloud.net' : ''%>/api-images/uslugi/<%=ui%>" alt="<%= `${u.name}-фото-1` %>">
+                    <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'https://www.rezervuar22.ru' : ''%>/api-images/uslugi/<%=ui%>" alt="<%= `${u.name}-фото-1` %>">
                   </figure>
                   <% }) %>
                 </div>

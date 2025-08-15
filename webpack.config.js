@@ -6,7 +6,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const HttpsProxyAgent = require('https-proxy-agent');
 const fetch1 = require('node-fetch');
 
-const canonicalURL = 'http://www.rezervuar22.ru.website.yandexcloud.net'
+const canonicalURL = 'https://www.rezervuar22.ru'
 
 const { paths } = require('./sitemap');
 const { ROUTES, webpackRules,   charsSequence,  charsTitleDict,  charsMeasureDict, sonsentCompanyObj } = require('./constants');
@@ -355,6 +355,22 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
         },
         filename: `sonsent/index.html`,
         template: "./src/sonsent.html", // путь к файлу index.html
+        chunks: ["all"],
+      }),
+      new HtmlWebpackPlugin({
+        templateParameters: { 
+          canonicalURL,
+          ROUTES,
+          isDevServer,
+          additionalData
+        },
+        title: "Извините, такой страницы нет",
+        meta: {
+          keywords: "",
+          description: ``,
+        },
+        filename: `404.html`,
+        template: "./src/404.html", // путь к файлу index.html
         chunks: ["all"],
       }),
 

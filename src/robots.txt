@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: *?*
 
-Sitemap: https://www.termoblok.ru/sitemap.xml
+Sitemap: https://www.rezervuar22.ru/sitemap.xml
