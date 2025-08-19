@@ -19,7 +19,7 @@
             <a class="breadcrumbs__link breadcrumbs__link_type_here" href="<%= ROUTES.contacts %>">Контакты</a>
           </div>
           <h1 class="title-page font-fr">Контакты</h1>
-          <ul class="container-2 gap-y-10 gap-x-0 mb-40">
+          <ul class="container-2 gap-y-10 gap-x-0 mb-40 laptop:flex laptop:flex-col-reverse">
             <li class="row-span-2 pr-10">
               <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A075d81cc45750954606352bc7aa55eceecd60ec1902890b933fcfcbf036097ad&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
             </li>
@@ -36,7 +36,7 @@
                 </li>
                 <li>
                   <h3 class="contacts-sect_subhead mb-4 font-fr">Email</h3>
-                  <a class="text-4xl font-fr"  href="<%= additionalData.contacts[6].contact_text %>"><%= additionalData.contacts[6].contact_text %></a>
+                  <a class="text-4xl font-fr"  href="<%= additionalData.contacts[6].contact_url %>"><%= additionalData.contacts[6].contact_text %></a>
                 </li>
               </ul>
             </li>

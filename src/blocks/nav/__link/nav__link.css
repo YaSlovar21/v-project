@@ -11,6 +11,10 @@
   @apply text-primary-prblue text-lg text-center font-fr font-medium;
 }
 
+.nav__link_sub {
+  @apply text-base
+}
+
 .nav__link:hover {
   @apply bg-primary-prred text-white;
 }

@@ -7,7 +7,7 @@
 }
 
 .formquiz__figchoice {
-  @apply h-full border-none flex flex-col justify-center items-center p-4 cursor-pointer transition-all text-mary-blueacc bg-mary-blue100 rounded overflow-hidden hover:border-mary-blue;
+  @apply h-full flex flex-col justify-center items-center p-4 cursor-pointer transition-all text-mary-blueacc bg-mary-blue100 rounded border border-mary-blue border-opacity-0 overflow-hidden hover:border-opacity-100;
 }
 
 .formquiz__figchoice::after{
@@ -23,7 +23,7 @@
 }
 
 .formquiz__inputcheckbox:checked + .formquiz__figchoice::after{
-  @apply content-['v'] bg-primary-prred ;
+  @apply content-[''] bg-primary-prred ;
 
 }
 

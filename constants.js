@@ -4,9 +4,18 @@ const ROUTES = {
     about: '/about/',
     contacts: '/contacts/',
     objects: '/nashi-otgruzki/',
+
     rgs: '/catalog/gorizontalnye-rezervuary/rgs/',
+    rgsp: "/catalog/gorizontalnye-rezervuary/rgsp/", // Горизонтальные резервуары РГСП (подземные)
+    rgsd: "/catalog/gorizontalnye-rezervuary/rgsd/", // Горизонтальные резервуары РГСД (двустенные)
+
     rvs: '/catalog/vertikalnye-rezervuary/',
+
     silosy: '/catalog/silosy/',
+    ep_i_epp: "/catalog/emkosti-ep-i-epp/", // Емкости ЕП и ЕПП
+    shablony: "/catalog/shablon-dlya-futerovki/", // Шаблоны
+    ciklony: "/catalog/ciklony/", // Циклоны
+    ilososy: "/catalog/emkost-bochka-dlya-assenizatora/", // Цистерны для ассенизатора
     
     sonsent: '/sonsent/'
 };

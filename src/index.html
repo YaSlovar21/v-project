@@ -137,7 +137,7 @@
               <h3 class="title-text">Ищете резервуар для хранения и сбора жидкостей?</h3>
               <p class="text-secondary text-secondary_p1">Свяжитесь с нами, мы подберём нужное оборудование под ваши цели</p>
             </div>
-            <button class="ui-button">Написать</button>
+            <button class="ui-button popup-callback-button" data-ctatext="Оcтавить заявку на расчёт резервуара">Написать</button>
           </div>
           <div class="comparisonImage beforeImage" >
             <img class="object-contain object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= dModels[37].fileName %>" alt="before">
@@ -189,7 +189,7 @@
             <p class="col-span-2 font-medium text-5xl font-fr text-white mvpc:text-4xl laptop:text-2xl">
               Мы гарантируем долговечность и безопасность эксплуатации каждого изделия. Наши резервуары — это надёжное решение для ваших производственных задач.
             </p>
-            <button class="ui-button ui-button_white mt-4">Запросить расчёт</button>
+            <button class="ui-button ui-button_white mt-8 popup-callback-button" data-ctatext="Отправить заявку на расчёт резервуара">Запросить расчёт</button>
           </div>
         </section>
 
@@ -235,8 +235,8 @@
                 <span class="form__input-error name-input-error"></span>
               </label>
               <label class="form__field basis-full mb-4">
-                <span class="title-form block">Email, куда отправить расчёт</span>
-                <input  placeholder="E-mail" type="text" name="firm" id="firm-input" class="form__input form__input_up raschet-bem__input_type_flex">
+                <span class="title-form block">Какую компанию Вы представляете?</span>
+                <input  placeholder="Название компании" type="text" name="firm" id="firm-input" class="form__input form__input_up raschet-bem__input_type_flex">
                 <span class="form__input-error firm-input-error"></span>
               </label>
               <label class="form__field basis-full  mb-4">
@@ -249,7 +249,6 @@
                 <input  placeholder="E-mail" type="email" name="email" id="email-input" class="form__input form__input_up raschet-bem__input_type_flex" required minlength="1">
                 <span class="form__input-error email-input-error"></span>
               </label>
-
             </div>
             <h3 class="title-form">Какой резервуар Вам необходим?</h3>
             <div class="grid grid-cols-12">

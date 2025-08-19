@@ -125,7 +125,7 @@ const popupSelector = '.popup-with-form';
 const formSelector = '.form-in-popup';
 const formInputSelector = '.form__input';
 
-const buttonToOpenPopupWithForm = document.querySelector('.popup-callback-button');
+const buttonsToOpenPopupWithForm = Array.from(document.querySelectorAll('.popup-callback-button'));
 
 const formInPopup = document.querySelector(formSelector);
 const formInPopupValidator = new FormValidatorNew(formInPopupConfig, formInPopup);
@@ -159,17 +159,20 @@ const modal = new PopupWithForm({
         return false;
         }
     }
-}, popupSelector, formSelector, formInputSelector)
+}, popupSelector, formSelector, formInputSelector);
 
 modal.setEventListeners();
 
-buttonToOpenPopupWithForm.addEventListener('click', ()=>{
-    modal.open();
-    console.log('smoother buttonToOpenPopupWithForm', smoother )
+buttonsToOpenPopupWithForm.map((i)=> {
+  i.addEventListener('click', ()=>{
+    modal.open(i.dataset.ctatext);
+    // console.log('smoother buttonToOpenPopupWithForm', smoother)
+    console.log("cta text", i.dataset.ctatext);
     if (smoother) {
       smoother.paused(true);
     }
-})
+  })
+});
 
 
 /* GSAP RAZREZ */

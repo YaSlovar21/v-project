@@ -15,7 +15,13 @@
         <label class="dropdown__label" for="menu-checkbox">Продукция</label>
         <ul class="dropdown__list">
           <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.rgs %>">Резервуары РГС</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.rgsp %>">Горизонтальные РГСП подземные</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.rgsd %>">Горизонтальные РГСД двустенные</a></li>
           <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.rvs %>">Резервуары вертикальные</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.ep_i_epp %>">Емкости ЕП и ЕПП</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.shablony %>">Шаблоны</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.ciklony %>">Циклоны</a></li>
+          <li class="dropdown__list-item"><a class="popup__navlink popup__navlink_sub" href="<%= ROUTES.ilososy %>">Цистерны для ассенизатора</a></li>
         </ul>
       </div>
       <a class="popup__navlink" href="<%= ROUTES.uslugi %>">Услуги</a>
@@ -54,14 +60,15 @@
   <div class="popup-container bg-white ml-auto w-1/2 border-l border-primary-lightgray box-content overflow-y-auto relative">
 
     <div class="h-full py-10">
-      <div class="flex w-full justify-between p-[var(--aside-width)]">
-        <h3 class="popup-heading text-3xl font-semibold font-fr text-mary-primary">Отправить заявку на расчёт</h3>
+      <div class="flex w-full justify-between px-[var(--aside-width)] mb-4">
+        <h3 class="popup-heading title-section title-section_sm my-0">Отправить заявку на расчёт</h3>
         <button class="popup-button-close w-8 h-8 transition-all hover:rotate-90">
           <svg class="stroke-primary-prred" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
+      <p class="text-mary-secondary px-[var(--aside-width)]">Заполните форму и ожидайте звонка в течение 5 минут</p>
         <form class="form-in-popup flex flex-col p-[var(--aside-width)]" novalidate>
         <div class="flex flex-col justify-between mt-[10vh]">
                 <label class="form__field basis-full mb-4">
