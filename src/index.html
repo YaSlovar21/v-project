@@ -9,7 +9,7 @@
   <link href="<%= canonicalURL %>"  rel="canonical" />
 </head>
 <!--<body class="page bg-gradient-to-r from-primary-darker to-primary-blue">-->
-<body class="page bg-white">
+<body class="page relative ">
   <style>
     #animated-text {
       overflow: hidden;
@@ -21,14 +21,14 @@
     }
 
   </style>
-  <div id="smooth-wrapper">
+  <div class="z-20 " id="smooth-wrapper">
     <div id="smooth-content">
       <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
       <% if (isDevServer) { %>
         <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
       <% } %>
-      <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
-      <main class="">
+      <main class="bg-white">
+        <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
         <section class="mt-[60px] mb-16 items-start">
         <h1 class="title-page font-semibold max-w-[75%] ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
         <div class="relative overflow-hidden group">
@@ -94,7 +94,7 @@
             <ul class=" relative w-full mt-12 col-start-6 col-span-7">
               <% popular.filter(i => i.isPublished ===true).map((c, index)=> { %>
                 <li class="block group laptop:grid laptop:grid-cols-4 laptop:mb-8 laptop:border-t laptop:border-primary-prblue">
-                  <div class="absolute w-80 bg-white object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible laptop:hidden">
+                  <div class="absolute w-80  object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible laptop:hidden">
                     <img class="w-full" src="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= c.imgUrl %>" alt="">
                   </div>
                   <div class="hidden laptop:block">
@@ -223,7 +223,7 @@
           </ul>
         </section>
 
-        <section class="grid grid-cols-4 my-24 content mvpc:grid-cols-3 olpc:grid-cols-1 olpc:*:col-span-1 gap-5 content">
+        <section class="grid grid-cols-4 mt-24 pb-24 box-border content mvpc:grid-cols-3 olpc:grid-cols-1 olpc:*:col-span-1 gap-5 content">
           <h2 class="up-title">Коммерческое предложение</h2>
           <form name="quiz" class="col-span-2 mx-auto" novalidate>
             <h3 class="title-section mt-0 mb-4">Мы готовы подобрать для вас лучшее решение</h3>
@@ -314,8 +314,11 @@
           </form>
         </section>
       </main>
-      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
+      <div class="footer-spacer"></div>
     </div>
+  </div>
+  <div class="fixed bottom-0 left-0 w-full -z-10">
+    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
   </div>
   <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
 </body>

@@ -12,6 +12,21 @@ import Observer from "gsap/Observer";
 // Регистрация плагинов (выполнится только один раз)
 gsap.registerPlugin(Observer, ScrollTrigger, SplitText, ScrollSmoother);
 
+// Сначала устанавливаем высоту спейсера
+
+const footer = document.querySelector('.footer');
+const spacer = document.querySelector('.footer-spacer');
+const footerHeight = footer.offsetHeight;
+
+// Устанавливаем высоту ДО инициализации ScrollSmoother
+gsap.set(spacer, {
+  height: footerHeight,
+  display: 'block'
+});
+
+
+
+
 // Создаем и экспортируем экземпляр ScrollSmoother
 export const smoother = ScrollSmoother.create({
   smooth: 2,
@@ -266,3 +281,4 @@ document.fonts.ready.then(() => {
   );
   });
 });
+
