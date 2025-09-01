@@ -32,11 +32,12 @@
                 </li>
                 <li>
                   <h3 class="contacts-sect_subhead mb-4 font-fr">Отдел продаж</h3>
-                  <a class="text-4xl font-fr" href="<%= additionalData.contacts[7].contact_url %>"><%= additionalData.contacts[7].contact_text %></a>
+                  <a class="text-4xl font-fr block" href="<%= additionalData.contacts.mob.contact_url %>"><%= additionalData.contacts.mob.contact_text %></a>
+                  <a class="text-4xl font-fr block mt-3" href="<%= additionalData.contacts.gorod.contact_url %>"><%= additionalData.contacts.gorod.contact_text %></a>
                 </li>
                 <li>
                   <h3 class="contacts-sect_subhead mb-4 font-fr">Email</h3>
-                  <a class="text-4xl font-fr"  href="<%= additionalData.contacts[6].contact_url %>"><%= additionalData.contacts[6].contact_text %></a>
+                  <a class="text-4xl font-fr"  href="<%= additionalData.contacts.email.contact_url %>"><%= additionalData.contacts.email.contact_text %></a>
                 </li>
               </ul>
             </li>

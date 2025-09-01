@@ -94,7 +94,7 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
   
   const additionalData = {
     ROUTES,
-    contacts: contactsData.reduce((res, curr)=> ({...res, [curr.id]: curr}), {})
+    contacts: contactsData.reduce((res, curr)=> ({...res, [curr.textId]: curr}), {})
   };
   console.log('additionalData', additionalData.contacts);
   //const categoriesRealPathsByTextId = categories.reduce((result, cat) => ({...result, [cat.textId]: cat.linkPath}), {});
@@ -472,7 +472,7 @@ module.exports = () => {
           fetch1('https://api-cms.kupcov.com/contacts', initFetchObj).then(res => res.json()), 
         ])
         .then((data) => {
-          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]), objectsMapper(data[5]), uslugiMapper(data[6]), contactsMapper(data[7]) ));
+          resolve(generateConfig(isDevServer, categoriesMapper(data[0]), productsMapper(data[1]), galleryMapper(data[2]), data[3], drawingsMapperAndReducer(data[4]), objectsMapper(data[5]), uslugiMapper(data[6]), contactsMapper(data[7])));
         })
      
   });

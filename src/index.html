@@ -19,15 +19,24 @@
       display: inline-block;
       transform-origin: left;
     }
+    .footer {
+      position: relative;
+      transform: translateY(-100%); /* Изначально скрыт снизу */
+      will-change: transform;
+    }
 
+    .content-above-footer {
+      position: relative;
+      z-index: 2;
+    }
   </style>
-  <div class="z-20 " id="smooth-wrapper">
+  <div id="smooth-wrapper">
     <div id="smooth-content">
       <%= require(`html-loader!./inner-metrika${isDevServer ? '-dev-server' : ''}.html`).default %>
       <% if (isDevServer) { %>
         <p class="text-4xl absolute top-0 left-0 text-red-600">Включен режим разработчика</p>
       <% } %>
-      <main class="bg-white">
+      <main class="bg-white z-[2] relative content-above-footer">
         <%=_.template(require('html-loader!./insets/asides/inner-header-animated.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'main'}) %>
         <section class="mt-[60px] mb-16 items-start">
         <h1 class="title-page font-semibold max-w-[75%] ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
@@ -94,7 +103,7 @@
             <ul class=" relative w-full mt-12 col-start-6 col-span-7">
               <% popular.filter(i => i.isPublished ===true).map((c, index)=> { %>
                 <li class="block group laptop:grid laptop:grid-cols-4 laptop:mb-8 laptop:border-t laptop:border-primary-prblue">
-                  <div class="absolute w-80  object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible laptop:hidden">
+                  <div class="absolute w-80 bg-white  object-contain object-center transition-all duration-75 h-96 top-0 -left-96 <%= index!==0 ? 'invisible': '' %> group-hover:visible laptop:hidden">
                     <img class="w-full" src="<%= isDevServer ? `${canonicalURL}` : ''%>/<%= c.imgUrl %>" alt="">
                   </div>
                   <div class="hidden laptop:block">
@@ -312,14 +321,14 @@
                 <button class="ui-button form__submit-button" type="submit">Оставить заявку</button>
             </div>
           </form>
+
         </section>
       </main>
-      <div class="footer-spacer"></div>
+      <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
     </div>
   </div>
-  <div class="fixed bottom-0 left-0 w-full -z-10">
-    <%= _.template(require('html-loader!./insets/asides/inner-footer.html').default)({ROUTES: ROUTES, additionalData: additionalData, page: 'notmain'}) %>
-  </div>
+
+
   <%= _.template(require('html-loader!./insets/asides/inner-outbody-popups.html').default)({ROUTES: ROUTES, page: 'notmain'}) %>
 </body>
 </html>

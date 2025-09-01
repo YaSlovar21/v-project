@@ -12,20 +12,6 @@ import Observer from "gsap/Observer";
 // Регистрация плагинов (выполнится только один раз)
 gsap.registerPlugin(Observer, ScrollTrigger, SplitText, ScrollSmoother);
 
-// Сначала устанавливаем высоту спейсера
-
-const footer = document.querySelector('.footer');
-const spacer = document.querySelector('.footer-spacer');
-const footerHeight = footer.offsetHeight;
-
-// Устанавливаем высоту ДО инициализации ScrollSmoother
-gsap.set(spacer, {
-  height: footerHeight,
-  display: 'block'
-});
-
-
-
 
 // Создаем и экспортируем экземпляр ScrollSmoother
 export const smoother = ScrollSmoother.create({
@@ -282,3 +268,49 @@ document.fonts.ready.then(() => {
   });
 });
 
+
+
+
+window.addEventListener('load', function() {
+  const contentAbove = document.querySelector('.content-above-footer');
+  const footer = document.querySelector('.footer');
+  const footerHeight = footer.offsetHeight;
+
+
+  gsap.set(footer, { y: -footerHeight });
+
+  // Затем анимация
+  gsap.to(footer, {
+    y: 0,
+    ease: "none",
+    immediateRender: false, // Важно!
+    scrollTrigger: {
+      trigger: contentAbove,
+      start: "bottom bottom",
+      end: `bottom+=${footerHeight} bottom`,
+      scrub: true,
+      //markers: true
+    }
+  });
+
+ /* рабочий вариант
+  // Настраиваем анимацию футера
+  gsap.to(footer, {
+    //y: 0, // Конечное положение
+    scrollTrigger: {
+      trigger: contentAbove,
+      start: "bottom bottom", // Когда низ секции достигнет низа вьюпорта
+      end: `bottom+=${footerHeight} bottom`, // Когда прокрутим на высоту футера
+      //scrub: true, // Плавная привязка к скроллу
+      markers: true, // Для отладки, потом удалить
+      ease: "none",
+      onUpdate: (self) => {
+        const progress = self.progress;
+        // Жесткая линейная привязка
+        footer.style.transform = `translateY(${-footerHeight * (1 - progress)}px)`;
+      }
+    }
+  }); */
+
+
+});

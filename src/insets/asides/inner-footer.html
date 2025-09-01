@@ -1,10 +1,10 @@
-<footer class="footer bg-mary-blueacc pt-20 pb-0 mt-24">
+<footer class="footer bg-mary-blueacc pt-20 pb-0">
   <div class="content grid grid-cols-4 mvpc:grid-cols-3 mobile:grid-cols-1 mobile:*:col-span-1">
     <h2 class="up-title text-white">Контакты</h2>
     <div class="grid grid-cols-3 col-span-3 mvpc:grid-cols-2 mvpc:col-span-2">
       <ul class="col-span-3 mb-10 mvpc:col-span-2">
-        <li><a class="block my-4 title-section uppercase text-white" href="<%= additionalData.contacts[7].contact_url %>"><%= additionalData.contacts[7].contact_text %></a></li>
-        <li><a class="block my-4 title-section text-white" href="<%= additionalData.contacts[6].contact_url %>"><%= additionalData.contacts[6].contact_text %></a></li>
+        <li><a class="block my-4 title-section uppercase text-white" href="<%= additionalData.contacts.mob.contact_url %>"><%= additionalData.contacts.mob.contact_text %></a></li>
+        <li><a class="block my-4 title-section text-white" href="<%= additionalData.contacts.email.contact_url %>"><%= additionalData.contacts.email.contact_text %></a></li>
         <li><a class="block text-white text-sm" href="<%= ROUTES.sonsent %>">Соглашение об обработке персональных данных</a></li>
       </ul>
       <ul class="my-2 *:mb-1">
