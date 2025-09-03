@@ -38,6 +38,7 @@ const formApi = new Api({
 
 
 import PopupWithForm from "../js/components/PopupWithForm";
+import { renderLoading } from '../js/utils/utils';
 
 const popupSelector = '.popup-with-form';
 const formSelector = '.form-in-popup';
@@ -46,6 +47,7 @@ const formInputSelector = '.form__input';
 const buttonToOpenPopupWithForm = document.querySelector('.popup-callback-button');
 
 const formInPopup = document.querySelector(formSelector);
+const submitButtonInPopup = formInPopup.querySelector(formInPopupConfig.submitButtonSelector);
 const formInPopupValidator = new FormValidatorNew(formInPopupConfig, formInPopup);
 formInPopupValidator.enableValidation();
 
@@ -55,10 +57,16 @@ const modal = new PopupWithForm({
     },
     formSubmitHandler:  async (valuesObj) => {
         console.log(valuesObj);
+        renderLoading('loading', submitButtonInPopup, 'Оставить заявку', 'Отправляем...', 'Отправлено успешно!');
         try {
-        const resp = await formApi.sendSmallForm(valuesObj);
+            const resp = await formApi.sendSmallForm(valuesObj);
+            //const resp = {message: 'Норм'};
             if (resp.message && resp.message==='Норм') {
-              modal.close();
+              renderLoading('sended', submitButtonInPopup, 'Оставить заявку', 'Отправляем...', 'Отправлено успешно!');
+              setTimeout(()=> {
+                renderLoading('default', submitButtonInPopup, 'Оставить заявку', 'Отправляем...', 'Отправлено успешно');
+                modal.close();
+              }, 700)
             } else {
                 throw new Error('Вернулся какой то не такой объект')
             }

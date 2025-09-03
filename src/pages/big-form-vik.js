@@ -1,6 +1,7 @@
 import Api from "../js/components/Api";
 import FormStaticBigFormVik from "../js/components/FormStaticBigFormVik";
 import FormValidatorNew from "../js/components/FormValidatorNew";
+import { renderLoading } from "../js/utils/utils";
 
 const formBigApi = new Api({
   baseUrl: 'https://api-cms.kupcov.com',
@@ -29,21 +30,29 @@ const formBigValidator = new FormValidatorNew({
 }, formBigElement);
 
 formBigValidator.enableValidation();
+const upFooterFormSubmitButton = formBigElement.querySelector(bigVikingFormConfig.submitButtonSelector);
 
 const formBig = new FormStaticBigFormVik({
   formSubmitHandler:  async (valuesObj) => {
       console.log(valuesObj);
-      
+      renderLoading('loading', upFooterFormSubmitButton, 'Оставить заявку', 'Отправляем...', 'Отправлено успешно!');
+
       try {
-      const resp = await formBigApi.sendBigForm(valuesObj);
-          if (resp.message && resp.message==='Норм') {
-            modal.close();
-          } else {
-              throw new Error('Вернулся какой то не такой объект')
-          }
+        /*const resp = await formBigApi.sendBigForm(valuesObj);
+        if (resp.message && resp.message==='Норм') {
+          //все норм;
+          renderLoading('sended', upFooterFormSubmitButton, 'Оставить заявку', 'Отправляем...', 'Отправлено успешно!');
+        } else {
+            throw new Error('Вернулся какой то не такой объект')
+        }
+        upFooterForm.reset();*/
+        setTimeout(()=> {
+          renderLoading('default', upFooterFormSubmitButton, 'Оставить заявку', 'Отправляем...', 'Отправлено успешно');
+        }, 800)
       } catch(e) {
           console.log('Что то пошло не так', e);
       }
+
     },
     formCleanError: ()=> {
       formBigValidator.cleanAllErrors();

@@ -432,14 +432,14 @@ function contactsMapper(contactsArr) {
 })) 
 }
 
-const proxyAgent = new HttpsProxyAgent.HttpsProxyAgent('http://10.10.14.14:3128');
+//const proxyAgent = new HttpsProxyAgent.HttpsProxyAgent('http://10.10.14.14:3128');
 
 const initFetchObj = {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
   },
-  agent: proxyAgent
+  //agent: proxyAgent
 }
 
 module.exports = () => {

@@ -3,9 +3,6 @@ import FormStatic from "./FormStatic";
 export default class FormStaticBigFormVik extends FormStatic {
   constructor({formSubmitHandler, formCleanError, checherValidation}, formElement, formInputSelector, formMainCheckboxSelector, formTankVolumeCheckboxSelector, formTankSubstanceCheckboxSelector) {
     super({formSubmitHandler, formCleanError, checherValidation}, formElement, formInputSelector);
-    //this._mainCheckBoxSelector = formMainCheckboxSelector;
-    //this._volumeCheckBoxSelector = formTankVolumeCheckboxSelector;
-    //this._substanceCheckBoxSelector = formTankSubstanceCheckboxSelector;
   }
 
   //собираем поля формы
@@ -13,6 +10,9 @@ export default class FormStaticBigFormVik extends FormStatic {
     const basicValues = super._getInputValues();
     const rezType = this._formElement.elements.rezervuartype.value;
     if (rezType) {
+      const volume = this._formElement.querySelector(`#sizes-${rezType}-id`).value;
+      const staff = this._formElement.querySelector(`#staff-${rezType}-id`).value;
+      /*
       const volumesArr = Array.from(this._formElement.elements[`sizes-${rezType}`]).filter((item)=>{
         return item.checked;
       }).map((item)=> {
@@ -22,20 +22,23 @@ export default class FormStaticBigFormVik extends FormStatic {
         return item.checked;
       }).map((item)=> {
         return item.value;
-      });;
-      /* console.log({
-        ...basicValues,
-        rezType,
-        volumesArr,
-        staffArr
-      }); */
+      });;*/
+       console.log(
+
+        volume,
+        staff
+      );
       return {
         ...basicValues,
         rezType,
-        volumesArr,
-        staffArr
+        volume,
+        staff,
+        page: window.location.pathname
       }
-    } else return basicValues;
+    } else return {
+      ...basicValues,
+      page: window.location.pathname
+    };
 
   }
 /*

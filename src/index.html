@@ -42,9 +42,9 @@
         <h1 class="title-page font-semibold max-w-[75%] ml-[var(--aside-width)]">Производство стальных резервуаров</h1>
         <div class="relative overflow-hidden group">
           <div class="flex animate-marquee animation-play-state:paused hover:[animation-play-state:running]">
-              <% [].concat(gallery.filter(i => i.consumersIds.includes('gallery'))).concat(gallery.filter(i => i.consumersIds.includes('gallery'))).map((i)=> { %>
+              <% [].concat(gallery.filter(i => i.consumersIds.includes('main-slider'))).concat(gallery.filter(i => i.consumersIds.includes('main-slider'))).map((i)=> { %>
               <figure class="mx-4 flex-shrink-0">
-                <img class="h-[300px] w-[250px] object-cover object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>" alt="Team Member #1" />
+                <img class="h-[300px] w-[250px] object-cover object-center" src="<%= isDevServer ? `${canonicalURL}` : ''%>/api-images/gallery/<%= i.fileName %>" alt="<%= i.title %>" />
               </figure>
             <% }) %>
           </div>
@@ -291,11 +291,12 @@
                 <fieldset class="mt-6 p-0" id="sizes-<%= f %>">
                   <h3 class="title-form">Какой объем Вам необходим?</h3>
                   <div class="flex">
-                    <select class="w-full py-[13px] px-4 border border-mary-blue border-opacity-15 rounded" name="sizes-<%= f %>">
-                      <% sizesArrForCats[f].map((size)=> { %>
-                        <option value="<%= size %>"><%= size %> м³</option>
+                    <select class="w-full py-[13px] px-4 border border-mary-blue border-opacity-15 rounded" id="sizes-<%= f %>-id" name="sizes-<%= f %>">
+                      <% sizesArrForCats[f].map((size, i)=> { %>
+                        <option <%= i===0 ?'selected' : '' %> value="<%= size %>"><%= size %> м³</option>
                       <% }) %>
                     </select>
+                    <span class="form__input-error sizes-<%= f %>-id-error"></span>
                   </div>
                 </fieldset>
               <% }) %>
@@ -303,11 +304,12 @@
                 <fieldset class="mt-6 p-0" id="staff-<%= f %>">
                   <h2 class="title-form">Что будет храниться в ёмкости?</h2>
                   <div class="flex">
-                    <select  class="w-full py-[13px] px-4 border border-mary-blue border-opacity-15 rounded" name="staff-<%= f %>">
-                      <% staffArrForCats[f].map((staff)=> { %>
-                        <option value="<%= staff %>"><%= staff %></option>
+                    <select  class="w-full  py-[13px] px-4 border border-mary-blue border-opacity-15 rounded" id="staff-<%= f %>-id" name="staff-<%= f %>">
+                      <% staffArrForCats[f].map((staff, i)=> { %>
+                        <option <%= i===0 ?'selected' : '' %> value="<%= staff %>"><%= staff %></option>
                       <% }) %>
                     </select>
+                    <!--<span class="form__input-error staff-<%= f %>-id-error"></span>-->
                   </div>
                 </fieldset>
               <% }) %>
