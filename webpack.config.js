@@ -279,7 +279,8 @@ function generateConfig(isDevServer, categories, products, gallery, popular , dr
           isDevServer,
           objects,
           formatDate,
-          additionalData
+          additionalData,
+          galleryById: gallery.reduce((res, i)=> ({...res, [i.id]: i}), {}),
         },
         title: "Наши отгрузки",
         meta: {

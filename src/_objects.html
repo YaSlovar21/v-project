@@ -19,12 +19,15 @@
       <h1 class="title-page ml-[var(--aside-width)] max-w-[75%] mr-auto my-2">Производим ёмкостное оборудование и резервуары</h1>
       <p class="content text-secondary_p1">И отправляем его по всей России</p>
       <ul class="odd:*:bg-blue-50 mt-16">
-        <% objects.map((o, index)=> { %>
+        <% objects.sort((a,b)=>b.id-a.id).map((o, index)=> { %>
           <li class="grid grid-cols-6 p-[var(--aside-width)] laptop:grid-cols-1 laptop:*:col-span-1 laptop:py-9">
-            <p class="hidden"><%= formatDate(o.date) %></p>
-            <p class="text-fr text-primary-prred">[<%= index +1 %>]</p>
+            <% if (o.poster_gallery_id) { %>
+              <p class="text-fr text-primary-prred"><%= formatDate(o.date) %></p>
+            <% } else { %>
+              <p class="text-fr text-primary-prred">[<%= index +1 %>]</p>
+            <% } %>
             <figure class="figure figure_mate col-span-2 max-h-[40vh] w-[calc(100%-40px)] laptop:w-full laptop:my-4">
-              <img class="object-cover w-full h-full object-center" src="<%= isDevServer ? 'https://www.rezervuar22.ru' : ''%>/api-images/objects/<%=o.poster%>" alt="o.description">
+              <img class="object-cover w-full h-full object-center" src="https://www.rezervuar22.ru/api-images/<%=o.poster_gallery_id ? `gallery/${galleryById[o.poster_gallery_id].fileName}` : `objects/${o.poster}` %>" alt="o.description">
             </figure>
             <div class="col-span-2">
               <span class="flex items-center text-xl text-primary-prred laptop:text-base">
